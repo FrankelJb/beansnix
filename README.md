@@ -1,13 +1,9 @@
 <h3 align="center">
- <img src="https://avatars.githubusercontent.com/u/1778670?v=4" width="100" alt="Logo"/><br/>
- <img src="https://raw.githubusercontent.com/catppuccin/catppuccin/main/assets/misc/transparent.png" height="30" width="0px"/>
- <img src="https://nixos.org/logo/nixos-logo-only-hires.png" height="20" /> NixOS Config for <a href="https://github.com/khaneliman">Khaneliman</a>
+ <img src="https://nixos.org/logo/nixos-logo-only-hires.png" height="20" /> NixOS Config for <a href="https://github.com/FrankelJb">FrankelJb</a>
  <img src="https://raw.githubusercontent.com/catppuccin/catppuccin/main/assets/misc/transparent.png" height="30" width="0px"/>
 </h3>
 
 <p align="center">
- <a href="https://github.com/khaneliman/khanelinix/stargazers"><img src="https://img.shields.io/github/stars/khaneliman/khanelinix?colorA=363a4f&colorB=b7bdf8&style=for-the-badge"></a>
- <a href="https://github.com/khaneliman/khanelinix/commits"><img src="https://img.shields.io/github/last-commit/khaneliman/khanelinix?colorA=363a4f&colorB=f5a97f&style=for-the-badge"></a>
   <a href="https://nixos.wiki/wiki/Flakes" target="_blank">
  <img alt="Nix Flakes Ready" src="https://img.shields.io/static/v1?logo=nixos&logoColor=d8dee9&label=Nix%20Flakes&labelColor=5e81ac&message=Ready&color=d8dee9&style=for-the-badge">
 </a>
@@ -16,31 +12,7 @@
 </a>
 </p>
 
-Welcome to KhaneliNix, a personal Nix configuration repository. This repository contains my NixOS and Nixpkgs configurations, along with various tools and customizations to enhance the Nix experience.
-
-## Table of Contents
-
-1. [Getting Started](#getting-started)
-2. [Features](#features)
-3. [Usage](#usage)
-4. [Customization](#customization)
-
-## Getting Started
-
-Before diving in, ensure that you have Nix installed on your system. If not, you can download and install it from the official [Nix website](https://nixos.org/download.html).
-
-### Clone this repository to your local machine:
-
-```bash
-    git clone https://github.com/khaneliman/khanelinix.git
-    cd khanelinix
-```
-
-### Automatic
-
-```bash
-cd ~/.config/khanelinix && sudo nixos-rebuild switch --flake . # linux
-```
+Welcome to BeansNix, a personal Nix configuration repository. This repository contains my NixOS and Nixpkgs configurations, along with various tools and customizations to enhance the Nix experience.
 
 ## Features
 
@@ -51,8 +23,6 @@ Here's an overview of what my Nix configuration offers:
 - **NUR Integration**: Access the Nix User Repository (NUR) for additional packages and enhancements.
  
 - **Nixpkgs-Wayland Integration**: Incorporate Nixpkgs-Wayland to provide a more up to date wayland package repository.
-
-- **macOS Support**: Seamlessly configure and manage Nix on macOS using the power of Nix-darwin, also leveraging homebrew for GUI applications.
 
 - **Home Manager**: Manage your dotfiles, home environment, and user-specific configurations with Home Manager.
 
@@ -78,4 +48,4 @@ This structured approach to Nix configuration makes it easier to manage and cust
     
 ## Credits
 
-Inspiration and code from numerous locations all over the internet. Here are some of the major contributors to my setups.
+Thanks to the monumental effort from pioneers like [Khaneliman](https://github.com/khaneliman), [fufexan](https://github.com/fufexan) and the other hyprland and nixos community members.
