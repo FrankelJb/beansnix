@@ -9,12 +9,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    # macOS Support (master)
-    darwin = {
-      url = "github:lnl7/nix-darwin";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
     # System Deployment
     deploy-rs = {
       url = "github:serokell/deploy-rs";
@@ -52,6 +46,7 @@
     };
 
     # Personal neovim config
+    # TODO: move to frankeljb
     neovim-config = {
       url = "github:khaneliman/astronvim/v4";
       flake = false;
@@ -67,6 +62,13 @@
       url = "github:nix-community/nixpkgs-wayland";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    # TODO: readd nh?
+    # nh = {
+    #   url = "github:viperML/nh";
+    #   inputs.nixpkgs.follows = "nixpkgs";
+    #   inputs.flake-parts.follows = "flake-parts";
+    # };
 
     # Nix User Repository (master)
     nur = {
@@ -137,12 +139,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    # Spicetify
-    spicetify-nix = {
-      url = "github:the-argus/spicetify-nix/dev";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
     # Yubikey Guide
     yubikey-guide = {
       url = "github:drduh/YubiKey-Guide";
@@ -160,7 +156,7 @@
       };
     in
     lib.mkFlake {
-      package-namespace = "khanelinix";
+      package-namespace = "beansnix";
 
       channels-config = {
         # allowBroken = true;
@@ -182,9 +178,6 @@
 
       systems = {
         modules = {
-          darwin = [
-          ];
-
           home = [
             sops-nix.homeManagerModules.sops
           ];
@@ -201,6 +194,7 @@
       checks =
         builtins.mapAttrs
           (_system: deploy-lib:
+
             deploy-lib.deployChecks inputs.self.deploy)
           deploy-rs.lib;
     };

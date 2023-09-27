@@ -9,7 +9,7 @@ in
     WLR_NO_HARDWARE_CURSORS=1
   '';
 
-  khanelinix = {
+  beansnix = {
     nix = enabled;
 
     archetypes = {
@@ -17,7 +17,6 @@ in
     };
 
     apps = {
-      _1password = enabled;
       firefox = enabled;
       vscode = enabled;
     };
@@ -33,14 +32,10 @@ in
       };
     };
 
-    services = {
-      printing = enabled;
-    };
-
-    security = {
-      doas = enabled;
-      keyring = enabled;
-    };
+    # security = {
+    #   doas = enabled;
+    #   keyring = enabled;
+    # };
 
     system = {
       boot = enabled;

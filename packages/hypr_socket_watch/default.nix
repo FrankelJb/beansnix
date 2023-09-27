@@ -29,8 +29,8 @@ writeShellApplication
           local workspace
           workspace=$(extract_after_double_arrow "$1")
           local wallpaper
-          wallpaper=$(nth_file "${pkgs.khanelinix.wallpapers}/share/wallpapers" "$workspace")
-          "${getExe' hyprland.packages.${system}.hyprland "hyprctl"}" hyprpaper wallpaper "DP-1,$wallpaper"
+          wallpaper=$(nth_file "${pkgs.beansnix.wallpapers}/share/wallpapers" "$workspace")
+          "${getExe' hyprland.packages.${system}.hyprland "hyprctl"}" hyprpaper wallpaper "DP-3,$wallpaper"
           ;;
       esac
     }

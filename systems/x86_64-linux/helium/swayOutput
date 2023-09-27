@@ -1,0 +1,6 @@
+set $monitor-top DP-3
+
+#output $monitor-top bg /home/khaneliman/Photos/wallpapers/left.jpg fill
+#output $monitor-bottom bg /home/khaneliman/Photos/wallpapers/center.jpg fill
+
+output $monitor-top resolution 1440x2160 position 0,0

@@ -7,27 +7,42 @@
 let
   inherit (lib) mkIf;
   inherit (lib.internal) mkBoolOpt;
-  cfg = config.khanelinix.suites.common;
+  cfg = config.beansnix.suites.common;
 in
 {
-  options.khanelinix.suites.common = {
+  options.beansnix.suites.common = {
     enable = mkBoolOpt false "Whether or not to enable common configuration.";
   };
 
   config = mkIf cfg.enable {
     environment.systemPackages = with pkgs; [
+    age
+    ansible
+    bottom
       coreutils
       curl
+    du-dust
+    duf
       eza
-      fd
-      file
+    fd
+    file
       findutils
       killall
+    kubectl
+    ncdu
+    neofetch
+    restic
+    ripgrep
+    # TODO: Rust toolchain
+    # rust-bin.stable.latest.default
       pciutils
-      tldr
+    sops
+    tealdeer
       unzip
       wget
       xclip
+    zellij
+
     ];
   };
 }
