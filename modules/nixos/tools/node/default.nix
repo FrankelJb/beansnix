@@ -8,10 +8,10 @@ let
   inherit (lib) types mkIf;
   inherit (lib.internal) mkBoolOpt mkOpt;
 
-  cfg = config.khanelinix.tools.node;
+  cfg = config.beansnix.tools.node;
 in
 {
-  options.khanelinix.tools.node = with types; {
+  options.beansnix.tools.node = with types; {
     enable = mkBoolOpt false "Whether or not to install and configure git";
     flyctl = {
       enable = mkBoolOpt true "Whether or not to install flyctl";

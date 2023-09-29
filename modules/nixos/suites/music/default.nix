@@ -8,10 +8,10 @@ let
   inherit (lib) mkIf;
   inherit (lib.internal) mkBoolOpt enabled;
 
-  cfg = config.khanelinix.suites.music;
+  cfg = config.beansnix.suites.music;
 in
 {
-  options.khanelinix.suites.music = {
+  options.beansnix.suites.music = {
     enable = mkBoolOpt false "Whether or not to enable music configuration.";
   };
 
@@ -26,10 +26,10 @@ in
       spotify
       tageditor
       youtube-music
-      pkgs.khanelinix.yt-music
+      pkgs.beansnix.yt-music
     ];
 
-    khanelinix = {
+    beansnix = {
       tools = {
         spicetify-cli = enabled;
       };
@@ -40,7 +40,7 @@ in
     # TODO: ?
     # services.mpd = {
     #   enable = true;
-    #   user = config.khanelinix.user.name;
+    #   user = config.beansnix.user.name;
     # };
   };
 }

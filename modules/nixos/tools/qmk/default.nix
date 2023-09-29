@@ -8,10 +8,10 @@ let
   inherit (lib) mkIf;
   inherit (lib.internal) mkBoolOpt;
 
-  cfg = config.khanelinix.tools.qmk;
+  cfg = config.beansnix.tools.qmk;
 in
 {
-  options.khanelinix.tools.qmk = {
+  options.beansnix.tools.qmk = {
     enable = mkBoolOpt false "Whether or not to enable QMK";
   };
 

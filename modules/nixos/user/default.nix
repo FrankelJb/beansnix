@@ -8,7 +8,7 @@ let
   inherit (lib) types;
   inherit (lib.internal) mkOpt;
 
-  cfg = config.khanelinix.user;
+  cfg = config.beansnix.user;
 
   defaultIcon = pkgs.stdenvNoCC.mkDerivation {
     name = "default-icon";
@@ -35,7 +35,7 @@ let
       '';
 in
 {
-  options.khanelinix.user = with types; {
+  options.beansnix.user = with types; {
     email = mkOpt str "khaneliman12@gmail.com" "The email of the user.";
     extraGroups = mkOpt (listOf str) [ ] "Groups for the user to be assigned.";
     extraOptions =
@@ -64,7 +64,7 @@ in
       histFile = "$XDG_CACHE_HOME/zsh.history";
     };
 
-    khanelinix.home = {
+    beansnix.home = {
       file = {
         ".face".source = cfg.icon;
         ".face.icon".source = cfg.icon;

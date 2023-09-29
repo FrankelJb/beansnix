@@ -7,10 +7,10 @@ let
   inherit (lib) types mkIf getExe';
   inherit (lib.internal) mkBoolOpt mkOpt;
 
-  cfg = config.khanelinix.cli-apps.prisma;
+  cfg = config.beansnix.cli-apps.prisma;
 in
 {
-  options.khanelinix.cli-apps.prisma = with types; {
+  options.beansnix.cli-apps.prisma = with types; {
     enable = mkBoolOpt false "Whether or not to install Prisma";
     pkgs = {
       npm = mkOpt package pkgs.nodePackages.prisma "The NPM package to install";
@@ -23,7 +23,7 @@ in
   config = mkIf cfg.enable {
     environment.systemPackages = [ cfg.pkgs.npm ];
 
-    khanelinix.home.extraOptions = {
+    beansnix.home.extraOptions = {
       programs.zsh.initExtra = ''
         export PRISMA_MIGRATION_ENGINE_BINARY="${getExe' cfg.pkgs.engines "migration-engine"}"
         export PRISMA_QUERY_ENGINE_BINARY="${getExe' cfg.pkgs.engines "query-engine"}"

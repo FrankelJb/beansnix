@@ -8,10 +8,10 @@ let
   inherit (lib) mkIf;
   inherit (lib.internal) mkBoolOpt;
 
-  cfg = config.khanelinix.tools.git-crypt;
+  cfg = config.beansnix.tools.git-crypt;
 in
 {
-  options.khanelinix.tools.git-crypt = {
+  options.beansnix.tools.git-crypt = {
     enable = mkBoolOpt false "Whether or not to enable git-crypt.";
   };
 

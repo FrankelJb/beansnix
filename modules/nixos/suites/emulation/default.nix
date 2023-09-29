@@ -8,10 +8,10 @@ let
   inherit (lib) mkIf;
   inherit (lib.internal) mkBoolOpt enabled;
 
-  cfg = config.khanelinix.suites.emulation;
+  cfg = config.beansnix.suites.emulation;
 in
 {
-  options.khanelinix.suites.emulation = {
+  options.beansnix.suites.emulation = {
     enable =
       mkBoolOpt false "Whether or not to enable emulation configuration.";
   };
@@ -34,7 +34,7 @@ in
       yuzu-early-access
     ];
 
-    khanelinix = {
+    beansnix = {
       apps = {
         dolphin = enabled;
         retroarch = enabled;

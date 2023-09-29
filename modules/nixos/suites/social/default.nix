@@ -7,10 +7,10 @@
 let
   inherit (lib) mkIf;
   inherit (lib.internal) mkBoolOpt enabled;
-  cfg = config.khanelinix.suites.social;
+  cfg = config.beansnix.suites.social;
 in
 {
-  options.khanelinix.suites.social = {
+  options.beansnix.suites.social = {
     enable = mkBoolOpt false "Whether or not to enable social configuration.";
   };
 
@@ -24,7 +24,7 @@ in
       telegram-desktop
     ];
 
-    khanelinix = {
+    beansnix = {
       apps = {
         # TODO: switch to armcord ? 
         discord = enabled;

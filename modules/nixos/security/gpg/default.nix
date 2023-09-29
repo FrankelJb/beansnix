@@ -10,7 +10,7 @@ let
   inherit (lib.internal) mkBoolOpt mkOpt;
   inherit (inputs) gpg-base-conf yubikey-guide;
 
-  cfg = config.khanelinix.security.gpg;
+  cfg = config.beansnix.security.gpg;
 
   gpgConf = "${gpg-base-conf}/gpg.conf";
 
@@ -58,7 +58,7 @@ let
   '';
 in
 {
-  options.khanelinix.security.gpg = with types; {
+  options.beansnix.security.gpg = with types; {
     enable = mkBoolOpt false "Whether or not to enable GPG.";
     agentTimeout = mkOpt int 5 "The amount of time to wait before continuing with shell init.";
   };
@@ -86,7 +86,7 @@ in
       reload-yubikey
     ];
 
-    khanelinix = {
+    beansnix = {
       home.file = {
         ".gnupg/yubikey-guide.md".source = guide;
         ".gnupg/yubikey-guide.html".source = guideHTML;

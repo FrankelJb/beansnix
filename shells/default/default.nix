@@ -19,7 +19,7 @@ mkShell {
 
   shellHook = ''
 
-    echo 🔨 Welcome to beans
+    echo 🔨 Welcome to beansnix
 
 
   '';

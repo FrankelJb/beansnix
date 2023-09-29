@@ -8,17 +8,17 @@ let
   inherit (lib) mkIf getExe getExe';
   inherit (lib.internal) mkBoolOpt;
 
-  cfg = config.khanelinix.desktop.addons.mako;
+  cfg = config.beansnix.desktop.addons.mako;
 in
 {
-  options.khanelinix.desktop.addons.mako = {
+  options.beansnix.desktop.addons.mako = {
     enable = mkBoolOpt false "Whether to enable Mako in Sway.";
   };
 
   config = mkIf cfg.enable {
     environment.systemPackages = with pkgs; [ mako libnotify ];
 
-    khanelinix.home.configFile."mako/config".source = ./config;
+    beansnix.home.configFile."mako/config".source = ./config;
 
     systemd.user.services.mako = {
       after = [ "graphical-session.target" ];

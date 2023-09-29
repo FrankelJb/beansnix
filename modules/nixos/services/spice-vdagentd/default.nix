@@ -7,10 +7,10 @@ let
   inherit (lib) mkIf getExe';
   inherit (lib.internal) mkBoolOpt;
 
-  cfg = config.khanelinix.services.spice-vdagentd;
+  cfg = config.beansnix.services.spice-vdagentd;
 in
 {
-  options.khanelinix.services.spice-vdagentd = {
+  options.beansnix.services.spice-vdagentd = {
     enable = mkBoolOpt false "Whether or not to configure spice-vdagent support.";
   };
 

@@ -8,15 +8,15 @@ let
   inherit (lib) mkIf;
   inherit (lib.internal) mkBoolOpt;
 
-  cfg = config.khanelinix.desktop.addons.foot;
+  cfg = config.beansnix.desktop.addons.foot;
 in
 {
-  options.khanelinix.desktop.addons.foot = {
+  options.beansnix.desktop.addons.foot = {
     enable = mkBoolOpt false "Whether to enable the foot.";
   };
 
   config = mkIf cfg.enable {
-    khanelinix = {
+    beansnix = {
       desktop.addons.term = {
         enable = true;
         pkg = pkgs.foot;

@@ -10,7 +10,7 @@ let
 in
 {
 
-  options.khanelinix.home = with types; {
+  options.beansnix.home = with types; {
     configFile =
       mkOpt attrs { }
         "A set of files to be managed by home-manager's <option>xdg.configFile</option>.";
@@ -25,10 +25,10 @@ in
       pkgs.home-manager
     ];
 
-    khanelinix.home.extraOptions = {
-      home.file = mkAliasDefinitions options.khanelinix.home.file;
+    beansnix.home.extraOptions = {
+      home.file = mkAliasDefinitions options.beansnix.home.file;
       home.stateVersion = config.system.stateVersion;
-      xdg.configFile = mkAliasDefinitions options.khanelinix.home.configFile;
+      xdg.configFile = mkAliasDefinitions options.beansnix.home.configFile;
       xdg.enable = true;
     };
 
@@ -36,8 +36,8 @@ in
       useGlobalPkgs = true;
       useUserPackages = true;
 
-      users.${config.khanelinix.user.name} =
-        mkAliasDefinitions options.khanelinix.home.extraOptions;
+      users.${config.beansnix.user.name} =
+        mkAliasDefinitions options.beansnix.home.extraOptions;
     };
   };
 }

@@ -8,10 +8,10 @@ let
   inherit (lib) mkIf;
   inherit (lib.internal) mkBoolOpt;
 
-  cfg = config.khanelinix.cli-apps.ranger;
+  cfg = config.beansnix.cli-apps.ranger;
 in
 {
-  options.khanelinix.cli-apps.ranger = {
+  options.beansnix.cli-apps.ranger = {
     enable = mkBoolOpt false "Whether or not to enable ranger.";
   };
 

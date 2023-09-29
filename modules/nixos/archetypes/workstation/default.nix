@@ -7,16 +7,16 @@ let
   inherit (lib) mkIf;
   inherit (lib.internal) mkBoolOpt enabled;
 
-  cfg = config.khanelinix.archetypes.workstation;
+  cfg = config.beansnix.archetypes.workstation;
 in
 {
-  options.khanelinix.archetypes.workstation = {
+  options.beansnix.archetypes.workstation = {
     enable =
       mkBoolOpt false "Whether or not to enable the workstation archetype.";
   };
 
   config = mkIf cfg.enable {
-    khanelinix = {
+    beansnix = {
       apps = {
         yubikey = enabled;
       };

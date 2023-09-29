@@ -8,10 +8,10 @@ let
   inherit (lib) mkIf;
   inherit (lib.internal) mkBoolOpt;
 
-  cfg = config.khanelinix.desktop.addons.keyring;
+  cfg = config.beansnix.desktop.addons.keyring;
 in
 {
-  options.khanelinix.desktop.addons.keyring = {
+  options.beansnix.desktop.addons.keyring = {
     enable = mkBoolOpt false "Whether to enable the gnome keyring.";
   };
 

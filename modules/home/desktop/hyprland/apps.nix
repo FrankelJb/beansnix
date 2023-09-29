@@ -6,7 +6,7 @@
 let
   inherit (lib) mkIf getExe;
 
-  cfg = config.khanelinix.desktop.hyprland;
+  cfg = config.beansnix.desktop.hyprland;
 
   hypr_socket_watch_dependencies = with pkgs; [
     coreutils
@@ -27,7 +27,7 @@ in
 
           Service = {
             Environment = "PATH=/run/wrappers/bin:${lib.makeBinPath hypr_socket_watch_dependencies}";
-            ExecStart = "${getExe pkgs.khanelinix.hypr_socket_watch}";
+            ExecStart = "${getExe pkgs.beansnix.hypr_socket_watch}";
             Restart = "on-failure";
           };
         };
@@ -40,8 +40,8 @@ in
               # ░▀░▀░▀░░░▀░░░░░▀▀▀░░▀░░▀░▀░▀░▀░░▀░░▀▀▀░▀░░
 
               # import env
-              "${getExe pkgs.khanelinix.import_env} system"
-              "${getExe pkgs.khanelinix.import_env} tmux"
+              "${getExe pkgs.beansnix.import_env} system"
+              "${getExe pkgs.beansnix.import_env} tmux"
 
               # Startup background apps
               "${pkgs.libsForQt5.polkit-kde-agent}/libexec/polkit-kde-authentication-agent-1 &"

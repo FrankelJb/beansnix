@@ -6,10 +6,10 @@ let
   inherit (lib) mkIf mkForce;
   inherit (lib.internal) mkBoolOpt;
 
-  cfg = config.khanelinix.system.locale;
+  cfg = config.beansnix.system.locale;
 in
 {
-  options.khanelinix.system.locale = {
+  options.beansnix.system.locale = {
     enable = mkBoolOpt false "Whether or not to manage locale settings.";
   };
 

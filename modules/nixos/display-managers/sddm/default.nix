@@ -8,10 +8,10 @@ let
   inherit (lib) types mkIf getExe';
   inherit (lib.internal) mkBoolOpt mkOpt stringAfter;
 
-  cfg = config.khanelinix.display-managers.sddm;
+  cfg = config.beansnix.display-managers.sddm;
 in
 {
-  options.khanelinix.display-managers.sddm = with types; {
+  options.beansnix.display-managers.sddm = with types; {
     enable = mkBoolOpt false "Whether or not to enable sddm.";
     defaultSession = mkOpt (nullOr types.str) null "The default session to use.";
   };
@@ -50,8 +50,8 @@ in
 
         system.activationScripts.postInstallSddm = stringAfter [ "users" ] ''
           echo "Setting sddm permissions for user icon"
-          ${getExe' pkgs.acl "setfacl"} -m u:sddm:x /home/${config.khanelinix.user.name}
-          ${getExe' pkgs.acl "setfacl"} -m u:sddm:r /home/${config.khanelinix.user.name}/.face.icon || true
+          ${getExe' pkgs.acl "setfacl"} -m u:sddm:x /home/${config.beansnix.user.name}
+          ${getExe' pkgs.acl "setfacl"} -m u:sddm:r /home/${config.beansnix.user.name}/.face.icon || true
         '';
       };
 }

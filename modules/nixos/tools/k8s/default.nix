@@ -8,10 +8,10 @@ let
   inherit (lib) mkIf;
   inherit (lib.internal) mkBoolOpt;
 
-  cfg = config.khanelinix.tools.k8s;
+  cfg = config.beansnix.tools.k8s;
 in
 {
-  options.khanelinix.tools.k8s = {
+  options.beansnix.tools.k8s = {
     enable =
       mkBoolOpt false "Whether or not to enable common Kubernetes utilities.";
   };

@@ -7,6 +7,7 @@
 let
   inherit (lib) mkIf;
   inherit (lib.internal) mkBoolOpt;
+
   cfg = config.beansnix.tools.git;
 in
 {

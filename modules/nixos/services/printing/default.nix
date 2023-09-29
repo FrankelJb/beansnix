@@ -8,10 +8,10 @@ let
   inherit (lib) mkIf;
   inherit (lib.internal) mkBoolOpt;
 
-  cfg = config.khanelinix.services.printing;
+  cfg = config.beansnix.services.printing;
 in
 {
-  options.khanelinix.services.printing = {
+  options.beansnix.services.printing = {
     enable = mkBoolOpt false "Whether or not to configure printing support.";
   };
 

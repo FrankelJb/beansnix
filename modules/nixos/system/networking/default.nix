@@ -7,10 +7,10 @@ let
   inherit (lib) types mkIf;
   inherit (lib.internal) mkBoolOpt mkOpt;
 
-  cfg = config.khanelinix.system.networking;
+  cfg = config.beansnix.system.networking;
 in
 {
-  options.khanelinix.system.networking = with types; {
+  options.beansnix.system.networking = with types; {
     enable = mkBoolOpt false "Whether or not to enable networking support";
     hosts =
       mkOpt attrs { }
@@ -19,7 +19,7 @@ in
   };
 
   config = mkIf cfg.enable {
-    khanelinix.user.extraGroups = [ "networkmanager" ];
+    beansnix.user.extraGroups = [ "networkmanager" ];
 
     networking = {
       hosts =

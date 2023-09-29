@@ -8,7 +8,7 @@ let
   inherit (lib) types mkIf getExe;
   inherit (lib.internal) mkBoolOpt mkOpt;
 
-  cfg = config.khanelinix.desktop.addons.eww;
+  cfg = config.beansnix.desktop.addons.eww;
 
   dependencies = with pkgs; [
     bash
@@ -52,7 +52,7 @@ let
   '';
 in
 {
-  options.khanelinix.desktop.addons.eww = with types; {
+  options.beansnix.desktop.addons.eww = with types; {
     enable = mkBoolOpt false "Whether to enable eww in the desktop environment.";
     autoReload = mkBoolOpt false "Whether to restart the eww daemon and windows on change.";
     colors = lib.mkOption {
@@ -79,7 +79,7 @@ in
       material-symbols
     ];
 
-    khanelinix.home = {
+    beansnix.home = {
       extraOptions = {
         home.packages = [
           cfg.package

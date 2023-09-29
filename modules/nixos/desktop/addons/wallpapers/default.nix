@@ -7,20 +7,20 @@
 let
   inherit (lib) mkIf;
   inherit (lib.internal) mkBoolOpt;
-  inherit (pkgs.khanelinix) wallpapers;
+  inherit (pkgs.beansnix) wallpapers;
 
-  cfg = config.khanelinix.desktop.addons.wallpapers;
+  cfg = config.beansnix.desktop.addons.wallpapers;
 in
 {
   # TODO: shouldn't need to do this this way
-  options.khanelinix.desktop.addons.wallpapers = {
+  options.beansnix.desktop.addons.wallpapers = {
     enable =
       mkBoolOpt false
         "Whether or not to add wallpapers to ~/.local/share/wallpapers.";
   };
 
   config = mkIf cfg.enable {
-    khanelinix.home.file =
+    beansnix.home.file =
       lib.foldl
         (acc: name:
           let

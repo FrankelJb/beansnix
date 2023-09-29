@@ -37,7 +37,7 @@ let
   installTarget = "$out/share/wallpapers";
 in
 pkgs.stdenvNoCC.mkDerivation {
-  name = "khanelinix.wallpapers";
+  name = "beansnix.wallpapers";
   src = ./wallpapers;
 
   installPhase = ''

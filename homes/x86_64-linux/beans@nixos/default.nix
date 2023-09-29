@@ -6,7 +6,7 @@ let
   inherit (lib.internal) enabled;
 in
 {
-  beans = {
+  beansnix = {
     user = {
       enable = true;
       inherit (config.snowfallorg.user) name;

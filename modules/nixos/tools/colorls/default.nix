@@ -8,10 +8,10 @@ let
   inherit (lib) mkIf;
   inherit (lib.internal) mkBoolOpt;
 
-  cfg = config.khanelinix.tools.colorls;
+  cfg = config.beansnix.tools.colorls;
 in
 {
-  options.khanelinix.tools.colorls = {
+  options.beansnix.tools.colorls = {
     enable = mkBoolOpt false "Whether or not to enable colorls.";
   };
 
@@ -20,7 +20,7 @@ in
       colorls
     ];
 
-    khanelinix.home.extraOptions.home.shellAliases = {
+    beansnix.home.extraOptions.home.shellAliases = {
       lc = "colorls --sd";
       lcg = "lc --gs";
       lcl = "lc -1";

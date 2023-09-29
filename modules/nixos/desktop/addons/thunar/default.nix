@@ -7,10 +7,10 @@ let
   inherit (lib) mkIf;
   inherit (lib.internal) mkBoolOpt;
 
-  cfg = config.khanelinix.desktop.addons.thunar;
+  cfg = config.beansnix.desktop.addons.thunar;
 in
 {
-  options.khanelinix.desktop.addons.thunar = {
+  options.beansnix.desktop.addons.thunar = {
     enable = mkBoolOpt false "Whether to enable the xfce file manager.";
   };
 

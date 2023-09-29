@@ -7,6 +7,7 @@
 let
   inherit (lib) types mkIf;
   inherit (lib.internal) mkBoolOpt mkOpt;
+
   cfg = config.beansnix.nix;
 in
 {

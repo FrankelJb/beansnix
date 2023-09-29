@@ -8,10 +8,10 @@ let
   inherit (lib) mkIf;
   inherit (lib.internal) mkBoolOpt;
 
-  cfg = config.khanelinix.security.polkit;
+  cfg = config.beansnix.security.polkit;
 in
 {
-  options.khanelinix.security.polkit = {
+  options.beansnix.security.polkit = {
     enable = mkBoolOpt false "Whether or not to enable polkit.";
   };
 

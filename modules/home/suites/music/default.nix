@@ -7,16 +7,16 @@ let
   inherit (lib) mkIf;
   inherit (lib.internal) mkBoolOpt enabled;
 
-  cfg = config.khanelinix.suites.music;
+  cfg = config.beansnix.suites.music;
 in
 {
-  options.khanelinix.suites.music = {
+  options.beansnix.suites.music = {
     enable =
       mkBoolOpt false "Whether or not to enable common music configuration.";
   };
 
   config = mkIf cfg.enable {
-    khanelinix = {
+    beansnix = {
       cli-apps = {
         ncmpcpp = enabled;
       };

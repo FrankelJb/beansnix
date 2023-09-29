@@ -5,10 +5,10 @@
 let
   inherit (lib) mkEnableOption mkIf;
 
-  cfg = config.khanelinix.apps.thunderbird;
+  cfg = config.beansnix.apps.thunderbird;
 in
 {
-  options.khanelinix.apps.thunderbird = {
+  options.beansnix.apps.thunderbird = {
     enable = mkEnableOption "thunderbird";
   };
 
@@ -17,7 +17,7 @@ in
     accounts.email.accounts = {
       "austin.m.horstman@gmail.com" = {
         address = "austin.m.horstman@gmail.com";
-        realName = config.khanelinix.user.fullName;
+        realName = config.beansnix.user.fullName;
         flavor = "gmail.com";
       };
     };

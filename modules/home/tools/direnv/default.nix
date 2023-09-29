@@ -7,10 +7,10 @@ let
   inherit (lib) mkIf;
   inherit (lib.internal) mkBoolOpt enabled;
 
-  cfg = config.khanelinix.tools.direnv;
+  cfg = config.beansnix.tools.direnv;
 in
 {
-  options.khanelinix.tools.direnv = {
+  options.beansnix.tools.direnv = {
     enable = mkBoolOpt false "Whether or not to enable direnv.";
   };
 

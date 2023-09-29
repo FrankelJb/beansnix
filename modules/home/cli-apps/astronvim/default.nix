@@ -9,7 +9,7 @@ let
   inherit (lib.internal) mkBoolOpt enabled;
   inherit (inputs) neovim-config;
 
-  cfg = config.khanelinix.cli-apps.astronvim;
+  cfg = config.beansnix.cli-apps.astronvim;
 
   lsp = with pkgs; [
     binwalk
@@ -29,7 +29,7 @@ let
   ];
 in
 {
-  options.khanelinix.cli-apps.astronvim = {
+  options.beansnix.cli-apps.astronvim = {
     enable = mkEnableOption "Astronvim";
     default = mkBoolOpt true "Whether to set Neovim as the session EDITOR";
   };
@@ -42,7 +42,7 @@ in
       };
     };
 
-    khanelinix.tools.wakatime = enabled;
+    beansnix.tools.wakatime = enabled;
 
     programs.neovim = {
       enable = true;

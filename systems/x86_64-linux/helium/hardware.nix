@@ -1,4 +1,3 @@
-# TODO: replace with my hardware
 { pkgs
 , modulesPath
 , inputs
@@ -10,69 +9,162 @@ in
 {
   imports = with nixos-hardware.nixosModules; [
     (modulesPath + "/installer/scan/not-detected.nix")
+    common-cpu-amd
+    common-gpu-amd
     # NOTE: actually removes gpu from list of devices now so can't use GPU-passthru
     # common-gpu-nvidia-disable
-    # common-pc
-    # common-pc-ssd
+    common-pc
+    common-pc-ssd
   ];
 
   ##
   # Desktop VM config
   ##
   boot = {
-    extraModulePackages = [];
-    kernelModules = ["kvm-intel"];
+    blacklistedKernelModules = [
+      "eeepc_wmi"
+    ];
+
+    # consoleLogLevel = 0;
+
     kernelPackages = pkgs.linuxPackages_latest;
     kernel.sysctl."kernel.sysrq" = 1;
     kernelParams = [
-      "video=DP-3:1440x2160@240"
+      "video=DP-1:5120x1440@120"
+      "video=DP-3:3840x2160@60"
     ];
 
+
     initrd = {
-      availableKernelModules = ["vmd" "xhci_pci" "ahci" "nvme" "usbhid" "usb_storage" "sd_mod"];
-      kernelModules = [];
+      availableKernelModules = [ "nvme" "xhci_pci" "ehci_pci" "ahci" "usb_storage" "usbhid" "sd_mod" "sr_mod" ];
       # verbose = false;
-      luks.devices."system".device = "/dev/disk/by-uuid/fb0b6038-91e3-4573-b91b-0fb584585145";
     };
   };
 
   fileSystems = {
-    "/home" = {
-      device = "/dev/disk/by-uuid/74194a1e-7e23-41e9-9985-d4d94ca199a8";
+    "/" = {
+      device = "/dev/disk/by-label/nixos";
       fsType = "btrfs";
-      options = ["subvol=home" "compress=zstd"];
-    };
-
-    "/nix" = {
-      device = "/dev/disk/by-uuid/74194a1e-7e23-41e9-9985-d4d94ca199a8";
-      fsType = "btrfs";
-      options = ["subvol=nix" "noatime" "compress=zstd"];
+      options = [ "rw" "noatime" "ssd" "subvol=/@" ];
     };
 
     "/boot" = {
-      device = "/dev/disk/by-uuid/C9CC-13C7";
+      device = "/dev/disk/by-label/EFI";
       fsType = "vfat";
     };
 
-    "/data/nvme1" = {
-      device = "/dev/disk/by-uuid/7311782f-8aca-4974-94ea-5d5cf0a742f3";
+    "/home/khaneliman/Downloads" = {
+      device = "/dev/disk/by-label/BtrProductive";
       fsType = "btrfs";
-      options = ["rw" "nosuid" "nodev" "ssd" "space_cache=v2" "subvolid=5" "subvol=/" "relatime" "compress=zstd"];
+      options = [ "rw" "noatime" "compress-force=zstd:1" "ssd" "subvol=/@userdata/@downloads" ];
+    };
+
+    "/home/khaneliman/Documents" = {
+      device = "/dev/disk/by-label/BtrProductive";
+      fsType = "btrfs";
+      options = [ "rw" "noatime" "compress-force=zstd:1" "ssd" "subvol=/@userdata/@documents" ];
+    };
+
+    "/home/khaneliman/Pictures" = {
+      device = "/dev/disk/by-label/BtrProductive";
+      fsType = "btrfs";
+      options = [ "rw" "noatime" "compress-force=zstd:1" "ssd" "subvol=/@userdata/@pictures" ];
+    };
+
+    "/home/khaneliman/Videos" = {
+      device = "/dev/disk/by-label/BtrProductive";
+      fsType = "btrfs";
+      options = [ "rw" "noatime" "compress-force=zstd:1" "ssd" "subvol=/@userdata/@videos" ];
+    };
+
+    "/home/khaneliman/Music" = {
+      device = "/dev/disk/by-label/BtrProductive";
+      fsType = "btrfs";
+      options = [ "rw" "noatime" "compress-force=zstd:1" "ssd" "subvol=/@userdata/@music" ];
+    };
+
+    "/mnt/kvm" = {
+      device = "/dev/disk/by-label/BtrProductive";
+      fsType = "btrfs";
+      options = [ "rw" "nodatacow" "noatime" "compress-force=zstd:1" "ssd" "subvol=/@kvm" ];
+    };
+
+    "/mnt/games" = {
+      device = "/dev/disk/by-label/BtrProductive";
+      fsType = "btrfs";
+      options = [ "rw" "nodatacow" "noatime" "compress-force=zstd:1" "ssd" "subvol=/@games" ];
+    };
+
+    "/mnt/steam" = {
+      device = "/dev/disk/by-label/BtrProductive";
+      fsType = "btrfs";
+      options = [ "rw" "nodatacow" "noatime" "compress-force=zstd:1" "ssd" "subvol=/@steam" ];
+    };
+
+    # "/mnt/steam-extra" = {
+    #   device = "/dev/disk/by-label/BtrProductive";
+    #   fsType = "btrfs";
+    #   options = ["rw" "nodatacow" "noatime" "compress-force=zstd:1" "ssd" "subvol=/@steam-extra"];
+    # };
+    #
+    # "/mnt/extra" = {
+    #   device = "/dev/disk/by-label/BtrProductive";
+    #   fsType = "btrfs";
+    #   options = ["rw" "nodatacow" "noatime" "compress-force=zstd:1" "ssd" "subvol=/@extra"];
+    # };
+
+    "/mnt/austinserver/appdata" = {
+      device = "austinserver.local:/mnt/user/appdata";
+      fsType = "nfs";
+      options = [ "noauto" "x-systemd.automount" "x-systemd.requires=network.target" "x-systemd.mount-timeout=10" "x-systemd.idle-timeout=1min" ];
+    };
+
+    "/mnt/austinserver/data" = {
+      device = "austinserver.local:/mnt/user/data";
+      fsType = "nfs";
+      options = [ "noauto" "x-systemd.automount" "x-systemd.requires=network.target" "x-systemd.mount-timeout=10" "x-systemd.idle-timeout=1min" ];
+    };
+
+    "/mnt/austinserver/backup" = {
+      device = "austinserver.local:/mnt/user/backup";
+      fsType = "nfs";
+      options = [ "noauto" "x-systemd.automount" "x-systemd.requires=network.target" "x-systemd.mount-timeout=10" "x-systemd.idle-timeout=1min" ];
+    };
+
+    "/mnt/austinserver/isos" = {
+      device = "austinserver.local:/mnt/user/isos";
+      fsType = "nfs";
+      options = [ "noauto" "x-systemd.automount" "x-systemd.requires=network.target" "x-systemd.mount-timeout=10" "x-systemd.idle-timeout=1min" ];
+    };
+
+    "/mnt/dropbox" = {
+      device = "austinserver.local:/mnt/disks/dropbox";
+      fsType = "nfs";
+      options = [ "noauto" "x-systemd.automount" "x-systemd.requires=network.target" "x-systemd.mount-timeout=10" "x-systemd.idle-timeout=1min" ];
+    };
+
+    "/mnt/disks/googledrive" = {
+      device = "austinserver.local:/mnt/disks/googledrive";
+      fsType = "nfs";
+      options = [ "noauto" "x-systemd.automount" "x-systemd.requires=network.target" "x-systemd.mount-timeout=10" "x-systemd.idle-timeout=1min" ];
+    };
+
+    "/mnt/disks/onedrive" = {
+      device = "austinserver.local:/mnt/disks/onedrive";
+      fsType = "nfs";
+      options = [ "noauto" "x-systemd.automount" "x-systemd.requires=network.target" "x-systemd.mount-timeout=10" "x-systemd.idle-timeout=1min" ];
     };
   };
 
   swapDevices = [
+    { device = "/dev/disk/by-uuid/be1e6602-df3a-4d27-9d46-c52586093cb8"; }
   ];
 
-  # Enables DHCP on each ethernet and wireless interface. In case of scripted networking
-  # (the default) this is the recommended approach. When using systemd-networkd it's
-  # still possible to use this option, but it's recommended to use it in conjunction
-  # with explicit per-interface declarations with `networking.interfaces.<interface>.useDHCP`.
-  networking.useDHCP = lib.mkDefault true;
-  # networking.interfaces.enp5s0.useDHCP = lib.mkDefault true;
-  # networking.interfaces.wlo1.useDHCP = lib.mkDefault true;
+  hardware = {
+    enableRedistributableFirmware = true;
+  };
 
-  nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
-  powerManagement.cpuFreqGovernor = lib.mkDefault "powersave";
-  hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
+  services = {
+    rpcbind.enable = true; # needed for NFS
+  };
 }

@@ -8,17 +8,17 @@ let
   inherit (lib) mkIf;
   inherit (lib.internal) mkBoolOpt;
 
-  cfg = config.khanelinix.cli-apps.lazydocker;
+  cfg = config.beansnix.cli-apps.lazydocker;
 in
 {
-  options.khanelinix.cli-apps.lazydocker = {
+  options.beansnix.cli-apps.lazydocker = {
     enable = mkBoolOpt false "Whether or not to enable lazydocker.";
   };
 
   config = mkIf cfg.enable {
     environment.systemPackages = with pkgs; [ lazydocker ];
 
-    khanelinix.home = {
+    beansnix.home = {
       extraOptions = {
         home.shellAliases = {
           # #

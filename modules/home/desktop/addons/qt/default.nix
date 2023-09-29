@@ -8,10 +8,10 @@ let
   inherit (lib) types mkIf;
   inherit (lib.internal) mkBoolOpt mkOpt;
 
-  cfg = config.khanelinix.desktop.addons.qt;
+  cfg = config.beansnix.desktop.addons.qt;
 in
 {
-  options.khanelinix.desktop.addons.qt = with types; {
+  options.beansnix.desktop.addons.qt = with types; {
     enable = mkBoolOpt false "Whether to customize qt and apply themes.";
     theme = {
       name =

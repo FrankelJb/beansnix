@@ -7,12 +7,12 @@
 let
   inherit (lib) mkIf;
   inherit (lib.internal) mkBoolOpt;
-  inherit (config.khanelinix) user;
+  inherit (config.beansnix) user;
 
-  cfg = config.khanelinix.apps.looking-glass-client;
+  cfg = config.beansnix.apps.looking-glass-client;
 in
 {
-  options.khanelinix.apps.looking-glass-client = {
+  options.beansnix.apps.looking-glass-client = {
     enable =
       mkBoolOpt false "Whether or not to enable the Looking Glass client.";
   };

@@ -8,10 +8,10 @@ let
   inherit (lib) mkIf;
   inherit (lib.internal) mkBoolOpt;
 
-  cfg = config.khanelinix.tools.nix-ld;
+  cfg = config.beansnix.tools.nix-ld;
 in
 {
-  options.khanelinix.tools.nix-ld = {
+  options.beansnix.tools.nix-ld = {
     enable = mkBoolOpt false "Whether or not to enable nix-ld.";
   };
 

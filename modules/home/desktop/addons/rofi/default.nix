@@ -8,10 +8,10 @@ let
   inherit (lib) mkIf;
   inherit (lib.internal) mkBoolOpt;
 
-  cfg = config.khanelinix.desktop.addons.rofi;
+  cfg = config.beansnix.desktop.addons.rofi;
 in
 {
-  options.khanelinix.desktop.addons.rofi = {
+  options.beansnix.desktop.addons.rofi = {
     enable =
       mkBoolOpt false "Whether to enable Rofi in the desktop environment.";
   };

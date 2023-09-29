@@ -7,10 +7,10 @@ let
   inherit (lib) mkIf;
   inherit (lib.internal) mkBoolOpt enabled;
 
-  cfg = config.khanelinix.suites.common;
+  cfg = config.beansnix.suites.common;
 in
 {
-  options.khanelinix.suites.common = {
+  options.beansnix.suites.common = {
     enable =
       mkBoolOpt false
         "Whether or not to enable common configuration.";
@@ -19,7 +19,7 @@ in
   config = mkIf cfg.enable {
     xdg.configFile.wgetrc.text = "";
 
-    khanelinix = {
+    beansnix = {
       cli-apps = {
         btop = enabled;
         fastfetch = enabled;

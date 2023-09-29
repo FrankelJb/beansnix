@@ -8,8 +8,8 @@ let
   inherit (lib) types mkIf getExe';
   inherit (lib.internal) mkBoolOpt mkOpt;
 
-  cfg = config.khanelinix.apps.gamemode;
-  # programs = lib.makeBinPath [config.khanelinix.desktop.hyprland.package];
+  cfg = config.beansnix.apps.gamemode;
+  # programs = lib.makeBinPath [config.beansnix.desktop.hyprland.package];
 
   defaultStartScript = ''
     ${getExe' pkgs.libnotify "notify-send"} 'GameMode started'
@@ -20,7 +20,7 @@ let
   '';
 in
 {
-  options.khanelinix.apps.gamemode = with types; {
+  options.beansnix.apps.gamemode = with types; {
     enable = mkBoolOpt false "Whether or not to enable gamemode.";
     endscript = mkOpt (nullOr str) null "The script to run when disabling gamemode.";
     startscript = mkOpt (nullOr str) null "The script to run when enabling gamemode.";

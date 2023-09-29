@@ -11,7 +11,7 @@ let
   inherit (lib.internal) mkBoolOpt;
   inherit (inputs) nixpkgs-wayland hyprland;
 
-  cfg = config.khanelinix.desktop.addons.waybar;
+  cfg = config.beansnix.desktop.addons.waybar;
 
   githubHelper = pkgs.writeShellScriptBin "githubHelper" ''
     #!/usr/bin/env bash
@@ -115,7 +115,7 @@ let
   };
 in
 {
-  options.khanelinix.desktop.addons.waybar = {
+  options.beansnix.desktop.addons.waybar = {
     enable =
       mkBoolOpt false "Whether to enable waybar in the desktop environment.";
     debug = mkBoolOpt false "Whether to enable debug mode.";
@@ -132,7 +132,7 @@ in
       # TODO: make dynamic
       settings = {
         mainBar = {
-          "include" = [ ./default-modules.jsonc ] ++ lib.optional config.khanelinix.desktop.hyprland.enable ./hyprland/default-modules.jsonc;
+          "include" = [ ./default-modules.jsonc ] ++ lib.optional config.beansnix.desktop.hyprland.enable ./hyprland/default-modules.jsonc;
           "layer" = "top";
           "position" = "top";
           "output" = "DP-1";
@@ -158,7 +158,7 @@ in
           ];
         } // sharedModuleDefinitions;
         secondaryBar = {
-          "include" = [ ./default-modules.jsonc ] ++ lib.optional config.khanelinix.desktop.hyprland.enable ./hyprland/default-modules.jsonc;
+          "include" = [ ./default-modules.jsonc ] ++ lib.optional config.beansnix.desktop.hyprland.enable ./hyprland/default-modules.jsonc;
           "layer" = "top";
           "position" = "top";
           "output" = "DP-3";

@@ -9,13 +9,13 @@ let
   inherit (lib) types mkIf foldl optionalString;
   inherit (lib.internal) mkBoolOpt mkOpt;
 
-  cfg = config.khanelinix.tools.ssh;
+  cfg = config.beansnix.tools.ssh;
 
   # @TODO(jakehamilton): This is a hold-over from an earlier Snowfall Lib version which used
   # the specialArg `name` to provide the host name.
   name = host;
 
-  user = config.users.users.${config.khanelinix.user.name};
+  user = config.users.users.${config.beansnix.user.name};
   user-id = builtins.toString user.uid;
 
   default-key = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJAZIwy7nkz8CZYR/ZTSNr+7lRBW2AYy1jw06b44zaID";
@@ -23,7 +23,7 @@ let
   other-hosts =
     lib.filterAttrs
       (key: host:
-        key != name && (host.config.khanelinix.user.name or null) != null)
+        key != name && (host.config.beansnix.user.name or null) != null)
       ((inputs.self.nixosConfigurations or { }) // (inputs.self.darwinConfigurations or { }));
 
   other-hosts-config =
@@ -33,7 +33,7 @@ let
         name:
         let
           remote = other-hosts.${name};
-          remote-user-name = remote.config.khanelinix.user.name;
+          remote-user-name = remote.config.beansnix.user.name;
           remote-user-id = builtins.toString remote.config.users.users.${remote-user-name}.uid;
 
           forward-gpg =
@@ -55,7 +55,7 @@ let
       (builtins.attrNames other-hosts);
 in
 {
-  options.khanelinix.tools.ssh = with types; {
+  options.beansnix.tools.ssh = with types; {
     enable = mkBoolOpt false "Whether or not to configure ssh support.";
     authorizedKeys =
       mkOpt (listOf str) [ default-key ] "The public keys to apply.";

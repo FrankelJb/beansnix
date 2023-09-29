@@ -8,16 +8,16 @@ let
   inherit (lib) mkIf;
   inherit (lib.internal) mkBoolOpt enabled;
 
-  cfg = config.khanelinix.apps.vscode;
+  cfg = config.beansnix.apps.vscode;
 in
 {
-  options.khanelinix.apps.vscode = {
+  options.beansnix.apps.vscode = {
     enable = mkBoolOpt false "Whether or not to enable vscode.";
   };
 
   config = mkIf cfg.enable {
     home.file = {
-      ".vscode/argv.json" = mkIf config.khanelinix.security.keyring.enable {
+      ".vscode/argv.json" = mkIf config.beansnix.security.keyring.enable {
         text = builtins.toJSON {
           "enable-crash-reporter" = true;
           "crash-reporter-id" = "53a6c113-87c4-4f20-9451-dd67057ddb95";
@@ -26,7 +26,7 @@ in
       };
     };
 
-    khanelinix.tools.wakatime = enabled;
+    beansnix.tools.wakatime = enabled;
 
     programs.vscode = {
       enable = true;

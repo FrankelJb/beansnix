@@ -8,10 +8,10 @@ let
   inherit (lib) mkIf;
   inherit (lib.internal) mkBoolOpt;
 
-  cfg = config.khanelinix.apps.thunderbird;
+  cfg = config.beansnix.apps.thunderbird;
 in
 {
-  options.khanelinix.apps.thunderbird = {
+  options.beansnix.apps.thunderbird = {
     enable = mkBoolOpt false "Whether or not to enable thunderbird.";
   };
 
@@ -22,11 +22,11 @@ in
       thunderbird
     ];
 
-    khanelinix.home.extraOptions = {
+    beansnix.home.extraOptions = {
       accounts.email.accounts = {
-        "${config.khanelinix.user.email}" = {
-          address = config.khanelinix.user.email;
-          realName = config.khanelinix.user.fullName;
+        "${config.beansnix.user.email}" = {
+          address = config.beansnix.user.email;
+          realName = config.beansnix.user.fullName;
           flavor = "gmail.com";
           primary = true;
         };
@@ -36,7 +36,7 @@ in
         enable = true;
         package = pkgs.thunderbird;
 
-        profiles.${config.khanelinix.user.name} = {
+        profiles.${config.beansnix.user.name} = {
           isDefault = true;
 
           settings = {

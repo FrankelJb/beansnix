@@ -4,7 +4,7 @@
 , ...
 }:
 let
-  cfg = config.khanelinix.services.snapper;
+  cfg = config.beansnix.services.snapper;
 
   safeStr = types.strMatching "[^\n\"]*" // {
     description = "string without line breaks or quotes";
@@ -14,7 +14,7 @@ let
   inherit (lib) types mkEnableOption mkIf;
 in
 {
-  options.khanelinix.services.snapper = {
+  options.beansnix.services.snapper = {
     enable = mkEnableOption "snapper";
 
     configs = lib.mkOption {

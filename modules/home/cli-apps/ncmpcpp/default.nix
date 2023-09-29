@@ -5,17 +5,17 @@
 let
   inherit (lib) mkEnableOption mkIf;
 
-  cfg = config.khanelinix.cli-apps.ncmpcpp;
+  cfg = config.beansnix.cli-apps.ncmpcpp;
 in
 {
-  options.khanelinix.cli-apps.ncmpcpp = {
+  options.beansnix.cli-apps.ncmpcpp = {
     enable = mkEnableOption "ncmpcpp";
   };
 
   config = mkIf cfg.enable {
     programs.ncmpcpp = {
       enable = true;
-      mpdMusicDir = config.khanelinix.services.mpd.musicDirectory;
+      mpdMusicDir = config.beansnix.services.mpd.musicDirectory;
     };
   };
 }

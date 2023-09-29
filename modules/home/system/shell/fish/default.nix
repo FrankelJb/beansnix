@@ -9,10 +9,10 @@ let
   inherit (lib) mkIf;
   inherit (lib.internal) mkBoolOpt;
 
-  cfg = config.khanelinix.system.shell.fish;
+  cfg = config.beansnix.system.shell.fish;
 in
 {
-  options.khanelinix.system.shell.fish = {
+  options.beansnix.system.shell.fish = {
     enable = mkBoolOpt false "Whether to enable fish.";
   };
 

@@ -8,10 +8,10 @@ let
   inherit (lib) mkIf;
   inherit (lib.internal) mkBoolOpt;
 
-  cfg = config.khanelinix.apps.obs;
+  cfg = config.beansnix.apps.obs;
 in
 {
-  options.khanelinix.apps.obs = {
+  options.beansnix.apps.obs = {
     enable = mkBoolOpt false "Whether or not to enable support for OBS.";
   };
 

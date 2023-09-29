@@ -1,14 +1,13 @@
-{ config
-, pkgs
-, lib
-, ...
-}:
-let
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}: let
   inherit (lib) getExe;
   inherit (lib.internal) enabled;
-in
-{
-  imports = [ ./hardware.nix ];
+in {
+  imports = [./hardware.nix];
 
   beansnix = {
     nix = enabled;
@@ -57,12 +56,6 @@ in
       nvidia = enabled;
       opengl = enabled;
 
-      rgb = {
-        enable = true;
-        ckbNextConfig = ./ckb-next/ckb-next.conf;
-      };
-
-      # TODO: do we still need this
       # storage = {
       #   enable = true;
       #   btrfs = {
@@ -81,7 +74,6 @@ in
       #     ];
       #   };
       # };
-
     };
 
     services = {
@@ -108,27 +100,30 @@ in
         # TODO: add my own authorizedKeys
         ];
 
+        # TODO: make part of ssh config proper
+        extraConfig = ''
+          Host server
+            User ${config.beansnix.user.name}
+            Hostname helium.localdomain
+        '';
       };
+    };
 
     security = {
-      doas = enabled;
-      keyring = enabled;
       sops = {
         enable = true;
-        sshKeyPaths = [ "/etc/ssh/ssh_host_ed25519_key" ];
-        defaultSopsFile = ../../../secrets/khanelinix/default.yaml;
+        sshKeyPaths = ["/etc/ssh/ssh_host_ed25519_key"];
+        defaultSopsFile = ../../../secrets/beansnix/default.yaml;
       };
     };
 
     suites = {
       development = {
         enable = true;
-        dockerEnable = true;
         gameEnable = true;
         nixEnable = true;
         nodeEnable = true;
         rustEnable = true;
-        sqlEnable = true;
       };
       emulation = enabled;
     };
@@ -151,9 +146,9 @@ in
     # 	05:00.1 Audio device [0403]: NVIDIA Corporation GA102 High Definition Audio Controller [10de:1aef] (rev a1)
     virtualisation.kvm = {
       enable = true;
-      machineUnits = [ "machine-qemu\\x2d4\\x2dwin11\\x2dGPU.scope" ];
+      machineUnits = ["machine-qemu\\x2d4\\x2dwin11\\x2dGPU.scope"];
       platform = "amd";
-      vfioIds = [ "10de:2206" "10de:1aef" ];
+      vfioIds = ["10de:2206" "10de:1aef"];
     };
   };
 

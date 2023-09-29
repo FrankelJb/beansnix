@@ -8,10 +8,10 @@ let
   inherit (lib) mkIf;
   inherit (lib.internal) mkBoolOpt;
 
-  cfg = config.khanelinix.desktop.addons.nautilus;
+  cfg = config.beansnix.desktop.addons.nautilus;
 in
 {
-  options.khanelinix.desktop.addons.nautilus = {
+  options.beansnix.desktop.addons.nautilus = {
     enable = mkBoolOpt false "Whether to enable the gnome file manager.";
   };
 

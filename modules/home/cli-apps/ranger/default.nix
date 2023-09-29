@@ -10,10 +10,10 @@ let
   inherit (lib.internal) mkBoolOpt;
   inherit (inputs) ranger-devicons ranger-udisk-menu;
 
-  cfg = config.khanelinix.cli-apps.ranger;
+  cfg = config.beansnix.cli-apps.ranger;
 in
 {
-  options.khanelinix.cli-apps.ranger = {
+  options.beansnix.cli-apps.ranger = {
     enable = mkBoolOpt false "Whether or not to enable ranger.";
   };
 

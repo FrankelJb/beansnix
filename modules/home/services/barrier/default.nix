@@ -6,10 +6,10 @@ let
   inherit (lib) mkEnableOption mkIf types;
   inherit (lib.internal) mkOpt;
 
-  cfg = config.khanelinix.services.barrier;
+  cfg = config.beansnix.services.barrier;
 in
 {
-  options.khanelinix.services.barrier = {
+  options.beansnix.services.barrier = {
     enable = mkEnableOption "barrier";
     server = mkOpt types.str "192.168.1.3:24800" "Server address";
   };

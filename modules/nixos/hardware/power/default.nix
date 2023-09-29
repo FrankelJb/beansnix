@@ -7,10 +7,10 @@ let
   inherit (lib) mkIf;
   inherit (lib.internal) mkBoolOpt;
 
-  cfg = config.khanelinix.hardware.power;
+  cfg = config.beansnix.hardware.power;
 in
 {
-  options.khanelinix.hardware.power = {
+  options.beansnix.hardware.power = {
     enable =
       mkBoolOpt false
         "Whether or not to enable support for extra power devices.";

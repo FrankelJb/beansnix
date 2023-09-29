@@ -8,10 +8,10 @@ let
   inherit (lib) mkIf;
   inherit (lib.internal) mkBoolOpt enabled;
 
-  cfg = config.khanelinix.suites.business;
+  cfg = config.beansnix.suites.business;
 in
 {
-  options.khanelinix.suites.business = {
+  options.beansnix.suites.business = {
     enable = mkBoolOpt false "Whether or not to enable business configuration.";
   };
 
@@ -21,7 +21,7 @@ in
       teams
     ];
 
-    khanelinix = {
+    beansnix = {
       apps = {
         thunderbird = enabled;
       };

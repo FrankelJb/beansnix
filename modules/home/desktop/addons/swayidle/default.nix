@@ -7,10 +7,10 @@ let
   inherit (lib) mkIf getExe getExe';
   inherit (lib.internal) mkBoolOpt;
 
-  cfg = config.khanelinix.desktop.addons.swayidle;
+  cfg = config.beansnix.desktop.addons.swayidle;
 in
 {
-  options.khanelinix.desktop.addons.swayidle = {
+  options.beansnix.desktop.addons.swayidle = {
     enable =
       mkBoolOpt false "Whether to enable swayidle in the desktop environment.";
   };

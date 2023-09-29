@@ -8,10 +8,10 @@ let
   inherit (lib) mkIf;
   inherit (lib.internal) mkBoolOpt;
 
-  cfg = config.khanelinix.cli-apps.fastfetch;
+  cfg = config.beansnix.cli-apps.fastfetch;
 in
 {
-  options.khanelinix.cli-apps.fastfetch = {
+  options.beansnix.cli-apps.fastfetch = {
     enable = mkBoolOpt false "Whether or not to enable fastfetch.";
   };
 

@@ -9,7 +9,7 @@ let
   inherit (lib.internal) mkBoolOpt mkOpt;
   inherit (cfg) dedupeFilesystems;
 
-  cfg = config.khanelinix.hardware.storage.btrfs;
+  cfg = config.beansnix.hardware.storage.btrfs;
 
   dedupeFilesystemsAttrSets = genAttrs dedupeFilesystems
     (name: {
@@ -21,7 +21,7 @@ let
     });
 in
 {
-  options.khanelinix.hardware.storage.btrfs = with types; {
+  options.beansnix.hardware.storage.btrfs = with types; {
     enable =
       mkBoolOpt false
         "Whether or not to enable support for btrfs devices.";

@@ -8,10 +8,10 @@ let
   inherit (lib) mkIf mkForce;
   inherit (lib.internal) mkBoolOpt;
 
-  cfg = config.khanelinix.archetypes.wsl;
+  cfg = config.beansnix.archetypes.wsl;
 in
 {
-  options.khanelinix.archetypes.wsl = {
+  options.beansnix.archetypes.wsl = {
     enable =
       mkBoolOpt false "Whether or not to enable the wsl archetype.";
   };

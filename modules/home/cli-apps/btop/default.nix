@@ -8,10 +8,10 @@ let
   inherit (lib) mkIf;
   inherit (lib.internal) mkBoolOpt;
 
-  cfg = config.khanelinix.cli-apps.btop;
+  cfg = config.beansnix.cli-apps.btop;
 in
 {
-  options.khanelinix.cli-apps.btop = {
+  options.beansnix.cli-apps.btop = {
     enable = mkBoolOpt false "Whether or not to enable btop.";
   };
 

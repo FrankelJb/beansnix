@@ -7,10 +7,10 @@ let
   inherit (lib) types mkIf;
   inherit (lib.internal) mkBoolOpt mkOpt enabled;
 
-  cfg = config.khanelinix.services.tailscale;
+  cfg = config.beansnix.services.tailscale;
 in
 {
-  options.khanelinix.services.tailscale = with types; {
+  options.beansnix.services.tailscale = with types; {
     enable = mkBoolOpt false "Whether or not to configure Tailscale";
     autoconnect = {
       enable = mkBoolOpt false "Whether or not to enable automatic connection to Tailscale";
@@ -22,7 +22,7 @@ in
     assertions = [
       {
         assertion = cfg.autoconnect.enable -> cfg.autoconnect.key != "";
-        message = "khanelinix.services.tailscale.autoconnect.key must be set";
+        message = "beansnix.services.tailscale.autoconnect.key must be set";
       }
     ];
 

@@ -1,5 +1,5 @@
 {
-  description = "KhaneliNix";
+  description = "beansnix";
 
   inputs = {
 

@@ -8,10 +8,10 @@ let
   inherit (lib) mkIf;
   inherit (lib.internal) mkBoolOpt;
 
-  cfg = config.khanelinix.tools.oh-my-posh;
+  cfg = config.beansnix.tools.oh-my-posh;
 in
 {
-  options.khanelinix.tools.oh-my-posh = {
+  options.beansnix.tools.oh-my-posh = {
     enable = mkBoolOpt false "Whether or not to enable oh-my-posh.";
   };
 

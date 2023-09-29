@@ -11,10 +11,10 @@ let
   inherit (lib.internal) enabled;
   inherit (inputs) hyprland;
 
-  cfg = config.khanelinix.desktop.hyprland;
+  cfg = config.beansnix.desktop.hyprland;
 in
 {
-  options.khanelinix.desktop.hyprland = {
+  options.beansnix.desktop.hyprland = {
     enable = mkEnableOption "Hyprland.";
     extraConfig = lib.mkOption {
       type = lib.types.lines;
@@ -40,7 +40,7 @@ in
           hl1 = "cat /tmp/hypr/$(ls -t /tmp/hypr/ | head -n 2 | tail -n 1)/hyprland.log";
         };
 
-        khanelinix = {
+        beansnix = {
           desktop.addons = {
             rofi = enabled;
             hyprpaper = enabled;

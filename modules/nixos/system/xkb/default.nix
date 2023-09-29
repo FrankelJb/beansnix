@@ -7,10 +7,10 @@ let
   inherit (lib) mkIf;
   inherit (lib.internal) mkBoolOpt;
 
-  cfg = config.khanelinix.system.xkb;
+  cfg = config.beansnix.system.xkb;
 in
 {
-  options.khanelinix.system.xkb = {
+  options.beansnix.system.xkb = {
     enable = mkBoolOpt false "Whether or not to configure xkb.";
   };
 

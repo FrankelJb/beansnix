@@ -8,10 +8,10 @@ let
   inherit (lib) mkIf getExe;
   inherit (lib.internal) mkBoolOpt;
 
-  cfg = config.khanelinix.apps.discord;
+  cfg = config.beansnix.apps.discord;
 in
 {
-  options.khanelinix.apps.discord = {
+  options.beansnix.apps.discord = {
     enable = mkBoolOpt false "Whether or not to enable Discord.";
     canary.enable = mkBoolOpt false "Whether or not to enable Discord Canary.";
     firefox.enable =
@@ -20,14 +20,14 @@ in
   };
 
   config = mkIf cfg.enable {
-    khanelinix.home.configFile = {
+    beansnix.home.configFile = {
       "BetterDiscord/themes/catppuccin-macchiato.theme.css".source = ./catppuccin-macchiato.theme.css;
     };
 
     environment.systemPackages =
       lib.optional cfg.enable pkgs.discord
-      ++ lib.optional cfg.canary.enable pkgs.khanelinix.discord
-      ++ lib.optional cfg.firefox.enable pkgs.khanelinix.discord-firefox;
+      ++ lib.optional cfg.canary.enable pkgs.beansnix.discord
+      ++ lib.optional cfg.firefox.enable pkgs.beansnix.discord-firefox;
 
     system.userActivationScripts = {
       postInstall = ''

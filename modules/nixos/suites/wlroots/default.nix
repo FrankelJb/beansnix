@@ -8,10 +8,10 @@ let
   inherit (lib) mkIf;
   inherit (lib.internal) mkBoolOpt enabled;
 
-  cfg = config.khanelinix.suites.wlroots;
+  cfg = config.beansnix.suites.wlroots;
 in
 {
-  options.khanelinix.suites.wlroots = {
+  options.beansnix.suites.wlroots = {
     enable =
       mkBoolOpt false "Whether or not to enable common wlroots configuration.";
   };
@@ -33,7 +33,7 @@ in
       playerctl
     ];
 
-    khanelinix = {
+    beansnix = {
       cli-apps = {
         wshowkeys = enabled;
       };

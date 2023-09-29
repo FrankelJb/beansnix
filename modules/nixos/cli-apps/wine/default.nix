@@ -8,10 +8,10 @@ let
   inherit (lib) mkIf;
   inherit (lib.internal) mkBoolOpt;
 
-  cfg = config.khanelinix.cli-apps.wine;
+  cfg = config.beansnix.cli-apps.wine;
 in
 {
-  options.khanelinix.cli-apps.wine = {
+  options.beansnix.cli-apps.wine = {
     enable = mkBoolOpt false "Whether or not to enable Wine.";
   };
 

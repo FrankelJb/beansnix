@@ -7,10 +7,10 @@ let
   inherit (lib) mkIf;
   inherit (lib.internal) mkBoolOpt;
 
-  cfg = config.khanelinix.hardware.bluetooth;
+  cfg = config.beansnix.hardware.bluetooth;
 in
 {
-  options.khanelinix.hardware.bluetooth = {
+  options.beansnix.hardware.bluetooth = {
     enable =
       mkBoolOpt false
         "Whether or not to enable support for extra bluetooth devices.";

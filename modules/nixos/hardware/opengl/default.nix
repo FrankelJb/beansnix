@@ -8,10 +8,10 @@ let
   inherit (lib) mkIf;
   inherit (lib.internal) mkBoolOpt;
 
-  cfg = config.khanelinix.hardware.opengl;
+  cfg = config.beansnix.hardware.opengl;
 in
 {
-  options.khanelinix.hardware.opengl = {
+  options.beansnix.hardware.opengl = {
     enable =
       mkBoolOpt false
         "Whether or not to enable support for opengl.";
@@ -33,7 +33,7 @@ in
         libva
         libvdpau
         libdrm
-      ]; #++ lib.optional config.khanelinix.hardware.amdgpu.enable pkgs.mesa-vdpau;
+      ]; #++ lib.optional config.beansnix.hardware.amdgpu.enable pkgs.mesa-vdpau;
     };
   };
 }

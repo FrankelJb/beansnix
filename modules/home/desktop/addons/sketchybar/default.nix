@@ -7,10 +7,10 @@ let
   inherit (lib) mkIf;
   inherit (lib.internal) mkBoolOpt;
 
-  cfg = config.khanelinix.desktop.addons.sketchybar;
+  cfg = config.beansnix.desktop.addons.sketchybar;
 in
 {
-  options.khanelinix.desktop.addons.sketchybar = {
+  options.beansnix.desktop.addons.sketchybar = {
     enable =
       mkBoolOpt false "Whether to enable sketchybar in the desktop environment.";
   };

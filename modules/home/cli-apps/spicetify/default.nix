@@ -10,12 +10,12 @@ let
   inherit (lib.internal) mkBoolOpt;
   inherit (inputs) spicetify-nix;
 
-  cfg = config.khanelinix.cli-apps.spicetify;
+  cfg = config.beansnix.cli-apps.spicetify;
 
   spicePkgs = spicetify-nix.packages.${pkgs.system}.default;
 in
 {
-  options.khanelinix.cli-apps.spicetify = {
+  options.beansnix.cli-apps.spicetify = {
     enable = mkBoolOpt false "Whether or not to enable support for spicetify.";
   };
 

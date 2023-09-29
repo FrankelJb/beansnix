@@ -8,10 +8,10 @@ let
   inherit (lib) mkIf;
   inherit (lib.internal) mkBoolOpt;
 
-  cfg = config.khanelinix.tools.glxinfo;
+  cfg = config.beansnix.tools.glxinfo;
 in
 {
-  options.khanelinix.tools.glxinfo = {
+  options.beansnix.tools.glxinfo = {
     enable = mkBoolOpt false "Whether or not to enable glxinfo.";
   };
 

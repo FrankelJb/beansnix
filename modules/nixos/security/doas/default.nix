@@ -7,10 +7,10 @@ let
   inherit (lib) mkIf;
   inherit (lib.internal) mkBoolOpt;
 
-  cfg = config.khanelinix.security.doas;
+  cfg = config.beansnix.security.doas;
 in
 {
-  options.khanelinix.security.doas = {
+  options.beansnix.security.doas = {
     enable = mkBoolOpt false "Whether or not to replace sudo with doas.";
   };
 
@@ -29,7 +29,7 @@ in
         {
           keepEnv = true;
           noPass = true;
-          users = [ config.khanelinix.user.name ];
+          users = [ config.beansnix.user.name ];
         }
       ];
     };

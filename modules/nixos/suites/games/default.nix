@@ -8,10 +8,10 @@ let
   inherit (lib) mkIf;
   inherit (lib.internal) mkBoolOpt enabled;
 
-  cfg = config.khanelinix.suites.games;
+  cfg = config.beansnix.suites.games;
 in
 {
-  options.khanelinix.suites.games = {
+  options.beansnix.suites.games = {
     enable =
       mkBoolOpt false "Whether or not to enable common games configuration.";
   };
@@ -27,7 +27,7 @@ in
       protonup-qt
     ];
 
-    khanelinix = {
+    beansnix = {
       apps = {
         gamemode = enabled;
         # mangohud = enabled;
