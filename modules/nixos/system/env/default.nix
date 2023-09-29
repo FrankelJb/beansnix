@@ -6,10 +6,10 @@
 let
   inherit (lib) types concatStringsSep mapAttrsToList mkOption mapAttrs;
 
-  cfg = config.khanelinix.system.env;
+  cfg = config.beansnix.system.env;
 in
 {
-  options.khanelinix.system.env = with types;
+  options.beansnix.system.env = with types;
     mkOption {
       apply = mapAttrs (_n: v:
         if isList v

@@ -7,10 +7,10 @@ let
   inherit (lib) mkIf;
   inherit (lib.internal) mkBoolOpt;
 
-  cfg = config.khanelinix.services.geoclue;
+  cfg = config.beansnix.services.geoclue;
 in
 {
-  options.khanelinix.services.geoclue = {
+  options.beansnix.services.geoclue = {
     enable = mkBoolOpt false "Whether or not to configure geoclue support.";
   };
 

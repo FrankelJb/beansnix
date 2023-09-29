@@ -7,15 +7,15 @@ let
   inherit (lib) mkIf;
   inherit (lib.internal) mkBoolOpt;
 
-  cfg = config.khanelinix.apps.virtualbox;
+  cfg = config.beansnix.apps.virtualbox;
 in
 {
-  options.khanelinix.apps.virtualbox = {
+  options.beansnix.apps.virtualbox = {
     enable = mkBoolOpt false "Whether or not to enable Virtualbox.";
   };
 
   config = mkIf cfg.enable {
-    khanelinix.user.extraGroups = [ "vboxusers" ];
+    beansnix.user.extraGroups = [ "vboxusers" ];
 
     virtualisation.virtualbox.host = {
       enable = true;

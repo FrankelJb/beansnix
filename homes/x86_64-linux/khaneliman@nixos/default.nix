@@ -6,7 +6,7 @@ let
   inherit (lib.internal) enabled;
 in
 {
-  khanelinix = {
+  beansnix = {
     user = {
       enable = true;
       inherit (config.snowfallorg.user) name;

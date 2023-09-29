@@ -6,10 +6,10 @@
 let
   inherit (lib) mkEnableOption mkIf;
 
-  cfg = config.khanelinix.apps.zathura;
+  cfg = config.beansnix.apps.zathura;
 in
 {
-  options.khanelinix.apps.zathura = {
+  options.beansnix.apps.zathura = {
     enable = mkEnableOption "zathura";
   };
 

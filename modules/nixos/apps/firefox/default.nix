@@ -8,7 +8,7 @@ let
   inherit (lib) types mkIf mkMerge;
   inherit (lib.internal) mkBoolOpt mkOpt;
 
-  cfg = config.khanelinix.apps.firefox;
+  cfg = config.beansnix.apps.firefox;
   defaultSettings = {
     "accessibility.typeaheadfind.enablesound" = false;
     "accessibility.typeaheadfind.flashBar" = 0;
@@ -56,7 +56,7 @@ let
   };
 in
 {
-  options.khanelinix.apps.firefox = with types; {
+  options.beansnix.apps.firefox = with types; {
     enable = mkBoolOpt false "Whether or not to enable Firefox.";
     extraConfig =
       mkOpt str "" "Extra configuration for the user profile JS file.";
@@ -66,16 +66,16 @@ in
   };
 
   config = mkIf cfg.enable {
-    services.gnome.gnome-browser-connector.enable = config.khanelinix.desktop.gnome.enable;
+    services.gnome.gnome-browser-connector.enable = config.beansnix.desktop.gnome.enable;
 
-    khanelinix.home = {
+    beansnix.home = {
       file = mkMerge [
-        (mkIf config.khanelinix.desktop.gnome.enable {
+        (mkIf config.beansnix.desktop.gnome.enable {
           ".mozilla/native-messaging-hosts/org.gnome.chrome_gnome_shell.json".source = "${pkgs.chrome-gnome-shell}/lib/mozilla/native-messaging-hosts/org.gnome.chrome_gnome_shell.json";
         })
         {
           ".mozilla/native-messaging-hosts/com.dannyvankooten.browserpass.json".source = "${pkgs.browserpass}/lib/mozilla/native-messaging-hosts/com.dannyvankooten.browserpass.json";
-          ".mozilla/firefox/${config.khanelinix.user.name}/chrome/" = {
+          ".mozilla/firefox/${config.beansnix.user.name}/chrome/" = {
             source = lib.cleanSourceWith {
               src = lib.cleanSource ./chrome/.;
             };
@@ -128,10 +128,10 @@ in
             };
           };
 
-          profiles.${config.khanelinix.user.name} = {
+          profiles.${config.beansnix.user.name} = {
             inherit (cfg) extraConfig userChrome settings;
             id = 0;
-            inherit (config.khanelinix.user) name;
+            inherit (config.beansnix.user) name;
             extensions = with pkgs.nur.repos.rycee.firefox-addons; [
               angular-devtools
               bitwarden

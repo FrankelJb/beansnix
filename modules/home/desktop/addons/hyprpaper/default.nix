@@ -6,10 +6,10 @@ let
   inherit (lib) mkIf mkEnableOption types concatStringsSep mkOption;
   inherit (lib.internal) mkOpt;
 
-  cfg = config.khanelinix.desktop.addons.hyprpaper;
+  cfg = config.beansnix.desktop.addons.hyprpaper;
 in
 {
-  options.khanelinix.desktop.addons.hyprpaper = {
+  options.beansnix.desktop.addons.hyprpaper = {
     enable = mkEnableOption "Hyprpaper";
     monitors = mkOption {
       description = "Monitors and their wallpapers";

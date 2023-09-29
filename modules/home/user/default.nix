@@ -7,7 +7,7 @@ let
   inherit (lib) types mkIf mkDefault mkMerge getExe getExe';
   inherit (lib.internal) mkOpt;
 
-  cfg = config.khanelinix.user;
+  cfg = config.beansnix.user;
   is-darwin = pkgs.stdenv.isDarwin;
 
   home-directory =
@@ -18,7 +18,7 @@ let
     else "/home/${cfg.name}";
 in
 {
-  options.khanelinix.user = {
+  options.beansnix.user = {
     enable = mkOpt types.bool false "Whether to configure the user account.";
     email = mkOpt types.str "khaneliman12@gmail.com" "The email of the user.";
     fullName = mkOpt types.str "Austin Horstman" "The full name of the user.";
@@ -31,11 +31,11 @@ in
       assertions = [
         {
           assertion = cfg.name != null;
-          message = "khanelinix.user.name must be set";
+          message = "beansnix.user.name must be set";
         }
         {
           assertion = cfg.home != null;
-          message = "khanelinix.user.home must be set";
+          message = "beansnix.user.home must be set";
         }
       ];
 

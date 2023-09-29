@@ -6,11 +6,11 @@
 let
   inherit (lib) mkIf;
   inherit (lib.internal) mkBoolOpt;
-  cfg = config.khanelinix.tools.wakatime;
+  cfg = config.beansnix.tools.wakatime;
 in
 {
 
-  options.khanelinix.tools.wakatime = {
+  options.beansnix.tools.wakatime = {
     enable = mkBoolOpt false "Whether or not to enable wakatime.";
   };
 

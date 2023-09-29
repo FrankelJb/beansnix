@@ -8,10 +8,10 @@ let
   inherit (lib) mkIf;
   inherit (lib.internal) mkBoolOpt;
 
-  cfg = config.khanelinix.virtualisation.podman;
+  cfg = config.beansnix.virtualisation.podman;
 in
 {
-  options.khanelinix.virtualisation.podman = {
+  options.beansnix.virtualisation.podman = {
     enable = mkBoolOpt false "Whether or not to enable Podman.";
   };
 
@@ -24,7 +24,7 @@ in
 
     environment.systemPackages = with pkgs; [ podman-compose ];
 
-    khanelinix.home.extraOptions = {
+    beansnix.home.extraOptions = {
       home.shellAliases = { "docker-compose" = "podman-compose"; };
     };
 

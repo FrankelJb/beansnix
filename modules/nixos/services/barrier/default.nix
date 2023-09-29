@@ -6,10 +6,10 @@
 let
   inherit (lib) mkEnableOption mkIf;
 
-  cfg = config.khanelinix.services.barrier;
+  cfg = config.beansnix.services.barrier;
 in
 {
-  options.khanelinix.services.barrier = {
+  options.beansnix.services.barrier = {
     enable = mkEnableOption "barrier";
 
   };

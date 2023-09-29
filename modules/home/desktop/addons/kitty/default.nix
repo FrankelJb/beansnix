@@ -8,10 +8,10 @@ let
   inherit (lib) types mkIf;
   inherit (lib.internal) mkBoolOpt mkOpt;
 
-  cfg = config.khanelinix.desktop.addons.kitty;
+  cfg = config.beansnix.desktop.addons.kitty;
 in
 {
-  options.khanelinix.desktop.addons.kitty = with types; {
+  options.beansnix.desktop.addons.kitty = with types; {
     enable = mkBoolOpt false "Whether to enable kitty.";
     font = mkOpt str "Liga SFMono Nerd Font" "Font to use for kitty.";
     theme = mkOpt str "Catppuccin-Macchiato" "Theme to use for kitty.";

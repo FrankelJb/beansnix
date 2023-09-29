@@ -8,7 +8,7 @@ let
   inherit (lib) types mkIf;
   inherit (lib.internal) mkBoolOpt mkOpt;
 
-  cfg = config.khanelinix.desktop.addons.alacritty;
+  cfg = config.beansnix.desktop.addons.alacritty;
 
   macchiato = {
     primary = {
@@ -118,7 +118,7 @@ let
   };
 in
 {
-  options.khanelinix.desktop.addons.alacritty = with types; {
+  options.beansnix.desktop.addons.alacritty = with types; {
     enable = mkBoolOpt false "Whether to enable alacritty.";
     theme = mkOpt attr macchiato "Theme to use for alacritty.";
     font = mkOpt str "Liga SFMono Nerd Font" "Font to use for alacritty.";

@@ -8,10 +8,10 @@ let
   inherit (lib) types mkIf;
   inherit (lib.internal) mkBoolOpt mkOpt;
 
-  cfg = config.khanelinix.nix;
+  cfg = config.beansnix.nix;
 in
 {
-  options.khanelinix.nix = with types; {
+  options.beansnix.nix = with types; {
     enable = mkBoolOpt true "Whether or not to manage nix configuration.";
     package = mkOpt package pkgs.nixUnstable "Which nix package to use.";
   };
@@ -26,7 +26,7 @@ in
 
     nix =
       let
-        users = [ "root" config.khanelinix.user.name ];
+        users = [ "root" config.beansnix.user.name ];
       in
       {
         inherit (cfg) package;

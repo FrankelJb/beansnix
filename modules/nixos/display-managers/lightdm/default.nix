@@ -8,10 +8,10 @@ let
   inherit (lib) mkIf;
   inherit (lib.internal) mkBoolOpt;
 
-  cfg = config.khanelinix.display-managers.lightdm;
+  cfg = config.beansnix.display-managers.lightdm;
 in
 {
-  options.khanelinix.display-managers.lightdm = {
+  options.beansnix.display-managers.lightdm = {
     enable = mkBoolOpt false "Whether or not to enable lightdm.";
   };
 
@@ -23,25 +23,25 @@ in
 
           displayManager.lightdm = {
             enable = true;
-            background = pkgs.khanelinix.wallpapers.flatppuccin_macchiato;
+            background = pkgs.beansnix.wallpapers.flatppuccin_macchiato;
 
             greeters = {
               gtk = {
                 enable = true;
 
                 cursorTheme = {
-                  inherit (config.khanelinix.desktop.addons.gtk.cursor) name;
-                  package = config.khanelinix.desktop.addons.gtk.cursor.pkg;
+                  inherit (config.beansnix.desktop.addons.gtk.cursor) name;
+                  package = config.beansnix.desktop.addons.gtk.cursor.pkg;
                 };
 
                 iconTheme = {
-                  inherit (config.khanelinix.desktop.addons.gtk.icon) name;
-                  package = config.khanelinix.desktop.addons.gtk.icon.pkg;
+                  inherit (config.beansnix.desktop.addons.gtk.icon) name;
+                  package = config.beansnix.desktop.addons.gtk.icon.pkg;
                 };
 
                 theme = {
-                  name = "${config.khanelinix.desktop.addons.gtk.theme.name}";
-                  package = config.khanelinix.desktop.addons.gtk.theme.pkg;
+                  name = "${config.beansnix.desktop.addons.gtk.theme.name}";
+                  package = config.beansnix.desktop.addons.gtk.theme.pkg;
                 };
               };
             };

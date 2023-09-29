@@ -8,7 +8,7 @@ let
   inherit (lib) mkIf;
   inherit (inputs) sf-mono-nerd-font;
 
-  cfg = config.khanelinix.system.fonts;
+  cfg = config.beansnix.system.fonts;
 in
 {
   imports = [ ../../../shared/system/fonts/default.nix ];
@@ -21,7 +21,7 @@ in
 
     fonts.packages = cfg.fonts;
 
-    khanelinix.home.file = {
+    beansnix.home.file = {
       ".local/share/fonts/SanFransisco/SF-Mono/" = {
         source = lib.cleanSourceWith {
           src = lib.cleanSource sf-mono-nerd-font;

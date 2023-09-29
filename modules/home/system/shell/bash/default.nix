@@ -7,10 +7,10 @@ let
   inherit (lib) mkIf;
   inherit (lib.internal) mkBoolOpt;
 
-  cfg = config.khanelinix.system.shell.bash;
+  cfg = config.beansnix.system.shell.bash;
 in
 {
-  options.khanelinix.system.shell.bash = {
+  options.beansnix.system.shell.bash = {
     enable = mkBoolOpt false "Whether to enable bash.";
   };
 

@@ -8,17 +8,17 @@ let
   inherit (lib) mkIf;
   inherit (lib.internal) mkBoolOpt;
 
-  cfg = config.khanelinix.cli-apps.cava;
+  cfg = config.beansnix.cli-apps.cava;
 in
 {
-  options.khanelinix.cli-apps.cava = {
+  options.beansnix.cli-apps.cava = {
     enable = mkBoolOpt false "Whether or not to enable cava.";
   };
 
   config = mkIf cfg.enable {
     environment.systemPackages = with pkgs; [ cava ];
 
-    khanelinix.home = {
+    beansnix.home = {
       configFile = {
         "cava/config".source = ./config;
       };

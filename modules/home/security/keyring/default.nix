@@ -7,10 +7,10 @@ let
   inherit (lib) mkIf;
   inherit (lib.internal) mkBoolOpt;
 
-  cfg = config.khanelinix.security.keyring;
+  cfg = config.beansnix.security.keyring;
 in
 {
-  options.khanelinix.security.keyring = {
+  options.beansnix.security.keyring = {
     enable = mkBoolOpt false "Whether to enable gnome keyring.";
   };
 

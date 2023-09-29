@@ -7,16 +7,16 @@
 let
   inherit (lib) types mkIf getExe getExe';
   inherit (lib.internal) mkBoolOpt mkOpt enabled fileWithText optionalString;
-  inherit (config.khanelinix.desktop.addons) term;
+  inherit (config.beansnix.desktop.addons) term;
 
-  cfg = config.khanelinix.desktop.sway;
+  cfg = config.beansnix.desktop.sway;
   substitutedConfig = pkgs.substituteAll {
     src = ./config;
     term = term.pkg.pname or term.pkg.name;
   };
 in
 {
-  options.khanelinix.desktop.sway = with types; {
+  options.beansnix.desktop.sway = with types; {
     enable = mkBoolOpt false "Whether or not to enable Sway.";
     extraConfig =
       mkOpt str "" "Additional configuration for the Sway config file.";
@@ -41,7 +41,7 @@ in
       })
     ];
 
-    khanelinix = {
+    beansnix = {
       desktop.addons = {
         foot = enabled;
         gtk = enabled;

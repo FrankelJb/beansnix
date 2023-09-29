@@ -8,10 +8,10 @@ let
   inherit (lib) mkIf types;
   inherit (lib.internal) mkBoolOpt mkOpt;
 
-  cfg = config.khanelinix.security.sops;
+  cfg = config.beansnix.security.sops;
 in
 {
-  options.khanelinix.security.sops = with types; {
+  options.beansnix.security.sops = with types; {
     enable = mkBoolOpt false "Whether to enable sops.";
     defaultSopsFile = mkOpt path null "Default sops file.";
     sshKeyPaths = mkOpt (listOf path) [ ] "SSH Key paths to use.";

@@ -8,10 +8,10 @@ let
   inherit (lib) mkIf;
   inherit (lib.internal) mkBoolOpt;
 
-  cfg = config.khanelinix.desktop.addons.swaylock;
+  cfg = config.beansnix.desktop.addons.swaylock;
 in
 {
-  options.khanelinix.desktop.addons.swaylock = {
+  options.beansnix.desktop.addons.swaylock = {
     enable =
       mkBoolOpt false "Whether to enable swaylock in the desktop environment.";
   };

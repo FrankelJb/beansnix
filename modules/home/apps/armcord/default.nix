@@ -5,10 +5,10 @@
 let
   inherit (lib) mkEnableOption mkIf;
 
-  cfg = config.khanelinix.apps.armcord;
+  cfg = config.beansnix.apps.armcord;
 in
 {
-  options.khanelinix.apps.armcord = {
+  options.beansnix.apps.armcord = {
     enable = mkEnableOption "armcord";
   };
 

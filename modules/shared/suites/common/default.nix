@@ -8,10 +8,10 @@ let
   inherit (lib) mkIf;
   inherit (lib.internal) mkBoolOpt;
 
-  cfg = config.khanelinix.suites.common;
+  cfg = config.beansnix.suites.common;
 in
 {
-  options.khanelinix.suites.common = {
+  options.beansnix.suites.common = {
     enable = mkBoolOpt false "Whether or not to enable common configuration.";
   };
 

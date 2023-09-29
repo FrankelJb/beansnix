@@ -8,10 +8,10 @@ let
   inherit (lib) types mkIf mkOption;
   inherit (lib.internal) mkBoolOpt mkOpt;
 
-  cfg = config.khanelinix.hardware.rgb;
+  cfg = config.beansnix.hardware.rgb;
 in
 {
-  options.khanelinix.hardware.rgb = with types; {
+  options.beansnix.hardware.rgb = with types; {
     enable =
       mkBoolOpt false
         "Whether or not to enable support for rgb controls.";
@@ -32,7 +32,7 @@ in
 
     hardware.ckb-next.enable = true;
 
-    khanelinix.home.configFile =
+    beansnix.home.configFile =
       { }
       // lib.optionalAttrs (cfg.ckbNextConfig != null)
         {

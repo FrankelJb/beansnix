@@ -8,10 +8,10 @@ let
   inherit (lib) mkIf;
   inherit (lib.internal) mkBoolOpt;
 
-  cfg = config.khanelinix.suites.art;
+  cfg = config.beansnix.suites.art;
 in
 {
-  options.khanelinix.suites.art = {
+  options.beansnix.suites.art = {
     enable = mkBoolOpt false "Whether or not to enable art configuration.";
   };
 

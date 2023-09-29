@@ -7,10 +7,10 @@ let
   inherit (lib) mkIf;
   inherit (lib.internal) mkBoolOpt;
 
-  cfg = config.khanelinix.tools.topgrade;
+  cfg = config.beansnix.tools.topgrade;
 in
 {
-  options.khanelinix.tools.topgrade = {
+  options.beansnix.tools.topgrade = {
     enable = mkBoolOpt false "Whether or not to enable topgrade.";
   };
 

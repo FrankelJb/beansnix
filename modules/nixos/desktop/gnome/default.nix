@@ -8,7 +8,7 @@ let
   inherit (lib) types mkIf mapAttrs optional getExe;
   inherit (lib.internal) mkBoolOpt mkOpt mkDefault enabled;
 
-  cfg = config.khanelinix.desktop.gnome;
+  cfg = config.beansnix.desktop.gnome;
   gdmHome = config.users.users.gdm.home;
 
   defaultExtensions = with pkgs.gnomeExtensions; [
@@ -31,7 +31,7 @@ let
   nested-default-attrs = mapAttrs (_key: default-attrs);
 in
 {
-  options.khanelinix.desktop.gnome = with types; {
+  options.beansnix.desktop.gnome = with types; {
     enable =
       mkBoolOpt false "Whether or not to use Gnome as the desktop environment.";
     color-scheme = mkOpt (enum [ "light" "dark" ]) "dark" "The color scheme to use.";
@@ -40,8 +40,8 @@ in
     suspend =
       mkBoolOpt true "Whether or not to suspend the machine after inactivity.";
     wallpaper = {
-      light = mkOpt (oneOf [ str package ]) pkgs.khanelinix.wallpapers.flatppuccin_macchiato "The light wallpaper to use.";
-      dark = mkOpt (oneOf [ str package ]) pkgs.khanelinix.wallpapers.cat-sound "The dark wallpaper to use.";
+      light = mkOpt (oneOf [ str package ]) pkgs.beansnix.wallpapers.flatppuccin_macchiato "The light wallpaper to use.";
+      dark = mkOpt (oneOf [ str package ]) pkgs.beansnix.wallpapers.cat-sound "The dark wallpaper to use.";
     };
     wayland = mkBoolOpt true "Whether or not to use Wayland.";
   };
@@ -50,7 +50,7 @@ in
     environment = {
       systemPackages = with pkgs;
         [
-          (hiPrio khanelinix.xdg-open-with-portal)
+          (hiPrio beansnix.xdg-open-with-portal)
           gnome.gnome-tweaks
           gnome.nautilus-python
           wl-clipboard
@@ -68,7 +68,7 @@ in
       ];
     };
 
-    khanelinix = {
+    beansnix = {
       desktop.addons = {
         electron-support = enabled;
         gtk = enabled;
@@ -96,14 +96,14 @@ in
                 ];
               favorite-apps =
                 [ "org.gnome.Nautilus.desktop" ]
-                ++ optional config.khanelinix.apps.firefox.enable "firefox.desktop"
-                ++ optional config.khanelinix.apps.vscode.enable "code.desktop"
-                ++ optional config.khanelinix.desktop.addons.foot.enable "foot.desktop"
-                ++ optional config.khanelinix.desktop.addons.kitty.enable "kitty.desktop"
+                ++ optional config.beansnix.apps.firefox.enable "firefox.desktop"
+                ++ optional config.beansnix.apps.vscode.enable "code.desktop"
+                ++ optional config.beansnix.desktop.addons.foot.enable "foot.desktop"
+                ++ optional config.beansnix.desktop.addons.kitty.enable "kitty.desktop"
                 ++ [ "org.gnome.Console.desktop" ]
-                ++ optional config.khanelinix.apps.logseq.enable "logseq.desktop"
-                ++ optional config.khanelinix.apps.discord.enable "discord.desktop"
-                ++ optional config.khanelinix.apps.steam.enable "steam.desktop";
+                ++ optional config.beansnix.apps.logseq.enable "logseq.desktop"
+                ++ optional config.beansnix.apps.discord.enable "discord.desktop"
+                ++ optional config.beansnix.apps.steam.enable "steam.desktop";
             };
 
             "org/gnome/desktop/background" = {
@@ -193,8 +193,8 @@ in
               menu-button-icon-image = 23;
 
               menu-button-terminal =
-                if config.khanelinix.desktop.addons.term.enable
-                then getExe config.khanelinix.desktop.addons.term.pkg
+                if config.beansnix.desktop.addons.term.enable
+                then getExe config.beansnix.desktop.addons.term.pkg
                 else getExe pkgs.gnome.gnome-terminal;
             };
 
@@ -300,7 +300,7 @@ in
           lib.optional (cfg.monitors != null) "L+ ${gdmHome}/.config/monitors.xml - - - - ${cfg.monitors}"
         );
 
-      services.khanelinix-user-icon = {
+      services.beansnix-user-icon = {
         before = [ "display-manager.service" ];
         wantedBy = [ "display-manager.service" ];
 
@@ -311,8 +311,8 @@ in
         };
 
         script = ''
-          config_file=/var/lib/AccountsService/users/${config.khanelinix.user.name}
-          icon_file=/run/current-system/sw/share/khanelinix.icons/user/${config.khanelinix.user.name}/${config.khanelinix.user.icon.fileName}
+          config_file=/var/lib/AccountsService/users/${config.beansnix.user.name}
+          icon_file=/run/current-system/sw/share/beansnix.icons/user/${config.beansnix.user.name}/${config.beansnix.user.icon.fileName}
 
           if ! [ -d "$(dirname "$config_file")"]; then
             mkdir -p "$(dirname "$config_file")"

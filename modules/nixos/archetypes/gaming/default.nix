@@ -7,15 +7,15 @@ let
   inherit (lib) mkIf;
   inherit (lib.internal) mkBoolOpt enabled;
 
-  cfg = config.khanelinix.archetypes.gaming;
+  cfg = config.beansnix.archetypes.gaming;
 in
 {
-  options.khanelinix.archetypes.gaming = {
+  options.beansnix.archetypes.gaming = {
     enable = mkBoolOpt false "Whether or not to enable the gaming archetype.";
   };
 
   config = mkIf cfg.enable {
-    khanelinix.suites = {
+    beansnix.suites = {
       common = enabled;
       desktop = enabled;
       games = enabled;

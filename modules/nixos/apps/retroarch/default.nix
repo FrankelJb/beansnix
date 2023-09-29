@@ -8,10 +8,10 @@ let
   inherit (lib) mkIf;
   inherit (lib.internal) mkBoolOpt;
 
-  cfg = config.khanelinix.apps.retroarch;
+  cfg = config.beansnix.apps.retroarch;
 in
 {
-  options.khanelinix.apps.retroarch = {
+  options.beansnix.apps.retroarch = {
     enable = mkBoolOpt false "Whether or not to enable retroarch.";
   };
 

@@ -7,10 +7,10 @@ let
   inherit (lib) mkIf;
   inherit (lib.internal) mkBoolOpt enabled;
 
-  cfg = config.khanelinix.apps._1password;
+  cfg = config.beansnix.apps._1password;
 in
 {
-  options.khanelinix.apps._1password = {
+  options.beansnix.apps._1password = {
     enable = mkBoolOpt false "Whether or not to enable 1password.";
   };
 
@@ -20,7 +20,7 @@ in
       _1password-gui = {
         enable = true;
 
-        polkitPolicyOwners = [ config.khanelinix.user.name ];
+        polkitPolicyOwners = [ config.beansnix.user.name ];
       };
 
       ssh.extraConfig = ''

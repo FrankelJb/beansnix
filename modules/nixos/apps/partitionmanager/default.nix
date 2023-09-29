@@ -8,10 +8,10 @@ let
   inherit (lib) mkIf;
   inherit (lib.internal) mkBoolOpt;
 
-  cfg = config.khanelinix.apps.partitionmanager;
+  cfg = config.beansnix.apps.partitionmanager;
 in
 {
-  options.khanelinix.apps.partitionmanager = {
+  options.beansnix.apps.partitionmanager = {
     enable = mkBoolOpt false "Whether or not to enable partitionmanager.";
   };
 

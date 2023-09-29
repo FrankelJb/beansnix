@@ -5,12 +5,12 @@
 let
   inherit (lib) mkEnableOption mkIf;
 
-  cfg = config.khanelinix.cli-apps.helix;
+  cfg = config.beansnix.cli-apps.helix;
 in
 {
   imports = [ ./languages.nix ];
 
-  options.khanelinix.cli-apps.helix = {
+  options.beansnix.cli-apps.helix = {
     enable = mkEnableOption "Helix";
   };
 

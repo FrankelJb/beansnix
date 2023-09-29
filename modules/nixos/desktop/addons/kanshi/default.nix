@@ -7,13 +7,13 @@
 let
   inherit (lib) mkIf getExe;
   inherit (lib.internal) mkBoolOpt;
-  inherit (config.khanelinix) user;
+  inherit (config.beansnix) user;
   inherit (config.users.users.${user.name}) home;
 
-  cfg = config.khanelinix.desktop.addons.kanshi;
+  cfg = config.beansnix.desktop.addons.kanshi;
 in
 {
-  options.khanelinix.desktop.addons.kanshi = {
+  options.beansnix.desktop.addons.kanshi = {
     enable =
       mkBoolOpt false "Whether to enable Kanshi in the desktop environment.";
   };
@@ -21,7 +21,7 @@ in
   config = mkIf cfg.enable {
     environment.systemPackages = with pkgs; [ kanshi ];
 
-    khanelinix.home.configFile."kanshi/config".source = ./config;
+    beansnix.home.configFile."kanshi/config".source = ./config;
 
     # configuring kanshi
     systemd.user.services.kanshi = {

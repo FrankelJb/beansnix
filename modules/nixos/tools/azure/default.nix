@@ -8,10 +8,10 @@ let
   inherit (lib) mkIf;
   inherit (lib.internal) mkBoolOpt;
 
-  cfg = config.khanelinix.tools.azure;
+  cfg = config.beansnix.tools.azure;
 in
 {
-  options.khanelinix.tools.azure = {
+  options.beansnix.tools.azure = {
     enable =
       mkBoolOpt false "Whether or not to enable common Azure utilities.";
   };

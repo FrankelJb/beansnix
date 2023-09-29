@@ -7,10 +7,10 @@ let
   inherit (lib) types mkIf mkOption getExe';
   inherit (lib.internal) mkBoolOpt;
 
-  cfg = config.khanelinix.services.spice-webdav;
+  cfg = config.beansnix.services.spice-webdav;
 in
 {
-  options.khanelinix.services.spice-webdav = with types; {
+  options.beansnix.services.spice-webdav = with types; {
     enable = mkBoolOpt false "Whether or not to configure spice-webdav proxy support.";
     package = mkOption {
       default = pkgs.phodav;

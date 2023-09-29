@@ -6,12 +6,12 @@
 let
   inherit (lib) types mkIf length optionalString concatStringsSep getExe;
   inherit (lib.internal) mkBoolOpt mkOpt enabled;
-  inherit (config.khanelinix) user;
+  inherit (config.beansnix) user;
 
-  cfg = config.khanelinix.virtualisation.kvm;
+  cfg = config.beansnix.virtualisation.kvm;
 in
 {
-  options.khanelinix.virtualisation.kvm = with types; {
+  options.beansnix.virtualisation.kvm = with types; {
     enable = mkBoolOpt false "Whether or not to enable KVM virtualisation.";
     # Use `machinectl` and then `machinectl status <name>` to
     # get the unit "*.scope" of the virtual machine.
@@ -73,7 +73,7 @@ in
       };
     };
 
-    khanelinix = {
+    beansnix = {
       user = {
         extraGroups = [
           "disk"

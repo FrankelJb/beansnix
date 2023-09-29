@@ -6,12 +6,12 @@
 let
   inherit (lib) types mkEnableOption mkIf getExe getExe';
   inherit (lib.internal) mkOpt enabled;
-  inherit (config.khanelinix) user;
+  inherit (config.beansnix) user;
 
-  cfg = config.khanelinix.tools.git;
+  cfg = config.beansnix.tools.git;
 in
 {
-  options.khanelinix.tools.git = {
+  options.beansnix.tools.git = {
     enable = mkEnableOption "Git";
     includes = mkOpt (types.listOf types.attrs) [ ] "Git includeIf paths and conditions.";
     signByDefault = mkOpt types.bool true "Whether to sign commits by default.";
@@ -347,7 +347,7 @@ in
           text = "";
         };
         ".agent-bridge.sh" = mkIf cfg.wslAgentBridge {
-          source = getExe pkgs.khanelinix.wsl-agent-bridge;
+          source = getExe pkgs.beansnix.wsl-agent-bridge;
         };
       };
 

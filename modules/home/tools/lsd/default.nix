@@ -7,10 +7,10 @@ let
   inherit (lib) mkIf;
   inherit (lib.internal) mkBoolOpt;
 
-  cfg = config.khanelinix.tools.lsd;
+  cfg = config.beansnix.tools.lsd;
 in
 {
-  options.khanelinix.tools.lsd = {
+  options.beansnix.tools.lsd = {
     enable = mkBoolOpt false "Whether or not to enable lsd.";
   };
 

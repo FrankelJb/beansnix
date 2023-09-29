@@ -6,10 +6,10 @@ let
   inherit (lib) mkIf;
   inherit (lib.internal) mkBoolOpt;
 
-  cfg = config.khanelinix.nix;
+  cfg = config.beansnix.nix;
 in
 {
-  options.khanelinix.nix = {
+  options.beansnix.nix = {
     enable = mkBoolOpt true "Whether or not to manage nix configuration.";
   };
 

@@ -5,10 +5,10 @@
 let
   inherit (lib) mkEnableOption mkIf mkOption types literalExpression;
 
-  cfg = config.khanelinix.services.mpd;
+  cfg = config.beansnix.services.mpd;
 in
 {
-  options.khanelinix.services.mpd = {
+  options.beansnix.services.mpd = {
     enable = mkEnableOption "mpd";
     musicDirectory = mkOption {
       type = with types; either path str;

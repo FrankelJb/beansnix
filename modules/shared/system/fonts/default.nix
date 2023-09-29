@@ -8,10 +8,10 @@ let
   inherit (lib) types mkIf;
   inherit (lib.internal) mkBoolOpt mkOpt enabled;
 
-  cfg = config.khanelinix.system.fonts;
+  cfg = config.beansnix.system.fonts;
 in
 {
-  options.khanelinix.system.fonts = with types; {
+  options.beansnix.system.fonts = with types; {
     enable = mkBoolOpt false "Whether or not to manage fonts.";
     fonts = with pkgs;
       mkOpt (listOf package) [

@@ -8,10 +8,10 @@ let
   inherit (lib) mkIf;
   inherit (lib.internal) mkBoolOpt;
 
-  cfg = config.khanelinix.desktop.addons.swaynotificationcenter;
+  cfg = config.beansnix.desktop.addons.swaynotificationcenter;
 in
 {
-  options.khanelinix.desktop.addons.swaynotificationcenter = {
+  options.beansnix.desktop.addons.swaynotificationcenter = {
     enable =
       mkBoolOpt false "Whether to enable swaynotificationcenter in the desktop environment.";
   };
@@ -22,7 +22,7 @@ in
       libnotify
     ];
 
-    khanelinix.home = {
+    beansnix.home = {
       configFile."swaync/" = {
         source = lib.cleanSourceWith {
           src = lib.cleanSource ./config/.;

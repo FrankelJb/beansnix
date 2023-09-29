@@ -5,10 +5,10 @@
 let
   inherit (lib) mkEnableOption mkIf;
 
-  cfg = config.khanelinix.apps.caprine;
+  cfg = config.beansnix.apps.caprine;
 in
 {
-  options.khanelinix.apps.caprine = {
+  options.beansnix.apps.caprine = {
     enable = mkEnableOption "caprine";
   };
 

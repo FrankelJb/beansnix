@@ -6,10 +6,10 @@
 let
   inherit (lib) mkEnableOption mkIf;
 
-  cfg = config.khanelinix.system.shell.zsh;
+  cfg = config.beansnix.system.shell.zsh;
 in
 {
-  options.khanelinix.system.shell.zsh = {
+  options.beansnix.system.shell.zsh = {
     enable = mkEnableOption "ZSH";
   };
 

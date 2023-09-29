@@ -8,10 +8,10 @@ let
   inherit (lib) mkIf;
   inherit (lib.internal) mkBoolOpt;
 
-  cfg = config.khanelinix.tools.bat;
+  cfg = config.beansnix.tools.bat;
 in
 {
-  options.khanelinix.tools.bat = {
+  options.beansnix.tools.bat = {
     enable = mkBoolOpt false "Whether or not to enable bat.";
   };
 

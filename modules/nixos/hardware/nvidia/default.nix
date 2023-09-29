@@ -7,10 +7,10 @@
 let
   inherit (lib) mkIf;
   inherit (lib.internal) mkBoolOpt;
-  cfg = config.khanelinix.hardware.nvidia;
+  cfg = config.beansnix.hardware.nvidia;
 in
 {
-  options.khanelinix.hardware.nvidia = {
+  options.beansnix.hardware.nvidia = {
     enable =
       mkBoolOpt false
         "Whether or not to enable support for nvidia.";

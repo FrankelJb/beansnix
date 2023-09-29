@@ -8,10 +8,10 @@ let
   inherit (lib) mkIf;
   inherit (lib.internal) mkBoolOpt;
 
-  cfg = config.khanelinix.tools.spicetify-cli;
+  cfg = config.beansnix.tools.spicetify-cli;
 in
 {
-  options.khanelinix.tools.spicetify-cli = {
+  options.beansnix.tools.spicetify-cli = {
     enable = mkBoolOpt false "Whether or not to enable spicetify-cli.";
   };
 

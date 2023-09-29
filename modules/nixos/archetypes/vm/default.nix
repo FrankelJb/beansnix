@@ -7,16 +7,16 @@ let
   inherit (lib) mkIf;
   inherit (lib.internal) mkBoolOpt enabled;
 
-  cfg = config.khanelinix.archetypes.vm;
+  cfg = config.beansnix.archetypes.vm;
 in
 {
-  options.khanelinix.archetypes.vm = {
+  options.beansnix.archetypes.vm = {
     enable =
       mkBoolOpt false "Whether or not to enable the vm archetype.";
   };
 
   config = mkIf cfg.enable {
-    khanelinix = {
+    beansnix = {
       suites = {
         common = enabled;
         desktop = enabled;

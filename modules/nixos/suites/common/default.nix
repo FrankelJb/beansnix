@@ -7,7 +7,7 @@ let
   inherit (lib) mkIf;
   inherit (lib.internal) enabled;
 
-  cfg = config.khanelinix.suites.common;
+  cfg = config.beansnix.suites.common;
 in
 {
   imports = [ ../../../shared/suites/common/default.nix ];
@@ -20,15 +20,15 @@ in
       feh
       fzf
       jq
-      khanelinix.trace-symlink
-      khanelinix.trace-which
+      beansnix.trace-symlink
+      beansnix.trace-which
       ncdu
       toilet
       upower
       util-linux
     ];
 
-    khanelinix = {
+    beansnix = {
       cli-apps = {
         ranger = enabled;
       };

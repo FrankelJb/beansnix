@@ -8,10 +8,10 @@ let
   inherit (lib) mkIf;
   inherit (lib.internal) mkBoolOpt;
 
-  cfg = config.khanelinix.apps.steam;
+  cfg = config.beansnix.apps.steam;
 in
 {
-  options.khanelinix.apps.steam = {
+  options.beansnix.apps.steam = {
     enable = mkBoolOpt false "Whether or not to enable support for Steam.";
   };
 

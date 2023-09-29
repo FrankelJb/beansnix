@@ -11,11 +11,11 @@ let
   inherit (lib.internal) mkBoolOpt mkOpt enabled;
   inherit (inputs) hyprland-contrib hyprland;
 
-  cfg = config.khanelinix.desktop.hyprland;
+  cfg = config.beansnix.desktop.hyprland;
   programs = lib.makeBinPath [ config.programs.hyprland.package ];
 in
 {
-  options.khanelinix.desktop.hyprland = with types; {
+  options.beansnix.desktop.hyprland = with types; {
     enable = mkBoolOpt false "Whether or not to enable Hyprland.";
     customConfigFiles = mkOpt attrs { } "Custom configuration files that can be used to override the default files.";
     customFiles = mkOpt attrs { } "Custom files that can be used to override the default files.";
@@ -47,10 +47,10 @@ in
           hyprpaper
           hyprpicker
           hyprland-contrib.packages.${hostPlatform.system}.grimblast
-          khanelinix.record_screen
+          beansnix.record_screen
         ];
 
-        khanelinix = {
+        beansnix = {
           apps = {
             partitionmanager = enabled;
             gamemode = {

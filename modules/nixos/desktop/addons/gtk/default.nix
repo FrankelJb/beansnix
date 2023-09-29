@@ -8,12 +8,12 @@ let
   inherit (lib) types mkIf mapAttrs mkDefault;
   inherit (lib.internal) mkBoolOpt mkOpt;
 
-  cfg = config.khanelinix.desktop.addons.gtk;
+  cfg = config.beansnix.desktop.addons.gtk;
   default-attrs = mapAttrs (_key: mkDefault);
   nested-default-attrs = mapAttrs (_key: default-attrs);
 in
 {
-  options.khanelinix.desktop.addons.gtk = with types; {
+  options.beansnix.desktop.addons.gtk = with types; {
     enable = mkBoolOpt false "Whether to customize GTK and apply themes.";
     cursor = {
       name =
@@ -70,7 +70,7 @@ in
       udev.packages = with pkgs; [ gnome.gnome-settings-daemon ];
     };
 
-    khanelinix.home = {
+    beansnix.home = {
       extraOptions = {
         dconf = {
           enable = true;
@@ -81,7 +81,7 @@ in
               cursor-size = cfg.cursor.size;
               cursor-theme = cfg.cursor.name;
               enable-hot-corners = false;
-              font-name = config.khanelinix.system.fonts.default;
+              font-name = config.beansnix.system.fonts.default;
               gtk-theme = cfg.theme.name;
               icon-theme = cfg.icon.name;
             };
@@ -97,7 +97,7 @@ in
           };
 
           font = {
-            name = config.khanelinix.system.fonts.default;
+            name = config.beansnix.system.fonts.default;
           };
 
           gtk3.extraConfig = {

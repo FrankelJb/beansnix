@@ -5,12 +5,12 @@
 , ...
 }:
 let
-  cfg = config.khanelinix.services.avahi;
+  cfg = config.beansnix.services.avahi;
 
   inherit (lib) mkEnableOption mkIf mkMerge mkOrder optionals;
 in
 {
-  options.khanelinix.services.avahi = {
+  options.beansnix.services.avahi = {
     enable = mkEnableOption "Avahi";
   };
 

@@ -7,10 +7,10 @@ let
   inherit (lib) mkIf;
   inherit (lib.internal) mkBoolOpt;
 
-  cfg = config.khanelinix.cli-apps.lazygit;
+  cfg = config.beansnix.cli-apps.lazygit;
 in
 {
-  options.khanelinix.cli-apps.lazygit = {
+  options.beansnix.cli-apps.lazygit = {
     enable = mkBoolOpt false "Whether or not to enable lazygit.";
   };
 

@@ -1,5 +1,5 @@
 {
-  description = "KhaneliNix";
+  description = "beansnix";
 
   inputs = {
 
@@ -166,7 +166,7 @@
       };
     in
     lib.mkFlake {
-      package-namespace = "khanelinix";
+      package-namespace = "beansnix";
 
       channels-config = {
         # allowBroken = true;

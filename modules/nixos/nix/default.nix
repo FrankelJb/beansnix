@@ -5,7 +5,7 @@
 let
   inherit (lib) mkIf;
 
-  cfg = config.khanelinix.nix;
+  cfg = config.beansnix.nix;
 in
 {
   imports = [ ../../shared/nix/default.nix ];

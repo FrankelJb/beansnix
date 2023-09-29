@@ -8,10 +8,10 @@ let
   inherit (lib) mkIf;
   inherit (lib.internal) mkBoolOpt;
 
-  cfg = config.khanelinix.apps.dolphin;
+  cfg = config.beansnix.apps.dolphin;
 in
 {
-  options.khanelinix.apps.dolphin = {
+  options.beansnix.apps.dolphin = {
     enable = mkBoolOpt false "Whether or not to enable Dolphin.";
   };
 

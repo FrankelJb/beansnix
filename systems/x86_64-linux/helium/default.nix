@@ -1,16 +1,15 @@
-{ config
-, pkgs
-, lib
-, ...
-}:
-let
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}: let
   inherit (lib) getExe;
   inherit (lib.internal) enabled;
-in
-{
-  imports = [ ./hardware.nix ];
+in {
+  imports = [./hardware.nix];
 
-  khanelinix = {
+  beansnix = {
     nix = enabled;
 
     archetypes = {
@@ -29,7 +28,7 @@ in
 
         customFiles = {
           ".screenlayout/primary.sh".source = pkgs.writeShellApplication {
-            name = "khanelinix-xorg-primary.sh";
+            name = "beansnix-xorg-primary.sh";
             checkPhase = "";
             text = ''
               ${getExe pkgs.xorg.xrandr} \
@@ -58,44 +57,36 @@ in
       nvidia = enabled;
       opengl = enabled;
 
-      rgb = {
-        enable = true;
-        ckbNextConfig = ./ckb-next/ckb-next.conf;
-      };
-
-      storage = {
-        enable = true;
-        btrfs = {
-          enable = true;
-          autoScrub = true;
-          dedupe = true;
-
-          dedupeFilesystems = [
-            "nixos"
-            "BtrProductive"
-          ];
-
-          scrubMounts = [
-            "/"
-            "/mnt/steam"
-          ];
-        };
-      };
-
+      # storage = {
+      #   enable = true;
+      #   btrfs = {
+      #     enable = true;
+      #     autoScrub = true;
+      #     dedupe = true;
+      #
+      #     dedupeFilesystems = [
+      #       "nixos"
+      #       "BtrProductive"
+      #     ];
+      #
+      #     scrubMounts = [
+      #       "/"
+      #       "/mnt/steam"
+      #     ];
+      #   };
+      # };
     };
 
     services = {
       avahi = enabled;
-      barrier = enabled;
       geoclue = enabled;
-      printing = enabled;
 
       snapper = {
         enable = true;
 
         configs = {
           Documents = {
-            ALLOW_USERS = [ "khaneliman" ];
+            ALLOW_USERS = ["khaneliman"];
             SUBVOLUME = "/home/khaneliman/Documents";
             TIMELINE_CLEANUP = true;
             TIMELINE_CREATE = true;
@@ -107,64 +98,32 @@ in
         enable = true;
 
         authorizedKeys = [
-          "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIEpfTVxQKmkAYOrsnroZoTk0LewcBIC4OjlsoJY6QbB0"
-          "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAINBG8l3jQ2EPLU+BlgtaQZpr4xr97n2buTLAZTxKHSsD"
-          "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIM7UBwfd7+K0mdkAIb2TE6RzMu6L4wZnG/anuoYqJMPB"
         ];
 
-        # TODO: make part of ssh config proper 
+        # TODO: make part of ssh config proper
         extraConfig = ''
           Host server
-            User ${config.khanelinix.user.name}
-            Hostname austinserver.local
+            User ${config.beansnix.user.name}
+            Hostname helium.localdomain
         '';
-      };
-
-      # TODO: Set up shares
-      samba = {
-        enable = true;
-
-        shares = {
-          public = {
-            browseable = true;
-            comment = "Home Public folder";
-            only-owner-editable = false;
-            path = "/home/${config.khanelinix.user.name}/Public/";
-            public = true;
-            read-only = false;
-          };
-
-          games = {
-            browseable = true;
-            comment = "Games folder";
-            only-owner-editable = true;
-            path = "/mnt/games/";
-            public = true;
-            read-only = false;
-          };
-        };
       };
     };
 
     security = {
-      doas = enabled;
-      keyring = enabled;
       sops = {
         enable = true;
-        sshKeyPaths = [ "/etc/ssh/ssh_host_ed25519_key" ];
-        defaultSopsFile = ../../../secrets/khanelinix/default.yaml;
+        sshKeyPaths = ["/etc/ssh/ssh_host_ed25519_key"];
+        defaultSopsFile = ../../../secrets/beansnix/default.yaml;
       };
     };
 
     suites = {
       development = {
         enable = true;
-        dockerEnable = true;
         gameEnable = true;
         nixEnable = true;
         nodeEnable = true;
         rustEnable = true;
-        sqlEnable = true;
       };
       emulation = enabled;
     };
@@ -187,9 +146,9 @@ in
     # 	05:00.1 Audio device [0403]: NVIDIA Corporation GA102 High Definition Audio Controller [10de:1aef] (rev a1)
     virtualisation.kvm = {
       enable = true;
-      machineUnits = [ "machine-qemu\\x2d4\\x2dwin11\\x2dGPU.scope" ];
+      machineUnits = ["machine-qemu\\x2d4\\x2dwin11\\x2dGPU.scope"];
       platform = "amd";
-      vfioIds = [ "10de:2206" "10de:1aef" ];
+      vfioIds = ["10de:2206" "10de:1aef"];
     };
   };
 

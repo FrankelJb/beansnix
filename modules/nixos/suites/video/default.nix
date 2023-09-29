@@ -8,10 +8,10 @@ let
   inherit (lib) mkIf;
   inherit (lib.internal) mkBoolOpt enabled;
 
-  cfg = config.khanelinix.suites.video;
+  cfg = config.beansnix.suites.video;
 in
 {
-  options.khanelinix.suites.video = {
+  options.beansnix.suites.video = {
     enable = mkBoolOpt false "Whether or not to enable video configuration.";
   };
 
@@ -22,7 +22,7 @@ in
       vlc
     ];
 
-    khanelinix = {
+    beansnix = {
       apps = {
         obs = enabled;
       };

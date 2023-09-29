@@ -8,7 +8,7 @@ let
   inherit (lib) types mkIf getExe getExe';
   inherit (lib.internal) mkBoolOpt mkOpt;
 
-  cfg = config.khanelinix.display-managers.regreet;
+  cfg = config.beansnix.display-managers.regreet;
   greetdSwayConfig = pkgs.writeText "greetd-sway-config" ''
     exec dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY SWAYSOCK
     exec systemctl --user import-environment
@@ -19,7 +19,7 @@ let
       tap enabled
     }
 
-    seat seat0 xcursor_theme ${config.khanelinix.desktop.addons.gtk.cursor.name} 24
+    seat seat0 xcursor_theme ${config.beansnix.desktop.addons.gtk.cursor.name} 24
 
     xwayland disable
 
@@ -36,7 +36,7 @@ let
   '';
 in
 {
-  options.khanelinix.display-managers.regreet = with types; {
+  options.beansnix.display-managers.regreet = with types; {
     enable = mkBoolOpt false "Whether or not to enable greetd.";
     swayOutput = mkOpt lines "" "Sway Outputs config.";
   };
@@ -45,9 +45,9 @@ in
     mkIf cfg.enable
       {
         environment.systemPackages = [
-          config.khanelinix.desktop.addons.gtk.cursor.pkg
-          config.khanelinix.desktop.addons.gtk.icon.pkg
-          config.khanelinix.desktop.addons.gtk.theme.pkg
+          config.beansnix.desktop.addons.gtk.cursor.pkg
+          config.beansnix.desktop.addons.gtk.icon.pkg
+          config.beansnix.desktop.addons.gtk.theme.pkg
           pkgs.vulkan-validation-layers
         ];
 
@@ -56,16 +56,16 @@ in
 
           settings = {
             background = {
-              path = pkgs.khanelinix.wallpapers.flatppuccin_macchiato;
+              path = pkgs.beansnix.wallpapers.flatppuccin_macchiato;
               fit = "Cover";
             };
 
             GTK = {
               application_prefer_dark_theme = true;
-              cursor_theme_name = "${config.khanelinix.desktop.addons.gtk.cursor.name}";
-              font_name = "${config.khanelinix.system.fonts.default} * 12";
-              icon_theme_name = "${config.khanelinix.desktop.addons.gtk.icon.name}";
-              theme_name = "${config.khanelinix.desktop.addons.gtk.theme.name}";
+              cursor_theme_name = "${config.beansnix.desktop.addons.gtk.cursor.name}";
+              font_name = "${config.beansnix.system.fonts.default} * 12";
+              icon_theme_name = "${config.beansnix.desktop.addons.gtk.icon.name}";
+              theme_name = "${config.beansnix.desktop.addons.gtk.theme.name}";
             };
           };
         };

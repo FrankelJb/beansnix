@@ -8,10 +8,10 @@ let
   inherit (lib) mkIf;
   inherit (lib.internal) mkBoolOpt enabled;
 
-  cfg = config.khanelinix.suites.development;
+  cfg = config.beansnix.suites.development;
 in
 {
-  options.khanelinix.suites.development = {
+  options.beansnix.suites.development = {
     enable =
       mkBoolOpt false
         "Whether or not to enable common development configuration.";
@@ -75,7 +75,7 @@ in
       mysql-workbench
     ];
 
-    khanelinix = {
+    beansnix = {
       cli-apps = {
         lazydocker.enable = cfg.dockerEnable;
         prisma = enabled;

@@ -8,10 +8,10 @@ let
   inherit (lib) mkIf;
   inherit (lib.internal) mkBoolOpt;
 
-  cfg = config.khanelinix.cli-apps.yubikey;
+  cfg = config.beansnix.cli-apps.yubikey;
 in
 {
-  options.khanelinix.cli-apps.yubikey = {
+  options.beansnix.cli-apps.yubikey = {
     enable = mkBoolOpt false "Whether or not to enable Yubikey.";
   };
 

@@ -8,10 +8,10 @@ let
   inherit (lib) mkIf;
   inherit (lib.internal) mkBoolOpt;
 
-  cfg = config.khanelinix.desktop.addons.wofi;
+  cfg = config.beansnix.desktop.addons.wofi;
 in
 {
-  options.khanelinix.desktop.addons.wofi = {
+  options.beansnix.desktop.addons.wofi = {
     enable =
       mkBoolOpt false "Whether to enable the Wofi in the desktop environment.";
   };
@@ -22,7 +22,7 @@ in
       wofi-emoji
     ];
 
-    khanelinix.home.configFile = {
+    beansnix.home.configFile = {
       "wofi/config".source = ./config;
       "wofi/style.css".source = ./style.css;
     };

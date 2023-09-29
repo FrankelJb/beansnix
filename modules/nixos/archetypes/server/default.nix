@@ -7,16 +7,16 @@ let
   inherit (lib) mkIf;
   inherit (lib.internal) mkBoolOpt enabled;
 
-  cfg = config.khanelinix.archetypes.server;
+  cfg = config.beansnix.archetypes.server;
 in
 {
-  options.khanelinix.archetypes.server = {
+  options.beansnix.archetypes.server = {
     enable =
       mkBoolOpt false "Whether or not to enable the server archetype.";
   };
 
   config = mkIf cfg.enable {
-    khanelinix = {
+    beansnix = {
       suites = {
         common = enabled;
       };

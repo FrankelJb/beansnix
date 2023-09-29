@@ -8,10 +8,10 @@ let
   inherit (lib) mkIf;
   inherit (lib.internal) mkBoolOpt;
 
-  cfg = config.khanelinix.desktop.addons.swappy;
+  cfg = config.beansnix.desktop.addons.swappy;
 in
 {
-  options.khanelinix.desktop.addons.swappy = {
+  options.beansnix.desktop.addons.swappy = {
     enable =
       mkBoolOpt false "Whether to enable Swappy in the desktop environment.";
   };
@@ -19,7 +19,7 @@ in
   config = mkIf cfg.enable {
     environment.systemPackages = with pkgs; [ swappy ];
 
-    khanelinix.home = {
+    beansnix.home = {
       configFile."swappy/config".source = ./config;
       file."Pictures/screenshots/.keep".text = "";
     };

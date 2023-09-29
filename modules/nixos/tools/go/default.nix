@@ -8,10 +8,10 @@ let
   inherit (lib) mkIf;
   inherit (lib.internal) mkBoolOpt;
 
-  cfg = config.khanelinix.tools.go;
+  cfg = config.beansnix.tools.go;
 in
 {
-  options.khanelinix.tools.go = {
+  options.beansnix.tools.go = {
     enable = mkBoolOpt false "Whether or not to enable Go support.";
   };
 

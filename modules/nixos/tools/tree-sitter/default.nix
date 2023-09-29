@@ -8,10 +8,10 @@ let
   inherit (lib) mkIf;
   inherit (lib.internal) mkBoolOpt;
 
-  cfg = config.khanelinix.tools.tree-sitter;
+  cfg = config.beansnix.tools.tree-sitter;
 in
 {
-  options.khanelinix.tools.tree-sitter = {
+  options.beansnix.tools.tree-sitter = {
     enable = mkBoolOpt false "Whether or not to enable tree-sitter.";
   };
 

@@ -8,10 +8,10 @@ let
   inherit (lib) mkIf;
   inherit (lib.internal) mkBoolOpt;
 
-  cfg = config.khanelinix.tools.git;
+  cfg = config.beansnix.tools.git;
 in
 {
-  options.khanelinix.tools.git = {
+  options.beansnix.tools.git = {
     enable = mkBoolOpt false "Whether or not to install and configure git.";
   };
 

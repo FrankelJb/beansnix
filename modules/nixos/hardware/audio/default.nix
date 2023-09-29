@@ -8,10 +8,10 @@ let
   inherit (lib) types mkIf mkForce getExe';
   inherit (lib.internal) mkBoolOpt mkOpt;
 
-  cfg = config.khanelinix.hardware.audio;
+  cfg = config.beansnix.hardware.audio;
 in
 {
-  options.khanelinix.hardware.audio = with types; {
+  options.beansnix.hardware.audio = with types; {
     enable = mkBoolOpt false "Whether or not to enable audio support.";
     alsa-monitor = mkOpt attrs { } "Alsa configuration.";
     extra-packages = mkOpt (listOf package) [
@@ -37,7 +37,7 @@ in
 
     hardware.pulseaudio.enable = mkForce false;
 
-    khanelinix = {
+    beansnix = {
       home.extraOptions = {
         systemd.user.services.mpris-proxy = {
           Unit.Description = "Mpris proxy";

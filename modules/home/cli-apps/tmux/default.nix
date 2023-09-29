@@ -8,7 +8,7 @@ let
   inherit (lib) mkIf;
   inherit (lib.internal) mkBoolOpt;
 
-  cfg = config.khanelinix.cli-apps.tmux;
+  cfg = config.beansnix.cli-apps.tmux;
   configFiles = lib.snowfall.fs.get-files ./config;
 
   plugins =
@@ -42,7 +42,7 @@ let
     ];
 in
 {
-  options.khanelinix.cli-apps.tmux = {
+  options.beansnix.cli-apps.tmux = {
     enable = mkBoolOpt false "Whether or not to enable tmux.";
   };
 

@@ -4,7 +4,7 @@
 }:
 let
   inherit (lib) mkIf getExe;
-  cfg = config.khanelinix.desktop.hyprland;
+  cfg = config.beansnix.desktop.hyprland;
 in
 {
   config =

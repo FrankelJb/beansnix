@@ -8,10 +8,10 @@ let
   inherit (lib) mkIf;
   inherit (lib.internal) mkBoolOpt enabled;
 
-  cfg = config.khanelinix.suites.desktop;
+  cfg = config.beansnix.suites.desktop;
 in
 {
-  options.khanelinix.suites.desktop = {
+  options.beansnix.suites.desktop = {
     enable =
       mkBoolOpt false "Whether or not to enable common desktop configuration.";
   };
@@ -27,10 +27,10 @@ in
       fontpreview
       gparted
       keepass
-      pkgs.khanelinix.pocketcasts
+      pkgs.beansnix.pocketcasts
     ];
 
-    khanelinix = {
+    beansnix = {
       apps = {
         _1password = enabled;
         firefox = enabled;

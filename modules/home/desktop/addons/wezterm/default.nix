@@ -8,10 +8,10 @@ let
   inherit (lib) mkIf;
   inherit (lib.internal) mkBoolOpt;
 
-  cfg = config.khanelinix.desktop.addons.wezterm;
+  cfg = config.beansnix.desktop.addons.wezterm;
 in
 {
-  options.khanelinix.desktop.addons.wezterm = {
+  options.beansnix.desktop.addons.wezterm = {
     enable = mkBoolOpt false "Whether or not to enable wezterm.";
   };
 

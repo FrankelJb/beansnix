@@ -8,10 +8,10 @@ let
   inherit (lib) mkIf getExe;
   inherit (lib.internal) mkBoolOpt;
 
-  cfg = config.khanelinix.display-managers.tuigreet;
+  cfg = config.beansnix.display-managers.tuigreet;
 in
 {
-  options.khanelinix.display-managers.tuigreet = {
+  options.beansnix.display-managers.tuigreet = {
     enable = mkBoolOpt false "Whether or not to enable tuigreet.";
   };
 

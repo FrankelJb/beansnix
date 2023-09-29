@@ -9,7 +9,7 @@ in
     WLR_NO_HARDWARE_CURSORS=1
   '';
 
-  khanelinix = {
+  beansnix = {
     nix = enabled;
 
     archetypes = {

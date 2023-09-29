@@ -8,10 +8,10 @@ let
   inherit (lib) mkIf;
   inherit (lib.internal) mkBoolOpt;
 
-  cfg = config.khanelinix.hardware.storage;
+  cfg = config.beansnix.hardware.storage;
 in
 {
-  options.khanelinix.hardware.storage = {
+  options.beansnix.hardware.storage = {
     enable =
       mkBoolOpt false
         "Whether or not to enable support for extra storage devices.";

@@ -5,7 +5,7 @@
 let
   inherit (lib) mkEnableOption mkIf;
 
-  cfg = config.khanelinix.system.xdg;
+  cfg = config.beansnix.system.xdg;
 
   browser = [ "firefox.desktop" ];
   editor = [ "nvim.desktop" ];
@@ -148,7 +148,7 @@ let
   };
 in
 {
-  options.khanelinix.system.xdg = {
+  options.beansnix.system.xdg = {
     enable = mkEnableOption "xdg";
   };
 

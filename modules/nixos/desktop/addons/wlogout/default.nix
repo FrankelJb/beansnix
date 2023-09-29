@@ -8,10 +8,10 @@ let
   inherit (lib) mkIf;
   inherit (lib.internal) mkBoolOpt;
 
-  cfg = config.khanelinix.desktop.addons.wlogout;
+  cfg = config.beansnix.desktop.addons.wlogout;
 in
 {
-  options.khanelinix.desktop.addons.wlogout = {
+  options.beansnix.desktop.addons.wlogout = {
     enable =
       mkBoolOpt false "Whether to enable wlogout in the desktop environment.";
   };
@@ -19,7 +19,7 @@ in
   config = mkIf cfg.enable {
     environment.systemPackages = with pkgs; [ wlogout ];
 
-    khanelinix.home = {
+    beansnix.home = {
       configFile = {
         "wlogout/layout".text = ''
           {
