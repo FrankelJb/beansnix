@@ -18,7 +18,7 @@ in
 
     apps = {
       firefox = enabled;
-      vscode = enabled;
+      # vscode = enabled;
     };
 
     desktop = {

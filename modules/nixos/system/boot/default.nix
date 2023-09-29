@@ -1,42 +1,60 @@
-{ options
-, config
-, pkgs
+{ config
 , lib
+, options
+, pkgs
 , ...
 }:
 let
   inherit (lib) mkIf;
   inherit (lib.internal) mkBoolOpt;
+
   cfg = config.khanelinix.system.boot;
 in
 {
   options.khanelinix.system.boot = {
     enable = mkBoolOpt false "Whether or not to enable booting.";
+    plymouth = mkBoolOpt false "Whether or not to enable plymouth boot splash.";
+    secureBoot = mkBoolOpt false "Whether or not to enable secure boot.";
   };
 
   config = mkIf cfg.enable {
+    environment.systemPackages = with pkgs;  [
+      efibootmgr
+      efitools
+      efivar
+      fwupd
+    ] ++ lib.optionals cfg.secureBoot [
+      sbctl
+    ];
+
     boot = {
-      kernelParams = [ "quiet" "splash" ];
+      kernelParams = lib.optionals cfg.plymouth [ "quiet" ];
+
+      lanzaboote = mkIf cfg.secureBoot {
+        enable = true;
+        pkiBundle = "/etc/secureboot";
+      };
 
       loader = {
-        # https://github.com/NixOS/nixpkgs/blob/c32c39d6f3b1fe6514598fa40ad2cf9ce22c3fb7/nixos/modules/system/systemd-boot/systemd-boot.nix#L66
-        systemd-boot = {
-          enable = true;
-          configurationLimit = 20;
-          editor = false;
-        };
         efi = {
           canTouchEfiVariables = true;
-          efiSysMountPoint = "/boot/efi";
+          efiSysMountPoint = "/boot";
+        };
+
+        systemd-boot = {
+          enable = !cfg.secureBoot;
+          configurationLimit = 20;
+          editor = false;
         };
       };
 
       plymouth = {
-        enable = true;
-        themePackages = [ pkgs.catppuccin-plymouth ];
+        enable = cfg.plymouth;
         theme = "catppuccin-macchiato";
-        # font = "${pkgs.noto-fonts}/share/fonts/truetype/noto/NotoSans-Light.ttf";
+        themePackages = [ pkgs.catppuccin-plymouth ];
       };
     };
+
+    services.fwupd.enable = true;
   };
 }

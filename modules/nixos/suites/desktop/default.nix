@@ -1,6 +1,6 @@
-{ options
-, config
+{ config
 , lib
+, options
 , pkgs
 , ...
 }:
@@ -25,10 +25,17 @@ in
       dupeguru
       filelight
       fontpreview
+      gparted
       keepass
+      pkgs.khanelinix.pocketcasts
     ];
 
     khanelinix = {
+      apps = {
+        _1password = enabled;
+        firefox = enabled;
+      };
+
       desktop = {
         hyprland = enabled;
 
@@ -37,13 +44,6 @@ in
           qt = enabled;
           wallpapers = enabled;
         };
-      };
-
-      apps = {
-        _1password = enabled;
-        firefox = enabled;
-        gparted = enabled;
-        pocketcasts = enabled;
       };
     };
   };

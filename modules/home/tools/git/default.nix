@@ -1,5 +1,5 @@
-{ lib
-, config
+{ config
+, lib
 , pkgs
 , ...
 }:
@@ -13,13 +13,13 @@ in
 {
   options.khanelinix.tools.git = {
     enable = mkEnableOption "Git";
-    userName = mkOpt types.str user.fullName "The name to configure git with.";
-    userEmail = mkOpt types.str user.email "The email to configure git with.";
+    includes = mkOpt (types.listOf types.attrs) [ ] "Git includeIf paths and conditions.";
+    signByDefault = mkOpt types.bool true "Whether to sign commits by default.";
     signingKey =
       mkOpt types.str "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIEpfTVxQKmkAYOrsnroZoTk0LewcBIC4OjlsoJY6QbB0" "The key ID to sign commits with.";
-    signByDefault = mkOpt types.bool true "Whether to sign commits by default.";
+    userName = mkOpt types.str user.fullName "The name to configure git with.";
+    userEmail = mkOpt types.str user.email "The email to configure git with.";
     wslAgentBridge = mkOpt types.bool false "Whether to enable the wsl agent bridge.";
-    includes = mkOpt (types.listOf types.attrs) [ ] "Git includeIf paths and conditions.";
   };
 
   config = mkIf cfg.enable {
@@ -112,6 +112,13 @@ in
           # Random
           ### Random dad joke if typo on git add
           dad = "!curl https://icanhazdadjoke.com/ && echo";
+
+          # Fix corrupt git repo
+          fix = "!f() {
+            find .git/objects/ -type f -empty | xargs rm
+            git fetch -p
+            git fsck --full
+          }";
 
           ### Forced Pull:
           #> You have a local branch (e.g. for reviewing), but someone else did a forced push update on the remote branch. A regular git pull will fail, but this will just set the local branch to match the remote branch. BEWARE: this will overwrite any local commits you have made on this branch that haven't been pushed.

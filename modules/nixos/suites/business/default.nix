@@ -1,6 +1,7 @@
-{ options
-, config
+{ config
 , lib
+, options
+, pkgs
 , ...
 }:
 let
@@ -15,10 +16,13 @@ in
   };
 
   config = mkIf cfg.enable {
+    environment.systemPackages = with pkgs; [
+      libreoffice
+      teams
+    ];
+
     khanelinix = {
       apps = {
-        libreoffice = enabled;
-        teams = enabled;
         thunderbird = enabled;
       };
     };

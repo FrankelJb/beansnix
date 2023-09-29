@@ -1,6 +1,6 @@
-{ options
-, config
+{ config
 , lib
+, options
 , pkgs
 , ...
 }:
@@ -16,13 +16,6 @@ in
   };
 
   config = mkIf cfg.enable {
-    # services.mpd = {
-    #   enable = true;
-    #   user = config.khanelinix.user.name;
-    # };
-
-    khanelinix.user.extraGroups = [ "mpd" ];
-
     environment.systemPackages = with pkgs; [
       ardour
       cadence
@@ -33,16 +26,21 @@ in
       spotify
       tageditor
       youtube-music
+      pkgs.khanelinix.yt-music
     ];
 
     khanelinix = {
-      apps = {
-        yt-music = enabled;
-      };
-
       tools = {
         spicetify-cli = enabled;
       };
+
+      user.extraGroups = [ "mpd" ];
     };
+
+    # TODO: ?
+    # services.mpd = {
+    #   enable = true;
+    #   user = config.khanelinix.user.name;
+    # };
   };
 }

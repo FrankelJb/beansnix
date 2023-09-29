@@ -1,6 +1,6 @@
-{ options
-, config
+{ config
 , lib
+, options
 , pkgs
 , ...
 }:
@@ -37,7 +37,6 @@ in
     khanelinix = {
       apps = {
         dolphin = enabled;
-        emulationstation = enabled;
         retroarch = enabled;
       };
     };

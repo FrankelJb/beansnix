@@ -16,6 +16,7 @@ in
     environment.systemPackages = with pkgs; [
       appimage-run
       clac
+      fastfetch
       feh
       fzf
       jq
@@ -28,11 +29,30 @@ in
     ];
 
     khanelinix = {
+      cli-apps = {
+        ranger = enabled;
+      };
+
+      hardware = {
+        power = enabled;
+      };
+
       nix = enabled;
 
-      cli-apps = {
-        fastfetch = enabled;
-        ranger = enabled;
+      security = {
+        gpg = enabled;
+      };
+
+      services = {
+        openssh = enabled;
+        printing = enabled;
+        tailscale = enabled;
+      };
+
+      system = {
+        fonts = enabled;
+        locale = enabled;
+        time = enabled;
       };
 
       tools = {
@@ -42,26 +62,6 @@ in
         git = enabled;
         glxinfo = enabled;
         nix-ld = enabled;
-      };
-
-      hardware = {
-        power = enabled;
-      };
-
-      services = {
-        openssh = enabled;
-        printing = enabled;
-        tailscale = enabled;
-      };
-
-      security = {
-        gpg = enabled;
-      };
-
-      system = {
-        fonts = enabled;
-        locale = enabled;
-        time = enabled;
       };
     };
   };

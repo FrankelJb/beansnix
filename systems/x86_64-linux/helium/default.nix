@@ -51,10 +51,6 @@ in
       };
     };
 
-    suites = {
-      emulation = enabled;
-    };
-
     hardware = {
       audio = enabled;
       bluetooth = enabled;
@@ -124,8 +120,26 @@ in
       };
     };
 
+    suites = {
+      development = {
+        enable = true;
+        dockerEnable = true;
+        gameEnable = true;
+        nixEnable = true;
+        nodeEnable = true;
+        rustEnable = true;
+        sqlEnable = true;
+      };
+      emulation = enabled;
+    };
+
     system = {
-      boot = enabled;
+      boot = {
+        enable = true;
+        secureBoot = true;
+        plymouth = true;
+      };
+
       fonts = enabled;
       locale = enabled;
       networking = enabled;

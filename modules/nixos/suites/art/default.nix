@@ -1,11 +1,12 @@
-{ options
-, config
+{ config
 , lib
+, options
+, pkgs
 , ...
 }:
 let
   inherit (lib) mkIf;
-  inherit (lib.internal) mkBoolOpt enabled;
+  inherit (lib.internal) mkBoolOpt;
 
   cfg = config.khanelinix.suites.art;
 in
@@ -15,12 +16,10 @@ in
   };
 
   config = mkIf cfg.enable {
-    khanelinix = {
-      apps = {
-        blender = enabled;
-        gimp = enabled;
-        inkscape = enabled;
-      };
-    };
+    environment.systemPackages = with pkgs; [
+      blender
+      gimp
+      inkscape-with-extensions
+    ];
   };
 }
