@@ -17,13 +17,7 @@ in
 
   config = mkIf cfg.enable {
     beansnix = {
-      cli-apps = {
-        ncmpcpp = enabled;
-      };
-
-      services = {
-        mpd = enabled;
-      };
+      cli-apps = { };
     };
   };
 }

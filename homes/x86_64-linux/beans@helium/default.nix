@@ -3,7 +3,7 @@
 , pkgs
 , ...
 }:
- let
+let
   inherit (lib.internal) enabled;
 in
 {
@@ -27,7 +27,10 @@ in
         # waybar.debug = true;
         hyprpaper = {
           monitors = [
-            { name = "DP-1"; wallpaper = "${pkgs.beansnix.wallpapers}/share/wallpapers/cat-sound.png"; }
+            {
+              name = "DP-1";
+              wallpaper = "${pkgs.beansnix.wallpapers}/share/wallpapers/cat-sound.png";
+            }
           ];
 
           wallpapers = [
@@ -55,7 +58,6 @@ in
     suites = {
       common = enabled;
       development = enabled;
-      music = enabled;
       social = enabled;
     };
 

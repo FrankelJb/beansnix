@@ -23,10 +23,7 @@ in
       mpdevil
       mpdris2
       # ncmpcpp
-      spotify
       tageditor
-      youtube-music
-      pkgs.beansnix.yt-music
     ];
 
     beansnix = {

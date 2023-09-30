@@ -19,13 +19,8 @@ in
     environment.systemPackages = with pkgs; [
       mediainfo-gui
       pitivi
+      mpv
       vlc
     ];
-
-    beansnix = {
-      apps = {
-        obs = enabled;
-      };
-    };
   };
 }

@@ -15,20 +15,6 @@ in
   };
 
   config = mkIf cfg.enable {
-    environment.systemPackages = with pkgs; [
-      armcord
-      caprine-bin
-      element-desktop
-      slack
-      slack-term
-      telegram-desktop
-    ];
-
-    beansnix = {
-      apps = {
-        # TODO: switch to armcord ? 
-        discord = enabled;
-      };
-    };
+    beansnix = { };
   };
 }

@@ -1,16 +1,15 @@
-{ config
-, lib
-, options
-, pkgs
-, ...
-}:
-let
+{
+  config,
+  lib,
+  options,
+  pkgs,
+  ...
+}: let
   inherit (lib) mkIf;
   inherit (lib.internal) mkBoolOpt enabled;
 
   cfg = config.beansnix.suites.desktop;
-in
-{
+in {
   options.beansnix.suites.desktop = {
     enable =
       mkBoolOpt false "Whether or not to enable common desktop configuration.";
@@ -18,21 +17,15 @@ in
 
   config = mkIf cfg.enable {
     environment.systemPackages = with pkgs; [
-      authy
-      barrier
       bleachbit
-      dropbox
       dupeguru
       filelight
       fontpreview
       gparted
-      keepass
-      pkgs.beansnix.pocketcasts
     ];
 
     beansnix = {
       apps = {
-        _1password = enabled;
         firefox = enabled;
       };
 

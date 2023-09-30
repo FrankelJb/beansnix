@@ -2,7 +2,6 @@
   description = "beansnix";
 
   inputs = {
-
     # Comma
     comma = {
       url = "github:nix-community/comma";
@@ -45,12 +44,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    # Secure boot 
-    lanzaboote = {
-      url = "github:nix-community/lanzaboote/v0.3.0";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
     # Personal neovim config
     # TODO: move to frankeljb
     neovim-config = {
@@ -63,7 +56,7 @@
       url = "github:nixos/nixpkgs/nixos-unstable";
     };
 
-    # NixPkgs-Wayland 
+    # NixPkgs-Wayland
     nixpkgs-wayland = {
       url = "github:nix-community/nixpkgs-wayland";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -122,7 +115,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    # SF Mono Nerd font 
+    # SF Mono Nerd font
     sf-mono-nerd-font = {
       url = "github:shaunsingh/SFMono-Nerd-Font-Ligaturized";
       flake = false;
@@ -139,7 +132,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    # Sops (Secrets) 
+    # Sops (Secrets)
     sops-nix = {
       url = "github:Mic92/sops-nix";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -152,15 +145,14 @@
     };
   };
 
-  outputs = inputs:
-    let
-      inherit (inputs) deploy-rs flake lanzaboote nur nix-ld rustup-overlay snowfall-lib snowfall-frost sops-nix;
+  outputs = inputs: let
+    inherit (inputs) deploy-rs flake nur nix-ld rustup-overlay snowfall-lib snowfall-frost sops-nix;
 
-      lib = snowfall-lib.mkLib {
-        inherit inputs;
-        src = ./.;
-      };
-    in
+    lib = snowfall-lib.mkLib {
+      inherit inputs;
+      src = ./.;
+    };
+  in
     lib.mkFlake {
       package-namespace = "beansnix";
 
@@ -189,21 +181,18 @@
           ];
 
           nixos = [
-            lanzaboote.nixosModules.lanzaboote
             nix-ld.nixosModules.nix-ld
             sops-nix.nixosModules.sops
           ];
         };
       };
 
-      deploy = lib.mkDeploy { inherit (inputs) self; };
+      deploy = lib.mkDeploy {inherit (inputs) self;};
 
       checks =
         builtins.mapAttrs
-          (_system: deploy-lib:
-
-            deploy-lib.deployChecks inputs.self.deploy)
-          deploy-rs.lib;
+        (_system: deploy-lib:
+          deploy-lib.deployChecks inputs.self.deploy)
+        deploy-rs.lib;
     };
 }
-

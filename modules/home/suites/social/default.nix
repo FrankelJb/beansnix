@@ -17,8 +17,7 @@ in
   config = mkIf cfg.enable {
     beansnix = {
       apps = {
-        armcord = enabled;
-        caprine = enabled;
+        # TODO: signal-desktop
       };
     };
   };

@@ -45,9 +45,9 @@ in {
         monitors = ./monitors.xml;
       };
 
-      regreet = {
-        swayOutput = builtins.readFile ./swayOutput;
-      };
+      # regreet = {
+      #   swayOutput = builtins.readFile ./swayOutput;
+      # };
     };
 
     hardware = {
@@ -85,7 +85,7 @@ in {
 
         configs = {
           Documents = {
-            ALLOW_USERS = [ "beans" ];
+            ALLOW_USERS = ["beans"];
             SUBVOLUME = "/home/beans/Documents";
             TIMELINE_CLEANUP = true;
             TIMELINE_CREATE = true;
@@ -97,7 +97,7 @@ in {
         enable = true;
 
         authorizedKeys = [
-        # TODO: add my own authorizedKeys
+          # TODO: add my own authorizedKeys
         ];
 
         # TODO: make part of ssh config proper
@@ -125,13 +125,11 @@ in {
         nodeEnable = true;
         rustEnable = true;
       };
-      emulation = enabled;
     };
 
     system = {
       boot = {
         enable = true;
-        secureBoot = true;
         plymouth = true;
       };
 
@@ -146,14 +144,13 @@ in {
     # 	05:00.1 Audio device [0403]: NVIDIA Corporation GA102 High Definition Audio Controller [10de:1aef] (rev a1)
     virtualisation.kvm = {
       enable = true;
-      machineUnits = ["machine-qemu\\x2d4\\x2dwin11\\x2dGPU.scope"];
-      platform = "amd";
-      vfioIds = ["10de:2206" "10de:1aef"];
+      # machineUnits = [ "machine-qemu\\x2d4\\x2dwin11\\x2dGPU.scope" ];
+      # platform = "amd";
+      # vfioIds = [ "10de:2206" "10de:1aef" ];
     };
   };
 
   services.xserver.displayManager.defaultSession = "hyprland";
-
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions

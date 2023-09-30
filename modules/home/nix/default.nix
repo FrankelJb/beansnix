@@ -16,7 +16,7 @@ in
   # TODO: remove module? 
   config = mkIf cfg.enable {
     sops.secrets.nix = {
-      sopsFile = ../../../secrets/khaneliman/default.json;
+      sopsFile = ../../../secrets/beans/default.json;
       path = "${config.home.homeDirectory}/.config/nix/nix.conf";
     };
   };

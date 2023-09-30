@@ -17,7 +17,7 @@ in
   # TODO: remove module
   config = mkIf cfg.enable {
     sops.secrets.wakatime = {
-      sopsFile = ../../../../secrets/khaneliman/default.json;
+      sopsFile = ../../../../secrets/beans/default.json;
       path = "${config.home.homeDirectory}/.wakatime.cfg";
     };
   };

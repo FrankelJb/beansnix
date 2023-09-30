@@ -20,8 +20,8 @@ in
 {
   options.beansnix.user = {
     enable = mkOpt types.bool false "Whether to configure the user account.";
-    email = mkOpt types.str "khaneliman12@gmail.com" "The email of the user.";
-    fullName = mkOpt types.str "Austin Horstman" "The full name of the user.";
+    email = mkOpt types.str "beans@habanerojam.xyz" "The email of the user.";
+    fullName = mkOpt types.str "Jonathan Frankel" "The full name of the user.";
     home = mkOpt (types.nullOr types.str) home-directory "The user's home directory.";
     name = mkOpt (types.nullOr types.str) config.snowfallorg.user.name "The user account.";
   };
