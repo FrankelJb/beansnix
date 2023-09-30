@@ -6,7 +6,7 @@
 }:
 let
   inherit (lib) types mkIf getExe';
-  inherit (lib.internal) mkBoolOpt mkOpt stringAfter;
+  inherit (lib.internal) mkBoolOpt mkOpt;#stringAfter;
 
   cfg = config.beansnix.display-managers.gdm;
   gdmHome = config.users.users.gdm.home;
@@ -83,7 +83,7 @@ in
           };
         };
 
-        system.activationScripts.postInstallGdm = stringAfter [ "users" ] ''
+        system.activationScripts.postInstallGdm = lib.stringAfter [ "users" ] ''
           echo "Setting gdm permissions for user icon"
           ${getExe' pkgs.acl "setfacl"} -m u:gdm:x /home/${config.beansnix.user.name}
           ${getExe' pkgs.acl "setfacl"} -m u:gdm:r /home/${config.beansnix.user.name}/.face.icon || true

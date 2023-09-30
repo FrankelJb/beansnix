@@ -1,13 +1,14 @@
-{
-  config,
-  pkgs,
-  lib,
-  ...
-}: let
+{ config
+, pkgs
+, lib
+, ...
+}:
+let
   inherit (lib) getExe;
   inherit (lib.internal) enabled;
-in {
-  imports = [./hardware.nix];
+in
+{
+  imports = [ ./hardware.nix ];
 
   beansnix = {
     nix = enabled;
@@ -41,9 +42,9 @@ in {
     };
 
     display-managers = {
-      gdm = {
-        monitors = ./monitors.xml;
-      };
+      # gdm = {
+      #   monitors = ./monitors.xml;
+      # };
 
       # regreet = {
       #   swayOutput = builtins.readFile ./swayOutput;
@@ -85,7 +86,7 @@ in {
 
         configs = {
           Documents = {
-            ALLOW_USERS = ["beans"];
+            ALLOW_USERS = [ "beans" ];
             SUBVOLUME = "/home/beans/Documents";
             TIMELINE_CLEANUP = true;
             TIMELINE_CREATE = true;
@@ -112,7 +113,7 @@ in {
     security = {
       sops = {
         enable = true;
-        sshKeyPaths = ["/etc/ssh/ssh_host_ed25519_key"];
+        sshKeyPaths = [ "/etc/ssh/ssh_host_ed25519_key" ];
         defaultSopsFile = ../../../secrets/beansnix/default.yaml;
       };
     };
@@ -150,7 +151,13 @@ in {
     };
   };
 
-  services.xserver.displayManager.defaultSession = "hyprland";
+  services.xserver = {
+    displayManager.defaultSession = "gnome";
+    enable = true;
+    desktopManager.gnome.enable = true;
+    displayManager.gdm.enable = true;
+    videoDrivers = [ "nvidia" ]; #TODO uncomment this
+  };
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions

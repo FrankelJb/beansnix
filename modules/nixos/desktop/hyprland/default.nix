@@ -27,20 +27,24 @@ in
       {
         environment.sessionVariables = {
           CLUTTER_BACKEND = "wayland";
+          GBM_BACKEND = "nvidia-drm";
           GDK_BACKEND = "wayland";
           HYPRLAND_LOG_WLR = "1";
+          LIBVA_DRIVER_NAME = "nvidia";
           MOZ_ENABLE_WAYLAND = "1";
           MOZ_USE_XINPUT2 = "1";
           QT_QPA_PLATFORM = "wayland";
           QT_WAYLAND_DISABLE_WINDOWDECORATION = "1";
           SDL_VIDEODRIVER = "wayland";
           WLR_RENDERER = "vulkan";
+          WLR_NO_HARDWARE_CURSORS = "1";
           XDG_CURRENT_DESKTOP = "Hyprland";
           XDG_SESSION_DESKTOP = "Hyprland";
           XDG_SESSION_TYPE = "wayland";
           _JAVA_AWT_WM_NONEREPARENTING = "1";
           __GL_GSYNC_ALLOWED = "0";
           __GL_VRR_ALLOWED = "0";
+          __GLX_VENDOR_LIBRARY_NAME = "nvidia";
         };
 
         environment.systemPackages = with pkgs; [
@@ -79,12 +83,12 @@ in
             nautilus = enabled;
             qt = enabled;
             thunar = enabled;
-            xdg-portal = enabled;
+            # xdg-portal = enabled;
           };
 
-          display-managers.regreet = {
-            enable = true;
-          };
+          # display-managers.regreet = {
+          #   enable = true;
+          # };
 
           home = {
             configFile =
@@ -113,6 +117,7 @@ in
           enable = true;
           xwayland.enable = true;
           package = hyprland.packages.${system}.hyprland;
+          enableNvidiaPatches = true;
         };
       };
 }
