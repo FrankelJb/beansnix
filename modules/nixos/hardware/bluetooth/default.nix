@@ -1,19 +1,17 @@
-{ config
-, lib
-, options
-, ...
-}:
-let
+{
+  config,
+  lib,
+  ...
+}: let
   inherit (lib) mkIf;
   inherit (lib.internal) mkBoolOpt;
 
   cfg = config.beansnix.hardware.bluetooth;
-in
-{
+in {
   options.beansnix.hardware.bluetooth = {
     enable =
       mkBoolOpt false
-        "Whether or not to enable support for extra bluetooth devices.";
+      "Whether or not to enable support for extra bluetooth devices.";
   };
 
   config = mkIf cfg.enable {

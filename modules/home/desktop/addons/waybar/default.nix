@@ -131,53 +131,57 @@ in
 
       # TODO: make dynamic
       settings = {
-        mainBar = {
-          "include" = [ ./default-modules.jsonc ] ++ lib.optional config.beansnix.desktop.hyprland.enable ./hyprland/default-modules.jsonc;
-          "layer" = "top";
-          "position" = "top";
-          "output" = "DP-1";
-          "margin-top" = 10;
-          "margin-left" = 20;
-          "margin-right" = 20;
-          # "modules-center" = [ "mpris" ];
-          "modules-left" = [
-            "custom/wlogout"
-            "hyprland/workspaces"
-            "custom/separator-left"
-            "hyprland/window"
-          ];
-          "modules-right" = [
-            "tray"
-            "custom/separator-right"
-            "group/stats"
-            "custom/separator-right"
-            "group/notifications"
-            "hyprland/submap"
-            "custom/weather"
-            "clock"
-          ];
-        } // sharedModuleDefinitions;
-        secondaryBar = {
-          "include" = [ ./default-modules.jsonc ] ++ lib.optional config.beansnix.desktop.hyprland.enable ./hyprland/default-modules.jsonc;
-          "layer" = "top";
-          "position" = "top";
-          "output" = "DP-3";
-          "margin-top" = 10;
-          "margin-left" = 20;
-          "margin-right" = 20;
-          "modules-center" = [ ];
-          "modules-left" = [
-            "custom/wlogout"
-            "hyprland/workspaces"
-            "custom/separator-left"
-            "hyprland/window"
-          ];
-          "modules-right" = [
-            "idle_inhibitor"
-            "custom/weather"
-            "clock"
-          ];
-        } // sharedModuleDefinitions;
+        mainBar =
+          {
+            "include" = [ ./default-modules.jsonc ] ++ lib.optional config.beansnix.desktop.hyprland.enable ./hyprland/default-modules.jsonc;
+            "layer" = "top";
+            "position" = "top";
+            "output" = "DP-3";
+            "margin-top" = 10;
+            "margin-left" = 20;
+            "margin-right" = 20;
+            # "modules-center" = [ "mpris" ];
+            "modules-left" = [
+              "custom/wlogout"
+              "hyprland/workspaces"
+              "custom/separator-left"
+              "hyprland/window"
+            ];
+            "modules-right" = [
+              "tray"
+              "custom/separator-right"
+              "group/stats"
+              "custom/separator-right"
+              "group/notifications"
+              "hyprland/submap"
+              "custom/weather"
+              "clock"
+            ];
+          }
+          // sharedModuleDefinitions;
+        # secondaryBar =
+        #   {
+        #     "include" = [ ./default-modules.jsonc ] ++ lib.optional config.beansnix.desktop.hyprland.enable ./hyprland/default-modules.jsonc;
+        #     "layer" = "top";
+        #     "position" = "top";
+        #     "output" = "DP-3";
+        #     "margin-top" = 10;
+        #     "margin-left" = 20;
+        #     "margin-right" = 20;
+        #     "modules-center" = [ ];
+        #     "modules-left" = [
+        #       "custom/wlogout"
+        #       "hyprland/workspaces"
+        #       "custom/separator-left"
+        #       "hyprland/window"
+        #     ];
+        #     "modules-right" = [
+        #       "idle_inhibitor"
+        #       "custom/weather"
+        #       "clock"
+        #     ];
+        #   }
+        # // sharedModuleDefinitions;
       };
 
       style = ./style.css;

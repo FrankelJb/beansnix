@@ -1,13 +1,14 @@
-{
-  config,
-  pkgs,
-  lib,
-  ...
-}: let
+{ config
+, pkgs
+, lib
+, ...
+}:
+let
   inherit (lib) getExe;
   inherit (lib.internal) enabled;
-in {
-  imports = [./hardware.nix];
+in
+{
+  imports = [ ./hardware.nix ];
 
   beansnix = {
     nix = enabled;
@@ -80,18 +81,19 @@ in {
       avahi = enabled;
       geoclue = enabled;
 
-      snapper = {
-        enable = true;
-
-        configs = {
-          Documents = {
-            ALLOW_USERS = ["beans"];
-            SUBVOLUME = "/home/beans/Documents";
-            TIMELINE_CLEANUP = true;
-            TIMELINE_CREATE = true;
-          };
-        };
-      };
+      # TODO: enable snapper maybe
+      # snapper = {
+      #   enable = true;
+      #
+      #   configs = {
+      #     Documents = {
+      #       ALLOW_USERS = [ "beans" ];
+      #       SUBVOLUME = "/home/beans/Documents";
+      #       TIMELINE_CLEANUP = true;
+      #       TIMELINE_CREATE = true;
+      #     };
+      #   };
+      # };
 
       openssh = {
         enable = true;
@@ -112,7 +114,7 @@ in {
     security = {
       sops = {
         enable = true;
-        sshKeyPaths = ["/etc/ssh/ssh_host_ed25519_key"];
+        sshKeyPaths = [ "/etc/ssh/ssh_host_ed25519_key" ];
         defaultSopsFile = ../../../secrets/beansnix/default.yaml;
       };
     };
@@ -120,7 +122,6 @@ in {
     suites = {
       development = {
         enable = true;
-        gameEnable = true;
         nixEnable = true;
         nodeEnable = true;
         rustEnable = true;
@@ -155,7 +156,7 @@ in {
     enable = true;
     # desktopManager.gnome.enable = true;
     displayManager.gdm.enable = true;
-    videoDrivers = ["nvidia"]; #TODO uncomment this
+    videoDrivers = [ "nvidia" ]; #TODO uncomment this
   };
 
   # This value determines the NixOS release from which the default

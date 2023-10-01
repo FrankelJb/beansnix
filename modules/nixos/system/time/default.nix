@@ -16,6 +16,6 @@ in
   };
 
   config = mkIf cfg.enable {
-    time.timeZone = "America/Chicago";
+    time.timeZone = "Asia/Singapore";
   };
 }

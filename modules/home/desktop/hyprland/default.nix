@@ -63,7 +63,7 @@ in
 
           settings = {
             exec = [
-              "notify-send --icon ~/.face -u normal \"Hello $(whoami)\""
+              "notify-send -u normal \"Hello $(whoami)\""
             ];
           };
 

@@ -29,13 +29,13 @@ in
           monitors = [
             {
               name = "DP-3";
-              wallpaper = "${pkgs.beansnix.wallpapers}/share/wallpapers/cat-sound.png";
+              wallpaper = "${pkgs.beansnix.wallpapers}/share/wallpapers/rho-cloud.png";
             }
           ];
 
           wallpapers = [
             # TODO: add my wallpapers
-            "${pkgs.beansnix.wallpapers}/share/wallpapers/tetris.png"
+            "${pkgs.beansnix.wallpapers}/share/wallpapers/rho-cloud.png"
           ];
         };
       };

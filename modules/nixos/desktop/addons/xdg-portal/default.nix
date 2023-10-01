@@ -1,15 +1,16 @@
-{
-  config,
-  lib,
-  options,
-  pkgs,
-  ...
-}: let
+{ config
+, lib
+, options
+, pkgs
+, ...
+}:
+let
   inherit (lib) mkIf;
   inherit (lib.internal) mkBoolOpt;
 
   cfg = config.beansnix.desktop.addons.xdg-portal;
-in {
+in
+{
   options.beansnix.desktop.addons.xdg-portal = {
     enable = mkBoolOpt false "Whether or not to add support for xdg portal.";
   };
@@ -18,6 +19,7 @@ in {
     xdg = {
       portal = {
         enable = true;
+        xdgOpenUsePortal = true;
         extraPortals = with pkgs; [
           xdg-desktop-portal-gtk
         ];
