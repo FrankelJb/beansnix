@@ -12,17 +12,13 @@ let
 in
 {
   options.beansnix.desktop.addons.foot = {
-    enable = mkBoolOpt false "Whether to enable the foot.";
+    enable = mkBoolOpt false "Whether to enable foot.";
   };
 
   config = mkIf cfg.enable {
-    beansnix = {
-      desktop.addons.term = {
-        enable = true;
-        pkg = pkgs.foot;
-      };
-
-      home.configFile."foot/foot.ini".source = ./foot.ini;
+    beansnix.desktop.addons.term = {
+      enable = true;
+      pkg = pkgs.foot;
     };
   };
 }

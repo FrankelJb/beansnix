@@ -132,18 +132,6 @@ in
             inherit (cfg) extraConfig userChrome settings;
             id = 0;
             inherit (config.beansnix.user) name;
-            extensions = with pkgs.nur.repos.rycee.firefox-addons; [
-              angular-devtools
-              bitwarden
-              darkreader
-              onepassword-password-manager
-              reduxdevtools
-              sponsorblock
-              stylus
-              tabcenter-reborn
-              ublock-origin
-              user-agent-string-switcher
-            ];
           };
         };
       };

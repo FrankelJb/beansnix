@@ -1,14 +1,13 @@
-{ config
-, pkgs
-, lib
-, ...
-}:
-let
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}: let
   inherit (lib) getExe;
   inherit (lib.internal) enabled;
-in
-{
-  imports = [ ./hardware.nix ];
+in {
+  imports = [./hardware.nix];
 
   beansnix = {
     nix = enabled;
@@ -33,8 +32,8 @@ in
             checkPhase = "";
             text = ''
               ${getExe pkgs.xorg.xrandr} \
-              	--output XWAYLAND0 --primary --mode 1920x1080 --pos 1420x0 --rotate normal \
-              	--output XWAYLAND1 --mode 5120x1440 --pos 0x1080 --rotate normal
+              --output XWAYLAND0 --primary --mode 1920x1080 --pos 1420x0 --rotate normal \
+              --output XWAYLAND1 --mode 5120x1440 --pos 0x1080 --rotate normal
             '';
           };
         };
@@ -86,7 +85,7 @@ in
 
         configs = {
           Documents = {
-            ALLOW_USERS = [ "beans" ];
+            ALLOW_USERS = ["beans"];
             SUBVOLUME = "/home/beans/Documents";
             TIMELINE_CLEANUP = true;
             TIMELINE_CREATE = true;
@@ -104,8 +103,8 @@ in
         # TODO: make part of ssh config proper
         extraConfig = ''
           Host server
-            User ${config.beansnix.user.name}
-            Hostname helium.localdomain
+          User ${config.beansnix.user.name}
+          Hostname helium.localdomain
         '';
       };
     };
@@ -113,7 +112,7 @@ in
     security = {
       sops = {
         enable = true;
-        sshKeyPaths = [ "/etc/ssh/ssh_host_ed25519_key" ];
+        sshKeyPaths = ["/etc/ssh/ssh_host_ed25519_key"];
         defaultSopsFile = ../../../secrets/beansnix/default.yaml;
       };
     };
@@ -152,11 +151,11 @@ in
   };
 
   services.xserver = {
-    displayManager.defaultSession = "gnome";
+    displayManager.defaultSession = "hyprland";
     enable = true;
-    desktopManager.gnome.enable = true;
+    # desktopManager.gnome.enable = true;
     displayManager.gdm.enable = true;
-    videoDrivers = [ "nvidia" ]; #TODO uncomment this
+    videoDrivers = ["nvidia"]; #TODO uncomment this
   };
 
   # This value determines the NixOS release from which the default

@@ -26,8 +26,6 @@ in
       };
     };
 
-    beansnix.tools.wakatime = enabled;
-
     programs.vscode = {
       enable = true;
       enableUpdateCheck = true;
@@ -43,7 +41,6 @@ in
         gruntfuggly.todo-tree
         mkhl.direnv
         vscode-icons-team.vscode-icons
-        wakatime.vscode-wakatime
       ];
     };
 

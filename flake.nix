@@ -46,10 +46,10 @@
 
     # Personal neovim config
     # TODO: move to frankeljb
-    neovim-config = {
-      url = "github:khaneliman/astronvim/v4";
-      flake = false;
-    };
+    # neovim-config = {
+    #   url = "github:FrankelJb/astronvim_config";
+    #   flake = false;
+    # };
 
     # NixPkgs (nixos-unstable)
     nixpkgs = {
@@ -62,12 +62,10 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    # TODO: readd nh?
-    # nh = {
-    #   url = "github:viperML/nh";
-    #   inputs.nixpkgs.follows = "nixpkgs";
-    #   inputs.flake-parts.follows = "flake-parts";
-    # };
+    nh = {
+      url = "github:viperML/nh";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     # Nix User Repository (master)
     nur = {
@@ -145,14 +143,15 @@
     };
   };
 
-  outputs = inputs: let
-    inherit (inputs) deploy-rs flake nur nix-ld rustup-overlay snowfall-lib snowfall-frost sops-nix;
+  outputs = inputs:
+    let
+      inherit (inputs) deploy-rs flake nur nix-ld rustup-overlay snowfall-lib snowfall-frost sops-nix;
 
-    lib = snowfall-lib.mkLib {
-      inherit inputs;
-      src = ./.;
-    };
-  in
+      lib = snowfall-lib.mkLib {
+        inherit inputs;
+        src = ./.;
+      };
+    in
     lib.mkFlake {
       package-namespace = "beansnix";
 
@@ -187,12 +186,12 @@
         };
       };
 
-      deploy = lib.mkDeploy {inherit (inputs) self;};
+      deploy = lib.mkDeploy { inherit (inputs) self; };
 
       checks =
         builtins.mapAttrs
-        (_system: deploy-lib:
-          deploy-lib.deployChecks inputs.self.deploy)
-        deploy-rs.lib;
+          (_system: deploy-lib:
+            deploy-lib.deployChecks inputs.self.deploy)
+          deploy-rs.lib;
     };
 }

@@ -1,10 +1,10 @@
-{ config
-, lib
-, options
-, pkgs
-, ...
-}:
-let
+{
+  config,
+  lib,
+  options,
+  pkgs,
+  ...
+}: let
   inherit (lib) types;
   inherit (lib.internal) mkOpt;
 
@@ -20,34 +20,33 @@ let
       cp $src $out
     '';
 
-    passthru = { fileName = defaultIconFileName; };
+    passthru = {fileName = defaultIconFileName;};
   };
   defaultIconFileName = "profile.png";
 
   propagatedIcon =
     pkgs.runCommandNoCC "propagated-icon"
-      { passthru = { inherit (cfg.icon) fileName; }; }
-      ''
-        local target="$out/share/icons/user/${cfg.name}"
-        mkdir -p "$target"
+    {passthru = {inherit (cfg.icon) fileName;};}
+    ''
+      local target="$out/share/icons/user/${cfg.name}"
+      mkdir -p "$target"
 
-        cp ${cfg.icon} "$target/${cfg.icon.fileName}"
-      '';
-in
-{
+      cp ${cfg.icon} "$target/${cfg.icon.fileName}"
+    '';
+in {
   options.beansnix.user = with types; {
     email = mkOpt str "beans@habanerojam.xyz" "The email of the user.";
-    extraGroups = mkOpt (listOf str) [ ] "Groups for the user to be assigned.";
+    extraGroups = mkOpt (listOf str) [] "Groups for the user to be assigned.";
     extraOptions =
-      mkOpt attrs { }
-        "Extra options passed to <option>users.users.<name></option>.";
+      mkOpt attrs {}
+      "Extra options passed to <option>users.users.<name></option>.";
     fullName = mkOpt str "Austin Horstman" "The full name of the user.";
     icon =
       mkOpt (nullOr package) defaultIcon
-        "The profile picture to use for the user.";
+      "The profile picture to use for the user.";
     initialPassword =
       mkOpt str "password"
-        "The initial password to use when the user is first created.";
+      "The initial password to use when the user is first created.";
     name = mkOpt str "beans" "The name to use for the user account.";
   };
 
@@ -91,11 +90,11 @@ in
       {
         inherit (cfg) name initialPassword;
 
-        extraGroups = [ "wheel" ] ++ cfg.extraGroups;
+        extraGroups = ["wheel"] ++ cfg.extraGroups;
         group = "users";
         home = "/home/${cfg.name}";
         isNormalUser = true;
-        shell = pkgs.fish;
+        shell = pkgs.bash;
         uid = 1000;
       }
       // cfg.extraOptions;

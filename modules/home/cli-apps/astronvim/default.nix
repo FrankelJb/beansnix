@@ -7,7 +7,7 @@
 let
   inherit (lib) mkEnableOption mkIf getExe;
   inherit (lib.internal) mkBoolOpt enabled;
-  inherit (inputs) neovim-config;
+  #inherit (inputs) neovim-config;
 
   cfg = config.beansnix.cli-apps.astronvim;
 
@@ -42,8 +42,6 @@ in
       };
     };
 
-    beansnix.tools.wakatime = enabled;
-
     programs.neovim = {
       enable = true;
       defaultEditor = cfg.default;
@@ -77,19 +75,19 @@ in
     };
 
     # TODO: Convert to custom nixos neovim config 
-    xdg.configFile = {
-      "nvim" = {
-        onChange = "${getExe pkgs.neovim} --headless +quitall";
-        source = lib.cleanSourceWith {
-          filter = name: _type:
-            let
-              baseName = baseNameOf (toString name);
-            in
-            "lazy-lock.json" != baseName;
-          src = lib.cleanSource neovim-config;
-        };
-        recursive = true;
-      };
-    };
+    # xdg.configFile = {
+    #   "nvim" = {
+    #     onChange = "${getExe pkgs.neovim} --headless +quitall";
+    #     source = lib.cleanSourceWith {
+    #       filter = name: _type:
+    #         let
+    #           baseName = baseNameOf (toString name);
+    #         in
+    #         "lazy-lock.json" != baseName;
+    #       src = lib.cleanSource neovim-config;
+    #     };
+    #     recursive = true;
+    #   };
+    # };
   };
 }

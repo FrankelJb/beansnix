@@ -79,7 +79,7 @@ in
             # eww = enabled;
             gtk = enabled;
             kanshi = enabled;
-            kitty = enabled;
+            foot = enabled;
             nautilus = enabled;
             qt = enabled;
             thunar = enabled;

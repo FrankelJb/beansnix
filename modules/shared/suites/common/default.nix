@@ -17,33 +17,32 @@ in
 
   config = mkIf cfg.enable {
     environment.systemPackages = with pkgs; [
-    age
-    ansible
-    bottom
+      age
+      ansible
+      bottom
       coreutils
       curl
-    du-dust
-    duf
+      du-dust
+      duf
       eza
-    fd
-    file
+      fd
+      file
       findutils
       killall
-    kubectl
-    ncdu
-    neofetch
-    restic
-    ripgrep
-    # TODO: Rust toolchain
-    # rust-bin.stable.latest.default
+      kubectl
+      ncdu
+      neofetch
+      restic
+      ripgrep
+      # TODO: Rust toolchain
+      rust-bin.stable.latest.default
       pciutils
-    sops
-    tealdeer
+      sops
+      tealdeer
       unzip
       wget
       xclip
-    zellij
-
+      zellij
     ];
   };
 }

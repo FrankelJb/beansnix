@@ -1,15 +1,14 @@
-{ config
-, lib
-, options
-, ...
-}:
-let
+{
+  config,
+  lib,
+  options,
+  ...
+}: let
   inherit (lib) mkIf;
   inherit (lib.internal) mkBoolOpt;
 
   cfg = config.beansnix.system.shell.bash;
-in
-{
+in {
   options.beansnix.system.shell.bash = {
     enable = mkBoolOpt false "Whether to enable bash.";
   };
@@ -17,10 +16,9 @@ in
   config = mkIf cfg.enable {
     programs.bash = {
       enable = true;
-      enableCompletion = true;
 
-      initExtra = ''
-        if [ "$TMUX" = "" ]; then command -v tmux && tmux; fi
+      bashrcExtra = ''
+        eval "$(zellij setup --generate-auto-start bash)"
 
         fastfetch
       '';

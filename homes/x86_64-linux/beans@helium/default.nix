@@ -28,7 +28,7 @@ in
         hyprpaper = {
           monitors = [
             {
-              name = "DP-1";
+              name = "DP-3";
               wallpaper = "${pkgs.beansnix.wallpapers}/share/wallpapers/cat-sound.png";
             }
           ];

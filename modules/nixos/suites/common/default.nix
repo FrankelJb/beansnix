@@ -45,8 +45,6 @@ in
 
       services = {
         openssh = enabled;
-        printing = enabled;
-        tailscale = enabled;
       };
 
       system = {

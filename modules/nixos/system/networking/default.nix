@@ -15,7 +15,7 @@ in
     hosts =
       mkOpt attrs { }
         "An attribute set to merge with <option>networking.hosts</option>";
-    nameServers = mkOpt (listOf str) [ "1.1.1.1" "8.8.8.8" ] "The nameservers to add.";
+    nameServers = mkOpt (listOf str) [ "127.0.0.1" "::1" "192.168.1.200" ] "The nameservers to add.";
   };
 
   config = mkIf cfg.enable {

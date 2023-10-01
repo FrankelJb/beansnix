@@ -1,18 +1,19 @@
-{
-  config,
-  lib,
-  pkgs,
-  ...
-}: let
+{ config
+, lib
+, pkgs
+, ...
+}:
+let
   inherit (lib) mkIf;
   inherit (lib.internal) mkBoolOpt enabled;
 
   cfg = config.beansnix.suites.common;
-in {
+in
+{
   options.beansnix.suites.common = {
     enable =
       mkBoolOpt false
-      "Whether or not to enable common configuration.";
+        "Whether or not to enable common configuration.";
   };
 
   config = mkIf cfg.enable {
@@ -23,11 +24,13 @@ in {
         btop = enabled;
         fastfetch = enabled;
         ranger = enabled;
+        zellij = enabled;
       };
 
       desktop = {
         addons = {
           kitty = enabled;
+          foot = enabled;
           qt.enable = pkgs.stdenv.isLinux;
           wezterm = enabled;
         };
