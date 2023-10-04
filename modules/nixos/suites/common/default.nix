@@ -15,10 +15,12 @@ in
   config = mkIf cfg.enable {
     environment.systemPackages = with pkgs; [
       appimage-run
+      broot
       clac
       fastfetch
       feh
       fzf
+      imagemagick
       jq
       beansnix.trace-symlink
       beansnix.trace-which

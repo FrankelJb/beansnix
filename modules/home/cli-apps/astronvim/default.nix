@@ -1,10 +1,10 @@
-{ config
-, lib
-, pkgs
-, inputs
-, ...
-}:
-let
+{
+  config,
+  lib,
+  pkgs,
+  inputs,
+  ...
+}: let
   inherit (lib) mkEnableOption mkIf getExe;
   inherit (lib.internal) mkBoolOpt;
   inherit (inputs) neovim-config;
@@ -27,8 +27,7 @@ let
     shfmt
     xmlformat
   ];
-in
-{
+in {
   options.beansnix.cli-apps.astronvim = {
     enable = mkEnableOption "Astronvim";
     default = mkBoolOpt true "Whether to set Neovim as the session EDITOR";
@@ -52,29 +51,31 @@ in
       withPython3 = true;
       withRuby = true;
 
-      extraPackages = with pkgs; [
-        bottom
-        curl
-        deno
-        dotnet-sdk_7
-        fzf
-        gcc
-        gdu
-        gnumake
-        gzip
-        jdk17
-        lazygit
-        less
-        ripgrep
-        unzip
-        wget
-      ] ++ lsp
-      ++ lib.optional stdenv.isLinux webkitgtk;
+      extraPackages = with pkgs;
+        [
+          bottom
+          curl
+          deno
+          dotnet-sdk_7
+          fzf
+          gcc
+          gdu
+          gnumake
+          gzip
+          jdk17
+          lazygit
+          less
+          ripgrep
+          unzip
+          wget
+        ]
+        ++ lsp
+        ++ lib.optional stdenv.isLinux webkitgtk;
 
-      extraPython3Packages = ps: [ ps.pip ];
+      extraPython3Packages = ps: [ps.pip];
     };
 
-    # TODO: Convert to custom nixos neovim config 
+    # TODO: Convert to custom nixos neovim config
     # xdg.configFile = {
     #   "nvim" = {
     #     onChange = "${getExe pkgs.neovim} --headless +quitall";

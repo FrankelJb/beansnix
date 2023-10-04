@@ -24,7 +24,7 @@ let
 
   sharedModuleDefinitions = {
     "custom/weather" = {
-      "exec" = "${getExe pkgs.wttrbar} -l $(${getExe pkgs.jq} -r '.weathergov | (.location)' ~/weather_config.json) --fahrenheit --main-indicator temp_F";
+      "exec" = "${getExe pkgs.wttrbar} -l $(${getExe pkgs.jq} -r '.weathergov | (.location)' ~/weather_config.json) --celsius --main-indicator temp_C";
       "return-type" = "json";
       "format" = "{}";
       "tooltip" = true;

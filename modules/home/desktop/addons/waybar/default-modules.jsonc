@@ -88,7 +88,7 @@
   "temperature": {
     //"hwmon-path": "/sys/devices/platform/asus-ec-sensors/hwmon/hwmon4/temp3_input",
     //"hwmon-path-abs": "/sys/devices/platform/asus-ec-sensors/hwmon",
-    "hwmon-path-abs": "/sys/devices/pci0000:00/0000:00:18.3/hwmon",
+    "hwmon-path-abs": "/sys/devices/pci0000:00/0000:00:17.3/hwmon",
     "input-filename": "temp3_input",
     "critical-threshold": 80,
     "format-critical": "{temperatureC}°C {icon}",
@@ -155,7 +155,6 @@
       "idle_inhibitor",
       // "custom/updates",
       "custom/notification",
-      "custom/github",
       "wireplumber"
     ]
   },

@@ -80,6 +80,7 @@ in
     services = {
       avahi = enabled;
       geoclue = enabled;
+      ios = enabled;
 
       # TODO: enable snapper maybe
       # snapper = {

@@ -25,7 +25,6 @@ in
               ##
               "float, class:Rofi"
               "float, class:viewnior"
-              "float, class:feh"
               "float, class:wlogout"
               "float, class:file_progress"
               "float, class:confirm"

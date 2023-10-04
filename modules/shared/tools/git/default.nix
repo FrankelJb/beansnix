@@ -18,6 +18,7 @@ in
   config = mkIf cfg.enable {
     environment.systemPackages = with pkgs; [
       git
+      gh
       # git-crypt
       # git-filter-repo
       # git-lfs
