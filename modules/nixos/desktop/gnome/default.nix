@@ -48,7 +48,6 @@ in {
     environment = {
       systemPackages = with pkgs;
         [
-          (hiPrio beansnix.xdg-open-with-portal)
           gnome.gnome-tweaks
           gnome.nautilus-python
           wl-clipboard

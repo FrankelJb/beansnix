@@ -19,12 +19,12 @@ in
     xdg = {
       portal = {
         enable = true;
-        xdgOpenUsePortal = true;
-        extraPortals = with pkgs; [
-          xdg-desktop-portal-gtk
-        ];
-        # ++ (lib.optional config.beansnix.desktop.hyprland.enable xdg-desktop-portal-hyprland);
-        # ++ (lib.optional config.beansnix.desktop.sway.enable xdg-desktop-portal-wlr);
+        extraPortals = with pkgs;
+          [
+            xdg-desktop-portal-gtk
+          ]
+          ++ (lib.optional config.khanelinix.desktop.sway.enable xdg-desktop-portal-wlr);
+        # xdgOpenUsePortal = true;
       };
     };
   };

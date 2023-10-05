@@ -6,8 +6,8 @@
 }:
 let
   inherit (lib) mkEnableOption mkIf getExe;
-  inherit (lib.internal) mkBoolOpt enabled;
-  #inherit (inputs) neovim-config;
+  inherit (lib.internal) mkBoolOpt;
+  inherit (inputs) neovim-config;
 
   cfg = config.beansnix.cli-apps.astronvim;
 

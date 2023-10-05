@@ -24,6 +24,7 @@ in
       beansnix.trace-which
       ncdu
       toilet
+      tree
       upower
       util-linux
     ];

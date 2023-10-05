@@ -99,6 +99,13 @@ in
               "idleinhibit focus, class:^(mpv|.+exe)$"
 
               ##
+              # ░▀█▀░█▀▀░█▀█░█▀▄░▀█▀░█▀█░█▀▀
+              # ░░█░░█▀▀░█▀█░█▀▄░░█░░█░█░█░█
+              # ░░▀░░▀▀▀░▀░▀░▀░▀░▀▀▀░▀░▀░▀▀▀
+              ##
+              "immediate, class:^(gamescope|steam_app).*"
+
+              ##
               # ░█░█░█▀█░█▀▄░█░█░█▀▀░█▀█░█▀█░█▀▀░█▀▀░░░█▀▀░█▀█░█▀█░█▀▀░▀█▀░█▀▀
               # ░█▄█░█░█░█▀▄░█▀▄░▀▀█░█▀▀░█▀█░█░░░█▀▀░░░█░░░█░█░█░█░█▀▀░░█░░█░█
               # ░▀░▀░▀▀▀░▀░▀░▀░▀░▀▀▀░▀░░░▀░▀░▀▀▀░▀▀▀░░░▀▀▀░▀▀▀░▀░▀░▀░░░▀▀▀░▀▀▀
@@ -118,7 +125,7 @@ in
               # Gaming
               "workspace 4 silent, class:^(Steam|steam)$"
               "workspace 4 silent, class:^(Steam|steam)., title:^(Steam|steam)$"
-              "workspace 4 silent, class:^(gamescope)"
+              "workspace 4 silent, class:^(gamescope|steam_app).*"
               "workspace 4, class:^(heroic)$"
               "workspace 4, class:^(lutris)$"
               "workspace 4, class:.*(cemu|yuzu|ryujinx|emulationstation|retroarch).*"
@@ -129,6 +136,7 @@ in
               "workspace 5 silent, class:^(org.telegram.desktop)$"
               "workspace 5 silent, class:^(discord)$"
               "workspace 5 silent, class:^(zoom)$"
+              "workspace 5 silent, class:^(Element)$"
               # Mail
               "workspace 6 silent, class:^(thunderbird)$"
               "workspace 6 silent, class:^(Mailspring)$"
