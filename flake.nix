@@ -44,6 +44,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    nh = {
+      url = "github:viperML/nh";
+      inputs.nixpkgs.follows = "nixpkgs"; # override this repo's nixpkgs snapshot
+    };
+
     # Personal neovim config
     # TODO: move to frankeljb
     # neovim-config = {
@@ -144,7 +149,7 @@
   };
 
   outputs = inputs: let
-    inherit (inputs) deploy-rs flake nur nix-ld rustup-overlay snowfall-lib snowfall-frost sops-nix;
+    inherit (inputs) deploy-rs flake nh nix-ld nur rustup-overlay snowfall-lib snowfall-frost sops-nix;
 
     lib = snowfall-lib.mkLib {
       inherit inputs;
@@ -181,6 +186,16 @@
           nixos = [
             nix-ld.nixosModules.nix-ld
             sops-nix.nixosModules.sops
+          ];
+          hosts.helium = [
+            nh.nixosModules.default
+            {
+              nh = {
+                enable = true;
+                clean.enable = true;
+                clean.extraArgs = "--keep-since 4d --keep 3";
+              };
+            }
           ];
         };
       };
