@@ -28,7 +28,7 @@ in
 
     beansnix = {
       tools = {
-        spicetify-cli = enabled;
+        # spicetify-cli = enabled;
       };
 
       user.extraGroups = [ "mpd" ];

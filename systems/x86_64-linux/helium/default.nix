@@ -1,14 +1,13 @@
-{ config
-, pkgs
-, lib
-, ...
-}:
-let
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}: let
   inherit (lib) getExe;
   inherit (lib.internal) enabled;
-in
-{
-  imports = [ ./hardware.nix ];
+in {
+  imports = [./hardware.nix];
 
   beansnix = {
     nix = enabled;
@@ -115,7 +114,7 @@ in
     security = {
       sops = {
         enable = true;
-        sshKeyPaths = [ "/etc/ssh/ssh_host_ed25519_key" ];
+        sshKeyPaths = ["/etc/ssh/ssh_host_ed25519_key"];
         defaultSopsFile = ../../../secrets/beansnix/default.yaml;
       };
     };
@@ -157,7 +156,7 @@ in
     enable = true;
     # desktopManager.gnome.enable = true;
     displayManager.gdm.enable = true;
-    videoDrivers = [ "nvidia" ]; #TODO uncomment this
+    videoDrivers = ["nvidia"];
   };
 
   # This value determines the NixOS release from which the default

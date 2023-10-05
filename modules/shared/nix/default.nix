@@ -59,7 +59,6 @@ in
           ];
         };
 
-
         # flake-utils-plus
         generateNixPathFromInputs = true;
         generateRegistryFromInputs = true;

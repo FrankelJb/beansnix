@@ -14,6 +14,6 @@ writeShellApplication
   checkPhase = "";
 
   text = ''
-    a=$(which "$1") && exec ${lib.getExe pkgs.khanelinix.trace-symlink} "$a"
+    a=$(which "$1") && exec ${lib.getExe pkgs.beansnix.trace-symlink} "$a"
   '';
 }

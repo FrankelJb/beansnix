@@ -62,7 +62,7 @@
     };
 
     # Nixpkgs fork
-    # nixpkgs-khanelinix = {
+    # nixpkgs-beansnix = {
     #   url = "github:khaneliman/nixpkgs";
     # };
 
@@ -149,7 +149,7 @@
   };
 
   outputs = inputs: let
-    inherit (inputs) deploy-rs flake nh nix-ld nur rustup-overlay snowfall-lib snowfall-frost sops-nix;
+    inherit (inputs) deploy-rs flake nh nix-ld nixpkgs-wayland nur rustup-overlay snowfall-lib snowfall-frost sops-nix;
 
     lib = snowfall-lib.mkLib {
       inherit inputs;
@@ -171,7 +171,7 @@
 
       overlays = [
         flake.overlays.default
-        # nixpkgs-wayland.overlay
+        nixpkgs-wayland.overlay
         nur.overlay
         rustup-overlay.overlays.default
         snowfall-frost.overlays.default

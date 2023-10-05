@@ -1,12 +1,12 @@
-{ config
-, lib
-, options
-, pkgs
-, inputs
-, system
-, ...
-}:
-let
+{
+  config,
+  lib,
+  options,
+  pkgs,
+  inputs,
+  system,
+  ...
+}: let
   inherit (lib) mkIf mkForce getExe getExe';
   inherit (lib.internal) mkBoolOpt;
   inherit (inputs) nixpkgs-wayland hyprland;
@@ -53,7 +53,6 @@ let
         "dnd-inhibited-none" = "";
       };
       "return-type" = "json";
-      "exec-if" = "which ${getExe' pkgs.swaynotificationcenter "swaync-client"}";
       "exec" = "${getExe' pkgs.swaynotificationcenter "swaync-client"} -swb";
       "on-click" = "${getExe' pkgs.coreutils "sleep"} 0.1 && ${getExe' pkgs.swaynotificationcenter "swaync-client"} -t -sw";
       "on-click-right" = "${getExe' pkgs.coreutils "sleep"} 0.1 && ${getExe' pkgs.swaynotificationcenter "swaync-client"} -d -sw";
@@ -103,23 +102,15 @@ let
       # "format-window-separator" = "->";
       "window-rewrite-default" = "";
       "window-rewrite" = {
-        "1Password" = "󰢁";
-        "Caprine" = "󰈎";
-        "Github Desktop" = "󰊤";
-        "Godot" = "";
-        "Mysql-workbench-bin" = "";
-        "Slack" = "󰒱";
         "code" = "󰨞";
         "code-url-handler" = "󰨞";
-        "discord" = "󰙯";
         "firefox" = "";
+        "foot" = "󰽒";
         "kitty" = "";
         "mediainfo-gui" = "󱂷";
         "org.kde.digikam" = "󰄄";
-        "org.telegram.desktop" = "";
         ".pitivi-wrapped" = "󱄢";
         "steam" = "";
-        "thunderbird" = "";
         "virt-manager" = "󰢹";
         "vlc" = "󰕼";
       };
@@ -136,8 +127,7 @@ let
       ];
     };
   };
-in
-{
+in {
   options.beansnix.desktop.addons.waybar = {
     enable =
       mkBoolOpt false "Whether to enable waybar in the desktop environment.";
@@ -156,7 +146,7 @@ in
       settings = {
         mainBar =
           {
-            "include" = [ ./default-modules.jsonc ] ++ lib.optional config.beansnix.desktop.hyprland.enable ./hyprland/default-modules.jsonc;
+            "include" = [./default-modules.jsonc] ++ lib.optional config.beansnix.desktop.hyprland.enable ./hyprland/default-modules.jsonc;
             "layer" = "top";
             "position" = "top";
             "output" = "DP-3";

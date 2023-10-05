@@ -36,13 +36,8 @@ in
 
       secrets = {
         nix = {
-          sopsFile = ../../../../secrets/khaneliman/default.json;
+          sopsFile = ../../../../secrets/beans/default.json;
           path = "${config.home.homeDirectory}/.config/nix/nix.conf";
-        };
-
-        wakatime = {
-          sopsFile = ../../../../secrets/khaneliman/default.json;
-          path = "${config.home.homeDirectory}/.wakatime.cfg";
         };
       };
     };

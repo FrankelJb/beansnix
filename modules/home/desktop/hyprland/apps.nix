@@ -51,7 +51,7 @@ in
               # Startup apps that have rules for organizing them
               "[workspace special silent ] ${getExe pkgs.kitty} --session scratchpad" # Spawn scratchpad terminal
               "${getExe pkgs.firefox}"
-              "${getExe pkgs.steam}"
+              "[silent] ${getExe pkgs.steam}"
 
               "${getExe pkgs.virt-manager}"
             ];

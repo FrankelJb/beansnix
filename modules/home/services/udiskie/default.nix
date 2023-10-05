@@ -5,11 +5,10 @@
 let
   inherit (lib) mkEnableOption mkIf;
 
-  cfg = config.khanelinix.services.udiskie;
-
+  cfg = config.beansnix.services.udiskie;
 in
 {
-  options.khanelinix.services.udiskie = {
+  options.beansnix.services.udiskie = {
     enable = mkEnableOption "udiskie";
   };
 
