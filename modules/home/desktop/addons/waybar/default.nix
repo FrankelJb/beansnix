@@ -1,12 +1,12 @@
-{
-  config,
-  lib,
-  options,
-  pkgs,
-  inputs,
-  system,
-  ...
-}: let
+{ config
+, lib
+, options
+, pkgs
+, inputs
+, system
+, ...
+}:
+let
   inherit (lib) mkIf mkForce getExe getExe';
   inherit (lib.internal) mkBoolOpt;
   inherit (inputs) nixpkgs-wayland hyprland;
@@ -24,7 +24,7 @@
 
   sharedModuleDefinitions = {
     "custom/weather" = {
-      "exec" = "${getExe pkgs.wttrbar} -l $(${getExe pkgs.jq} -r '.weathergov | (.location)' ~/weather_config.json) --celsius --main-indicator temp_C";
+      "exec" = "${getExe pkgs.wttrbar} --location Singapore -celsius --main-indicator temp_C";
       "return-type" = "json";
       "format" = "{}";
       "tooltip" = true;
@@ -127,7 +127,8 @@
       ];
     };
   };
-in {
+in
+{
   options.beansnix.desktop.addons.waybar = {
     enable =
       mkBoolOpt false "Whether to enable waybar in the desktop environment.";
@@ -146,7 +147,7 @@ in {
       settings = {
         mainBar =
           {
-            "include" = [./default-modules.jsonc] ++ lib.optional config.beansnix.desktop.hyprland.enable ./hyprland/default-modules.jsonc;
+            "include" = [ ./default-modules.jsonc ] ++ lib.optional config.beansnix.desktop.hyprland.enable ./hyprland/default-modules.jsonc;
             "layer" = "top";
             "position" = "top";
             "output" = "DP-3";

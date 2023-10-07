@@ -18,7 +18,7 @@ in
     ckbNextConfig = mkOpt (nullOr path) null "The ckb-next.conf file to create.";
     motherboard = mkOption {
       type = types.nullOr (types.enum [ "amd" "intel" ]);
-      default = "amd";
+      default = "intel";
       description = lib.mdDoc "CPU family of motherboard. Allows for addition motherboard i2c support.";
     };
     openRGBConfig = mkOpt (nullOr path) null "The openrgb file to create.";

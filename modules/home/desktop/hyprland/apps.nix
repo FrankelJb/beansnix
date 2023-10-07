@@ -52,6 +52,7 @@ in
               "[workspace special silent ] ${getExe pkgs.kitty} --session scratchpad" # Spawn scratchpad terminal
               "${getExe pkgs.firefox}"
               "[silent] ${getExe pkgs.steam}"
+              "[silent] ${getExe pkgs.signal-desktop}"
 
               "${getExe pkgs.virt-manager}"
             ];

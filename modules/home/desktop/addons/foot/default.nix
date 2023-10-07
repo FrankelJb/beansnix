@@ -13,7 +13,7 @@ in
 {
   options.beansnix.desktop.addons.foot = with types; {
     enable = mkBoolOpt false "Whether to enable foot.";
-    font = mkOpt str "JetBrainsMono Nerd Font" "Font to use for foot.";
+    font = mkOpt str "FiraCode Nerd Font" "Font to use for foot.";
     theme = mkOpt str "Catppuccin-Macchiato" "Theme to use for foot.";
   };
 

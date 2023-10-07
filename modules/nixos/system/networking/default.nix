@@ -15,7 +15,7 @@ in
     hosts =
       mkOpt attrs { }
         "An attribute set to merge with <option>networking.hosts</option>";
-    nameServers = mkOpt (listOf str) [ "127.0.0.1" "::1" "192.168.1.200" ] "The nameservers to add.";
+    nameServers = mkOpt (listOf str) [ "192.168.1.200" "9.9.9.9" ] "The nameservers to add.";
   };
 
   config = mkIf cfg.enable {
@@ -34,6 +34,8 @@ in
         dhcp = "internal";
         insertNameservers = cfg.nameServers;
       };
+
+      search = [ ];
     };
 
     # Fixes an issue that normally causes nixos-rebuild to fail.
