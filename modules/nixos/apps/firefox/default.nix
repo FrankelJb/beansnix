@@ -47,7 +47,7 @@ let
     "geo.provider.use_corelocation" = false;
     "geo.provider.use_geoclue" = false;
     "geo.provider.use_gpsd" = false;
-    "intl.accept_languages" = "en-US = en";
+    "intl.accept_languages" = "en-US";
     "media.eme.enabled" = true;
     "media.ffmpeg.vaapi.enabled" = true;
     # "media.hardware-video-decoding.force-enabled" = true;
