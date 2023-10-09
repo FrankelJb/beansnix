@@ -19,13 +19,20 @@ in
   };
 
   config = mkIf cfg.enable {
-    home.packages = with pkgs; [
-      alejandra
-      cpplint
-      deadnix
-      rnix-lsp
-      statix
-    ];
+    home = {
+      packages = with pkgs; [
+        alejandra
+        cpplint
+        deadnix
+        rnix-lsp
+        ueberzugpp
+        statix
+      ];
+
+      shellAliases = {
+        prefetch-sri = "nix store prefetch-file $1";
+      };
+    };
 
     beansnix = {
       apps = {
@@ -33,11 +40,11 @@ in
       };
 
       cli-apps = {
-        astronvim = {
+        lazygit = enabled;
+        neovim = {
           enable = true;
           default = true;
         };
-        lazygit = enabled;
         starship = enabled;
       };
 

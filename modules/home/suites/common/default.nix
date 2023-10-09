@@ -21,13 +21,16 @@ in
 
     beansnix = {
       cli-apps = {
+        bottom = enabled;
         btop = enabled;
         fastfetch = enabled;
         ranger = enabled;
+        yazi = enabled;
       };
 
       desktop = {
         addons = {
+          alacritty = enabled;
           kitty = enabled;
           foot = enabled;
           qt.enable = pkgs.stdenv.isLinux;
@@ -36,7 +39,7 @@ in
       };
 
       services = {
-        udiskie = enabled;
+        udiskie.enable = pkgs.stdenv.isLinux;
       };
 
       security = {

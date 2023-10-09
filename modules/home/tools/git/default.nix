@@ -4,8 +4,8 @@
 , ...
 }:
 let
-  inherit (lib) types mkEnableOption mkIf getExe getExe';
-  inherit (lib.internal) mkOpt enabled;
+  inherit (lib) types mkEnableOption mkIf getExe';
+  inherit (lib.internal) mkOpt mkBoolOpt enabled;
   inherit (config.beansnix) user;
 
   cfg = config.beansnix.tools.git;
@@ -16,10 +16,11 @@ in
     includes = mkOpt (types.listOf types.attrs) [ ] "Git includeIf paths and conditions.";
     signByDefault = mkOpt types.bool true "Whether to sign commits by default.";
     signingKey =
-      mkOpt types.str "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIEpfTVxQKmkAYOrsnroZoTk0LewcBIC4OjlsoJY6QbB0" "The key ID to sign commits with.";
+      mkOpt types.str "${config.home.homeDirectory}/.ssh/id_ed25519" "The key ID to sign commits with.";
     userName = mkOpt types.str user.fullName "The name to configure git with.";
     userEmail = mkOpt types.str user.email "The email to configure git with.";
-    wslAgentBridge = mkOpt types.bool false "Whether to enable the wsl agent bridge.";
+    wslAgentBridge = mkBoolOpt false "Whether to enable the wsl agent bridge.";
+    _1password = mkBoolOpt false "Whether to enable 1Password integration.";
   };
 
   config =
@@ -250,9 +251,9 @@ in
             }; f";
           };
 
-          diff-so-fancy = {
-            enable = true;
-          };
+          # diff-so-fancy = {
+          #   enable = true;
+          # };
 
           extraConfig = {
             core = {
@@ -344,15 +345,6 @@ in
       };
 
       home = {
-        # file = {
-        #   ".1password/.keep" = mkIf cfg.wslAgentBridge {
-        #     text = "";
-        #   };
-        #   ".agent-bridge.sh" = mkIf cfg.wslAgentBridge {
-        #     source = getExe pkgs.beansnix.wsl-agent-bridge;
-        #   };
-        # };
-
         shellAliases = {
           # #
           # Git alias
