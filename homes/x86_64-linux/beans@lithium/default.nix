@@ -13,15 +13,9 @@ in
       inherit (config.snowfallorg.user) name;
     };
 
-    apps = {
-      zathura = enabled;
-    };
-
     cli-apps = {
       home-manager = enabled;
     };
-
-    desktop = { };
 
     suites = {
       common = enabled;

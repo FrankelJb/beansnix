@@ -29,9 +29,6 @@ in
           enable = true;
           inherit (cfg) userName userEmail;
           lfs = enabled;
-          delta = {
-            enable = true;
-          };
 
           aliases = {
             a = "add";

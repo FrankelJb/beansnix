@@ -34,7 +34,6 @@ in
           ];
 
           wallpapers = [
-            # TODO: add my wallpapers
             "${pkgs.beansnix.wallpapers}/share/wallpapers/rho-cloud.png"
           ];
         };
