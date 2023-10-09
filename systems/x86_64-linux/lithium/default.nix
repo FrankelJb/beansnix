@@ -1,10 +1,7 @@
-{ config
-, pkgs
-, lib
+{ lib
 , ...
 }:
 let
-  inherit (lib) getExe;
   inherit (lib.internal) enabled;
 in
 {

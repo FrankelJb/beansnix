@@ -1,10 +1,9 @@
 { config
 , lib
-, pkgs
 , ...
 }:
 let
-  inherit (lib) types mkEnableOption mkIf getExe';
+  inherit (lib) types mkEnableOption mkIf;
   inherit (lib.internal) mkOpt mkBoolOpt enabled;
   inherit (config.beansnix) user;
 

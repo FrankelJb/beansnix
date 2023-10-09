@@ -5,7 +5,7 @@
 , ...
 }:
 let
-  inherit (lib) types mkIf mapAttrs optional getExe;
+  inherit (lib) types mkIf optional;
   inherit (lib.internal) mkBoolOpt mkOpt enabled;
 
   cfg = config.beansnix.desktop.gnome;
