@@ -127,6 +127,7 @@ in
     suites = {
       development = {
         enable = true;
+        kubernetesEnable = true;
         nixEnable = true;
         nodeEnable = true;
         rustEnable = true;

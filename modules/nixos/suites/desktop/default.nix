@@ -1,15 +1,16 @@
-{
-  config,
-  lib,
-  options,
-  pkgs,
-  ...
-}: let
+{ config
+, lib
+, options
+, pkgs
+, ...
+}:
+let
   inherit (lib) mkIf;
   inherit (lib.internal) mkBoolOpt enabled;
 
   cfg = config.beansnix.suites.desktop;
-in {
+in
+{
   options.beansnix.suites.desktop = {
     enable =
       mkBoolOpt false "Whether or not to enable common desktop configuration.";
@@ -30,8 +31,6 @@ in {
       };
 
       desktop = {
-        hyprland = enabled;
-
         addons = {
           gtk = enabled;
           qt = enabled;
