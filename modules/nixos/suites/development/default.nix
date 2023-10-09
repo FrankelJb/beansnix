@@ -59,8 +59,6 @@ in
         onefetch
         qtcreator
         neovide
-        vscode
-        vscodium
       ]
       ++ lib.optionals cfg.nixEnable [
         nixpkgs-fmt
