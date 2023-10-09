@@ -13,7 +13,6 @@
 
   boot =
     {
-
       initrd = {
         availableKernelModules = [ "vmd" "xhci_pci" "ahci" "nvme" "usbhid" "usb_storage" "sd_mod" ];
         kernelModules = [ ];
@@ -30,12 +29,6 @@
       options = [ "subvol=root" "compress=zstd" ];
     };
 
-    "/home" = {
-      device = "/dev/disk/by-uuid/74194a1e-7e23-41e9-9985-d4d94ca199a8";
-      fsType = "btrfs";
-      options = [ "subvol=home" "compress=zstd" ];
-    };
-
     "/boot" = {
       device = "/dev/disk/by-uuid/C9CC-13C7";
       fsType = "vfat";
@@ -45,6 +38,18 @@
       device = "/dev/disk/by-uuid/7311782f-8aca-4974-94ea-5d5cf0a742f3";
       fsType = "btrfs";
       options = [ "rw" "nosuid" "nodev" "ssd" "space_cache=v2" "subvolid=5" "subvol=/" "relatime" "compress=zstd" ];
+    };
+
+    "/home" = {
+      device = "/dev/disk/by-uuid/74194a1e-7e23-41e9-9985-d4d94ca199a8";
+      fsType = "btrfs";
+      options = [ "subvol=home" "compress=zstd" ];
+    };
+
+    "/nix" = {
+      device = "/dev/disk/by-uuid/74194a1e-7e23-41e9-9985-d4d94ca199a8";
+      fsType = "btrfs";
+      options = [ "subvol=nix" "noatime" "compress=zstd" ];
     };
   };
 

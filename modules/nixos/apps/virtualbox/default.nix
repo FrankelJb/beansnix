@@ -1,6 +1,7 @@
 { config
 , lib
 , options
+, pkgs
 , ...
 }:
 let
@@ -16,6 +17,10 @@ in
 
   config = mkIf cfg.enable {
     beansnix.user.extraGroups = [ "vboxusers" ];
+
+    environment.systemPackages = [
+      pkgs.spice-vdagent
+    ];
 
     virtualisation.virtualbox.host = {
       enable = true;

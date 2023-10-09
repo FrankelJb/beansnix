@@ -13,6 +13,10 @@ in
   beansnix = {
     nix = enabled;
 
+    suites = {
+      vm = enabled;
+    };
+
     archetypes = {
       gaming = enabled;
       personal = enabled;

@@ -20,7 +20,6 @@ in
     beansnix = {
       services = {
         spice-vdagentd = enabled;
-        spice-webdav = enabled;
       };
     };
   };

@@ -8,10 +8,10 @@ let
   inherit (lib) mkIf;
   inherit (lib.internal) mkBoolOpt;
 
-  cfg = config.beansnix.apps.vscode;
+  cfg = config.beansnix.apps.vscodium;
 in
 {
-  options.beansnix.apps.vscode = {
+  options.beansnix.apps.vscodium = {
     enable = mkBoolOpt false "Whether or not to enable vscode.";
   };
 
