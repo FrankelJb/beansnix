@@ -11,41 +11,43 @@
     (modulesPath + "/installer/scan/not-detected.nix")
   ];
 
-  boot.initrd.availableKernelModules = [ "vmd" "xhci_pci" "ahci" "nvme" "usbhid" "usb_storage" "sd_mod" ];
-  boot.initrd.kernelModules = [ ];
-  boot.kernelModules = [ "kvm-intel" ];
-  boot.extraModulePackages = [ ];
+  boot =
+    {
 
-  fileSystems."/" = {
-    device = "/dev/disk/by-uuid/74194a1e-7e23-41e9-9985-d4d94ca199a8";
-    fsType = "btrfs";
-    options = [ "subvol=root" "compress=zstd" ];
+      initrd = {
+        availableKernelModules = [ "vmd" "xhci_pci" "ahci" "nvme" "usbhid" "usb_storage" "sd_mod" ];
+        kernelModules = [ ];
+        luks.devices."system".device = "/dev/disk/by-uuid/fb0b6038-91e3-4573-b91b-0fb584585145";
+      };
+      kernelModules = [ "kvm-intel" ];
+      extraModulePackages = [ ];
+    };
+
+  fileSystems = {
+    "/" = {
+      device = "/dev/disk/by-uuid/74194a1e-7e23-41e9-9985-d4d94ca199a8";
+      fsType = "btrfs";
+      options = [ "subvol=root" "compress=zstd" ];
+    };
+
+    "/home" = {
+      device = "/dev/disk/by-uuid/74194a1e-7e23-41e9-9985-d4d94ca199a8";
+      fsType = "btrfs";
+      options = [ "subvol=home" "compress=zstd" ];
+    };
+
+    "/boot" = {
+      device = "/dev/disk/by-uuid/C9CC-13C7";
+      fsType = "vfat";
+    };
+
+    "/data/nvme1" = {
+      device = "/dev/disk/by-uuid/7311782f-8aca-4974-94ea-5d5cf0a742f3";
+      fsType = "btrfs";
+      options = [ "rw" "nosuid" "nodev" "ssd" "space_cache=v2" "subvolid=5" "subvol=/" "relatime" "compress=zstd" ];
+    };
   };
 
-  boot.initrd.luks.devices."system".device = "/dev/disk/by-uuid/fb0b6038-91e3-4573-b91b-0fb584585145";
-
-  fileSystems."/home" = {
-    device = "/dev/disk/by-uuid/74194a1e-7e23-41e9-9985-d4d94ca199a8";
-    fsType = "btrfs";
-    options = [ "subvol=home" "compress=zstd" ];
-  };
-
-  fileSystems."/nix" = {
-    device = "/dev/disk/by-uuid/74194a1e-7e23-41e9-9985-d4d94ca199a8";
-    fsType = "btrfs";
-    options = [ "subvol=nix" "noatime" "compress=zstd" ];
-  };
-
-  fileSystems."/boot" = {
-    device = "/dev/disk/by-uuid/C9CC-13C7";
-    fsType = "vfat";
-  };
-
-  fileSystems."/data/nvme1" = {
-    device = "/dev/disk/by-uuid/7311782f-8aca-4974-94ea-5d5cf0a742f3";
-    fsType = "btrfs";
-    options = [ "rw" "nosuid" "nodev" "ssd" "space_cache=v2" "subvolid=5" "subvol=/" "relatime" "compress=zstd" ];
-  };
 
   # /dev/mapper/nvme1 on /data/nvme1 type btrfs (rw,nosuid,nodev,relatime,ssd,space_cache=v2,subvolid=5,subvol=/,x-gvfs-show)
   swapDevices = [ ];
