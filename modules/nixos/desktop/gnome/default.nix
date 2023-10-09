@@ -1,10 +1,10 @@
-{
-  config,
-  lib,
-  options,
-  pkgs,
-  ...
-}: let
+{ config
+, lib
+, options
+, pkgs
+, ...
+}:
+let
   inherit (lib) types mkIf mapAttrs optional getExe;
   inherit (lib.internal) mkBoolOpt mkOpt enabled;
 
@@ -28,18 +28,19 @@
   ];
   # default-attrs = mapAttrs (_key: mkDefault);
   # nested-default-attrs = mapAttrs (_key: default-attrs);
-in {
+in
+{
   options.beansnix.desktop.gnome = with types; {
     enable =
       mkBoolOpt false "Whether or not to use Gnome as the desktop environment.";
-    color-scheme = mkOpt (enum ["light" "dark"]) "dark" "The color scheme to use.";
-    extensions = mkOpt (listOf package) [] "Extra Gnome extensions to install.";
+    color-scheme = mkOpt (enum [ "light" "dark" ]) "dark" "The color scheme to use.";
+    extensions = mkOpt (listOf package) [ ] "Extra Gnome extensions to install.";
     monitors = mkOpt (nullOr path) null "The monitors.xml file to create.";
     suspend =
       mkBoolOpt true "Whether or not to suspend the machine after inactivity.";
     wallpaper = {
-      light = mkOpt (oneOf [str package]) pkgs.beansnix.wallpapers.flatppuccin_macchiato "The light wallpaper to use.";
-      dark = mkOpt (oneOf [str package]) pkgs.beansnix.wallpapers.cat-sound "The dark wallpaper to use.";
+      light = mkOpt (oneOf [ str package ]) pkgs.beansnix.wallpapers.flatppuccin_macchiato "The light wallpaper to use.";
+      dark = mkOpt (oneOf [ str package ]) pkgs.beansnix.wallpapers.cat-sound "The dark wallpaper to use.";
     };
     wayland = mkBoolOpt true "Whether or not to use Wayland.";
   };
@@ -271,7 +272,7 @@ in {
 
     # Required for app indicators
     services = {
-      udev.packages = with pkgs; [gnome3.gnome-settings-daemon];
+      udev.packages = with pkgs; [ gnome3.gnome-settings-daemon ];
 
       xserver = {
         enable = true;
@@ -298,8 +299,8 @@ in {
         );
 
       services.beansnix-user-icon = {
-        before = ["display-manager.service"];
-        wantedBy = ["display-manager.service"];
+        before = [ "display-manager.service" ];
+        wantedBy = [ "display-manager.service" ];
 
         serviceConfig = {
           Type = "simple";

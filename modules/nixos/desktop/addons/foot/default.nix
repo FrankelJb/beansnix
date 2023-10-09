@@ -1,15 +1,16 @@
-{
-  config,
-  lib,
-  options,
-  pkgs,
-  ...
-}: let
+{ config
+, lib
+, options
+, pkgs
+, ...
+}:
+let
   inherit (lib) mkIf;
   inherit (lib.internal) mkBoolOpt;
 
   cfg = config.beansnix.desktop.addons.foot;
-in {
+in
+{
   options.beansnix.desktop.addons.foot = {
     enable = mkBoolOpt false "Whether to enable foot.";
   };

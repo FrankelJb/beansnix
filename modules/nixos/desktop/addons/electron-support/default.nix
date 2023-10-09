@@ -1,18 +1,19 @@
-{
-  config,
-  lib,
-  options,
-  ...
-}: let
+{ config
+, lib
+, options
+, ...
+}:
+let
   inherit (lib) mkIf;
   inherit (lib.internal) mkBoolOpt;
 
   cfg = config.beansnix.desktop.addons.electron-support;
-in {
+in
+{
   options.beansnix.desktop.addons.electron-support = {
     enable =
       mkBoolOpt false
-      "Whether to enable electron support in the desktop environment.";
+        "Whether to enable electron support in the desktop environment.";
   };
 
   config = mkIf cfg.enable {

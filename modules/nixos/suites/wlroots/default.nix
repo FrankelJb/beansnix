@@ -1,15 +1,16 @@
-{
-  config,
-  lib,
-  options,
-  pkgs,
-  ...
-}: let
+{ config
+, lib
+, options
+, pkgs
+, ...
+}:
+let
   inherit (lib) mkIf;
   inherit (lib.internal) mkBoolOpt enabled;
 
   cfg = config.beansnix.suites.wlroots;
-in {
+in
+{
   options.beansnix.suites.wlroots = {
     enable =
       mkBoolOpt false "Whether or not to enable common wlroots configuration.";
