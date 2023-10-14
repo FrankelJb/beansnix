@@ -16,6 +16,9 @@ in
     enable =
       mkBoolOpt false
         "Whether or not to enable common development configuration.";
+    dockerEnable =
+      mkBoolOpt false
+        "Whether or not to enable docker development configuration.";
   };
 
   config = mkIf cfg.enable {

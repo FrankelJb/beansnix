@@ -3,6 +3,7 @@
 , options
 , inputs
 , host
+, pkgs
 , ...
 }:
 let
@@ -42,13 +43,14 @@ let
                 RemoteForward /run/user/${remote-user-id}/gnupg/S.gpg-agent /run/user/${user-id}/gnupg/S.gpg-agent.extra
                 RemoteForward /run/user/${remote-user-id}/gnupg/S.gpg-agent.ssh /run/user/${user-id}/gnupg/S.gpg-agent.ssh
               '';
+          port-expr = if builtins.hasAttr name inputs.self.nixosConfigurations then "Port ${builtins.toString cfg.port}" else "";
         in
         ''
           Host ${name}
             Hostname ${name}.local
             User ${remote-user-name}
             ForwardAgent yes
-            Port ${builtins.toString cfg.port}
+            ${port-expr}
             ${forward-gpg}
         ''
       )
@@ -76,14 +78,21 @@ in
       '';
     };
 
-    home.shellAliases =
-      foldl
-        (aliases: system:
-          aliases
-          // {
-            "ssh-${system}" = "ssh ${system} -t tmux a";
-          })
-        { }
-        (builtins.attrNames other-hosts);
+    home = {
+      shellAliases =
+        foldl
+          (aliases: system:
+            aliases
+            // {
+              "ssh-${system}" = "ssh ${system} -t tmux a";
+            })
+          { }
+          (builtins.attrNames other-hosts);
+
+
+      file = mkIf pkgs.stdenv.isDarwin {
+        ".ssh/authorized_keys".text = builtins.concatStringsSep "\n" cfg.authorizedKeys;
+      };
+    };
   };
 }

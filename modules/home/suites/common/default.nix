@@ -22,6 +22,7 @@ in
     beansnix = {
       cli-apps = {
         bottom = enabled;
+        bottom = enabled;
         btop = enabled;
         fastfetch = enabled;
         ranger = enabled;
@@ -39,6 +40,7 @@ in
       };
 
       services = {
+        udiskie.enable = pkgs.stdenv.isLinux;
         udiskie.enable = pkgs.stdenv.isLinux;
       };
 

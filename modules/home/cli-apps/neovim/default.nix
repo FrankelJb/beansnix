@@ -66,6 +66,7 @@ in
         less
         ripgrep
         tree-sitter
+        tree-sitter
         unzip
         wget
       ] ++ lsp

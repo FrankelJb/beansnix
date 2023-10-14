@@ -8,10 +8,10 @@ let
   inherit (lib) mkIf;
   inherit (lib.internal) mkBoolOpt;
 
-  cfg = config.beansnix.cli-apps.bottom;
+  cfg = config.khanelinix.cli-apps.bottom;
 in
 {
-  options.beansnix.cli-apps.bottom = {
+  options.khanelinix.cli-apps.bottom = {
     enable = mkBoolOpt false "Whether or not to enable bottom.";
   };
 
@@ -20,7 +20,7 @@ in
       enable = true;
       package = pkgs.bottom;
 
-      settings = builtins.fromTOML (builtins.readFile ./themes/macchiato.toml);
+      settings = builtins.fromTOML (builtins.readFile (pkgs.catppuccin + "/bottom/macchiato.toml"));
     };
   };
 }

@@ -53,33 +53,27 @@ in
       8081
     ];
 
-    environment.systemPackages = with pkgs;
-      [
-        github-desktop
-        onefetch
-        qtcreator
-        neovide
-      ]
-      ++ lib.optionals cfg.nixEnable [
-        nixpkgs-fmt
-        nixpkgs-hammering
-        nixpkgs-lint-community
-        nixpkgs-review
-      ]
-      ++ lib.optionals cfg.gameEnable [
-        godot_4
-        # ue4
-        unityhub
-      ]
-      ++ lib.optionals cfg.rustEnable [
-        rust-bin.stable.latest.default
-        flip-link
-        elf2uf2-rs
-      ]
-      ++ lib.optionals cfg.sqlEnable [
-        dbeaver
-        mysql-workbench
-      ];
+    environment.systemPackages = with pkgs; [
+      github-desktop
+      # FIX: broken package
+      # qtcreator
+      neovide
+      vscode
+    ] ++ lib.optionals cfg.nixEnable [
+      nixpkgs-fmt
+      nixpkgs-hammering
+      nixpkgs-lint-community
+      nixpkgs-review
+    ] ++ lib.optionals cfg.gameEnable [
+      godot_4
+      # ue4
+      unityhub
+    ] ++ lib.optionals cfg.rustEnable [
+      rust-bin.stable.latest.default
+    ] ++ lib.optionals cfg.sqlEnable [
+      dbeaver
+      mysql-workbench
+    ];
 
     beansnix = {
       cli-apps = {

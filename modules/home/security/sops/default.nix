@@ -26,7 +26,7 @@ in
   config = mkIf cfg.enable {
     sops = {
       inherit (cfg) defaultSopsFile;
-      defaultSopsFormat = "json";
+      defaultSopsFormat = "yaml";
 
       age = {
         generateKey = true;

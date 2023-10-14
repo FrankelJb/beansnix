@@ -8,10 +8,10 @@ let
   inherit (lib) mkIf;
   inherit (lib.internal) mkBoolOpt;
 
-  cfg = config.beansnix.cli-apps.yazi;
+  cfg = config.khanelinix.cli-apps.yazi;
 in
 {
-  options.beansnix.cli-apps.yazi = {
+  options.khanelinix.cli-apps.yazi = {
     enable = mkBoolOpt false "Whether or not to enable yazi.";
   };
 
@@ -24,6 +24,16 @@ in
       enableFishIntegration = true;
       enableNushellIntegration = true;
       enableZshIntegration = true;
+    };
+
+    xdg.configFile = {
+      "yazi" = {
+        source = lib.cleanSourceWith {
+          src = lib.cleanSource ./configs/.;
+        };
+
+        recursive = true;
+      };
     };
   };
 }

@@ -29,13 +29,7 @@ in
       file
       findutils
       killall
-      kubectl
-      ncdu
-      neofetch
-      restic
-      ripgrep
-      # TODO: Rust toolchain
-      rust-bin.stable.latest.default
+      lsof
       pciutils
       sops
       tealdeer

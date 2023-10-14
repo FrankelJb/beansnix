@@ -2,13 +2,14 @@
 , lib
 , options
 , pkgs
+, pkgs
 , ...
 }:
 let
   inherit (lib) mkIf;
   inherit (lib.internal) mkBoolOpt;
 
-  cfg = config.beansnix.cli-apps.lazygit;
+  cfg = config.khanelinix.cli-apps.lazygit;
 
   fromYAML = f:
     let
@@ -32,7 +33,7 @@ in
       enable = true;
 
       settings = {
-        gui = fromYAML ./themes/macchiato-blue.yml;
+        gui = fromYAML (pkgs.catppuccin + "/lazygit/themes/macchiato-blue.yml");
       };
     };
 
