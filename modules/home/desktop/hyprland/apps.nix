@@ -4,7 +4,7 @@
 , ...
 }:
 let
-  inherit (lib) mkIf getExe;
+  inherit (lib) mkIf getExe getExe';
 
   cfg = config.beansnix.desktop.hyprland;
 
@@ -48,8 +48,7 @@ in
               # Startup apps that have rules for organizing them
               "[workspace special silent ] ${getExe pkgs.kitty} --session scratchpad" # Spawn scratchpad terminal
               "${getExe pkgs.firefox}"
-              "[silent] ${getExe pkgs.steam}"
-              "[silent] ${getExe pkgs.signal-desktop}"
+              "[silent] ${getExe' pkgs.signal-desktop "signal-desktop"}"
 
               "${getExe pkgs.virt-manager}"
             ];

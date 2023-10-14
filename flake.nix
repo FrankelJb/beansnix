@@ -187,8 +187,6 @@
           nixos = [
             nix-ld.nixosModules.nix-ld
             sops-nix.nixosModules.sops
-          ];
-          hosts.helium = [
             nh.nixosModules.default
             {
               nh = {

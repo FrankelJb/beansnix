@@ -16,7 +16,7 @@ in
     hosts =
       mkOpt attrs { }
         "An attribute set to merge with <option>networking.hosts</option>";
-    nameServers = mkOpt (listOf str) [ "192.168.1.200" "9.9.9.9" ] "The nameservers to add.";
+    nameServers = mkOpt (listOf str) [ "192.168.1.200" ] "The nameservers to add.";
   };
 
   config = mkIf cfg.enable {
@@ -28,24 +28,24 @@ in
           "127.0.0.1" = [ "local.test" ] ++ (cfg.hosts."127.0.0.1" or [ ]);
         }
         // cfg.hosts;
-      nameservers = cfg.nameServers;
+      # nameservers = cfg.nameServers;
 
       networkmanager = {
         enable = true;
 
-        connectionConfig = {
-          mdns = "yes";
-        };
-
+        # connectionConfig = {
+        #   mdns = "yes";
+        # };
+        #
         dhcp = "internal";
-        insertNameservers = cfg.nameServers;
+        # insertNameservers = cfg.nameServers;
 
-        plugins = with pkgs; [
-          networkmanager-l2tp
-          networkmanager-openvpn
-          networkmanager-sstp
-          networkmanager-vpnc
-        ];
+        # plugins = with pkgs; [
+        #   networkmanager-l2tp
+        #   networkmanager-openvpn
+        #   networkmanager-sstp
+        #   networkmanager-vpnc
+        # ];
       };
 
       search = [ ];
