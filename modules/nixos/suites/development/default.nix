@@ -1,47 +1,46 @@
-{ config
-, lib
-, options
-, pkgs
-, ...
-}:
-let
+{
+  config,
+  lib,
+  options,
+  pkgs,
+  ...
+}: let
   inherit (lib) mkIf;
   inherit (lib.internal) mkBoolOpt enabled;
 
   cfg = config.beansnix.suites.development;
-in
-{
+in {
   options.beansnix.suites.development = {
     enable =
       mkBoolOpt false
-        "Whether or not to enable common development configuration.";
+      "Whether or not to enable common development configuration.";
     azureEnable =
       mkBoolOpt false
-        "Whether or not to enable azure development configuration.";
+      "Whether or not to enable azure development configuration.";
     dockerEnable =
       mkBoolOpt false
-        "Whether or not to enable docker development configuration.";
+      "Whether or not to enable docker development configuration.";
     gameEnable =
       mkBoolOpt false
-        "Whether or not to enable game development configuration.";
+      "Whether or not to enable game development configuration.";
     goEnable =
       mkBoolOpt false
-        "Whether or not to enable go development configuration.";
+      "Whether or not to enable go development configuration.";
     kubernetesEnable =
       mkBoolOpt false
-        "Whether or not to enable kubernetes development configuration.";
+      "Whether or not to enable kubernetes development configuration.";
     nixEnable =
       mkBoolOpt false
-        "Whether or not to enable nix development configuration.";
+      "Whether or not to enable nix development configuration.";
     nodeEnable =
       mkBoolOpt false
-        "Whether or not to enable node development configuration.";
+      "Whether or not to enable node development configuration.";
     rustEnable =
       mkBoolOpt false
-        "Whether or not to enable rust development configuration.";
+      "Whether or not to enable rust development configuration.";
     sqlEnable =
       mkBoolOpt false
-        "Whether or not to enable sql development configuration.";
+      "Whether or not to enable sql development configuration.";
   };
 
   config = mkIf cfg.enable {
@@ -53,31 +52,35 @@ in
       8081
     ];
 
-    environment.systemPackages = with pkgs; [
-      github-desktop
-      # FIX: broken package
-      # qtcreator
-      neovide
-      vscode
-    ] ++ lib.optionals cfg.nixEnable [
-      nixpkgs-fmt
-      nixpkgs-hammering
-      nixpkgs-lint-community
-      nixpkgs-review
-    ] ++ lib.optionals cfg.gameEnable [
-      godot_4
-      # ue4
-      unityhub
-    ] ++ lib.optionals cfg.rustEnable [
-      rust-bin.stable.latest.default
-    ] ++ lib.optionals cfg.sqlEnable [
-      dbeaver
-      mysql-workbench
-    ];
+    environment.systemPackages = with pkgs;
+      [
+        github-desktop
+        # FIX: broken package
+        # qtcreator
+        neovide
+        vscode
+      ]
+      ++ lib.optionals cfg.nixEnable [
+        nixpkgs-fmt
+        nixpkgs-hammering
+        nixpkgs-lint-community
+        nixpkgs-review
+      ]
+      ++ lib.optionals cfg.gameEnable [
+        godot_4
+        # ue4
+        unityhub
+      ]
+      ++ lib.optionals cfg.rustEnable [
+        rust-bin.stable.latest.default
+      ]
+      ++ lib.optionals cfg.sqlEnable [
+        dbeaver
+        mysql-workbench
+      ];
 
     beansnix = {
       cli-apps = {
-        lazydocker.enable = cfg.dockerEnable;
         # nh = enabled;
         prisma = enabled;
       };

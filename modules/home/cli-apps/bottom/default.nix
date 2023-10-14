@@ -1,17 +1,16 @@
-{ config
-, lib
-, options
-, pkgs
-, ...
-}:
-let
+{
+  config,
+  lib,
+  options,
+  pkgs,
+  ...
+}: let
   inherit (lib) mkIf;
   inherit (lib.internal) mkBoolOpt;
 
-  cfg = config.khanelinix.cli-apps.bottom;
-in
-{
-  options.khanelinix.cli-apps.bottom = {
+  cfg = config.beansnix.cli-apps.bottom;
+in {
+  options.beansnix.cli-apps.bottom = {
     enable = mkBoolOpt false "Whether or not to enable bottom.";
   };
 

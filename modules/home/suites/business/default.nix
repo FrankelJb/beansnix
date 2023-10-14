@@ -16,7 +16,6 @@ in {
   config = mkIf cfg.enable {
     beansnix = {
       apps = {
-        _1password = enabled;
       };
     };
   };

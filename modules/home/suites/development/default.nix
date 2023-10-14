@@ -1,24 +1,23 @@
-{ config
-, lib
-, options
-, inputs
-, pkgs
-, ...
-}:
-let
+{
+  config,
+  lib,
+  options,
+  inputs,
+  pkgs,
+  ...
+}: let
   inherit (lib) mkIf;
   inherit (lib.internal) mkBoolOpt enabled;
 
   cfg = config.beansnix.suites.development;
-in
-{
+in {
   options.beansnix.suites.development = {
     enable =
       mkBoolOpt false
-        "Whether or not to enable common development configuration.";
+      "Whether or not to enable common development configuration.";
     dockerEnable =
       mkBoolOpt false
-        "Whether or not to enable docker development configuration.";
+      "Whether or not to enable docker development configuration.";
   };
 
   config = mkIf cfg.enable {
@@ -27,6 +26,7 @@ in
         alejandra
         cpplint
         deadnix
+        lazydocker
         rnix-lsp
         ueberzugpp
         statix
@@ -43,6 +43,7 @@ in
       };
 
       cli-apps = {
+        lazydocker.enable = cfg.dockerEnable;
         lazygit = enabled;
         neovim = {
           enable = true;
