@@ -1,17 +1,16 @@
-{ config
-, lib
-, options
-, pkgs
-, ...
-}:
-let
+{
+  config,
+  lib,
+  options,
+  pkgs,
+  ...
+}: let
   inherit (lib) mkIf;
   inherit (lib.internal) mkBoolOpt;
 
-  cfg = config.khanelinix.cli-apps.yazi;
-in
-{
-  options.khanelinix.cli-apps.yazi = {
+  cfg = config.beansnix.cli-apps.yazi;
+in {
+  options.beansnix.cli-apps.yazi = {
     enable = mkBoolOpt false "Whether or not to enable yazi.";
   };
 

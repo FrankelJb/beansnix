@@ -9,7 +9,6 @@ let
   inherit (config.beansnix) user;
 
   cfg = config.beansnix.tools.git;
-  cfg = config.khanelinix.tools.git;
 
   aliases = import ./aliases.nix;
 in
@@ -41,7 +40,7 @@ in
           enable = true;
 
           options = {
-            syntax-theme = mkIf config.khanelinix.tools.bat.enable "catppuccin-macchiato";
+            syntax-theme = mkIf config.beansnix.tools.bat.enable "catppuccin-macchiato";
           };
         };
 

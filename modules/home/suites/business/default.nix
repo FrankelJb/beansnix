@@ -1,21 +1,20 @@
-{ config
-, lib
-, options
-, ...
-}:
-let
+{
+  config,
+  lib,
+  options,
+  ...
+}: let
   inherit (lib) mkIf;
   inherit (lib.internal) mkBoolOpt enabled;
 
-  cfg = config.khanelinix.suites.business;
-in
-{
-  options.khanelinix.suites.business = {
+  cfg = config.beansnix.suites.business;
+in {
+  options.beansnix.suites.business = {
     enable = mkBoolOpt false "Whether or not to enable business configuration.";
   };
 
   config = mkIf cfg.enable {
-    khanelinix = {
+    beansnix = {
       apps = {
         _1password = enabled;
       };

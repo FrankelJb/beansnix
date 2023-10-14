@@ -9,7 +9,7 @@ let
   inherit (lib) mkIf;
   inherit (lib.internal) mkBoolOpt;
 
-  cfg = config.khanelinix.cli-apps.lazygit;
+  cfg = config.beansnix.cli-apps.lazygit;
 
   fromYAML = f:
     let
