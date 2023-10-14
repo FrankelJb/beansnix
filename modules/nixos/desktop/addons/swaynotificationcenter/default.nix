@@ -18,8 +18,8 @@ in
 
   config = mkIf cfg.enable {
     environment.systemPackages = with pkgs; [
-      swaynotificationcenter
       libnotify
+      swaynotificationcenter
     ];
 
     beansnix.home = {

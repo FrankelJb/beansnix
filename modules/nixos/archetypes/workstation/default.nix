@@ -19,6 +19,7 @@ in
     beansnix = {
       apps = {
         yubikey = enabled;
+        monero-gui = enabled;
       };
 
       cli-apps = {
