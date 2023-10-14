@@ -2,7 +2,7 @@ repository:
   # See https://developer.github.com/v3/repos/#edit for all available settings.
 
   # The name of the repository. Changing this will rename the repository
-  name: khanelinix
+  name: beansnix
 
   # A short description of the repository that will show up on GitHub
   description: My Nix dotfiles
@@ -82,24 +82,24 @@ milestones:
 # Collaborators: give specific users access to this repository.
 # See https://docs.github.com/en/rest/reference/repos#add-a-repository-collaborator for available options
 collaborators:
-    # Note: `permission` is only valid on organization-owned repositories.
-    # The permission to grant the collaborator. Can be one of:
-    # * `pull` - can pull, but not push to or administer this repository.
-    # * `push` - can pull and push, but not administer this repository.
-    # * `admin` - can pull, push and administer this repository.
-    # * `maintain` - Recommended for project managers who need to manage the repository without access to sensitive or destructive actions.
-    # * `triage` - Recommended for contributors who need to proactively manage issues and pull requests without write access.
-    # permission: push
+  # Note: `permission` is only valid on organization-owned repositories.
+  # The permission to grant the collaborator. Can be one of:
+  # * `pull` - can pull, but not push to or administer this repository.
+  # * `push` - can pull and push, but not administer this repository.
+  # * `admin` - can pull, push and administer this repository.
+  # * `maintain` - Recommended for project managers who need to manage the repository without access to sensitive or destructive actions.
+  # * `triage` - Recommended for contributors who need to proactively manage issues and pull requests without write access.
+  # permission: push
 
 # See https://docs.github.com/en/rest/reference/teams#add-or-update-team-repository-permissions for available options
 teams:
-    # The permission to grant the team. Can be one of:
-    # * `pull` - can pull, but not push to or administer this repository.
-    # * `push` - can pull and push, but not administer this repository.
-    # * `admin` - can pull, push and administer this repository.
-    # * `maintain` - Recommended for project managers who need to manage the repository without access to sensitive or destructive actions.
-    # * `triage` - Recommended for contributors who need to proactively manage issues and pull requests without write access.
-    # permission: maintain
+  # The permission to grant the team. Can be one of:
+  # * `pull` - can pull, but not push to or administer this repository.
+  # * `push` - can pull and push, but not administer this repository.
+  # * `admin` - can pull, push and administer this repository.
+  # * `maintain` - Recommended for project managers who need to manage the repository without access to sensitive or destructive actions.
+  # * `triage` - Recommended for contributors who need to proactively manage issues and pull requests without write access.
+  # permission: maintain
 
 branches:
   - name: main
@@ -136,5 +136,5 @@ branches:
         # teams: []
 
 actions:
-    default_workflow_permissions: "write"
-    can_approve_pull_request_reviews": true
+  default_workflow_permissions: "write"
+  can_approve_pull_request_reviews": true

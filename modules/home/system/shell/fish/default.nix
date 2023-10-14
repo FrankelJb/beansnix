@@ -69,9 +69,9 @@ in
         ka = "kubectl apply -f";
         kd = "kubectl delete";
         less = "bat";
-        l = "eza";
-        ls = "eza";
-        lll = "eza -la";
+        l = "lsd";
+        ls = "lsd";
+        lll = "lsd -la";
         pip = "pip3";
         sshk = "kitty +kitten ssh";
         vim = "nvim";
