@@ -1,15 +1,16 @@
-{
-  config,
-  lib,
-  options,
-  pkgs,
-  ...
-}: let
+{ config
+, lib
+, options
+, pkgs
+, ...
+}:
+let
   inherit (lib) mkIf;
   inherit (lib.internal) mkBoolOpt;
 
   cfg = config.beansnix.suites.common;
-in {
+in
+{
   options.beansnix.suites.common = {
     enable = mkBoolOpt false "Whether or not to enable common configuration.";
   };
@@ -28,6 +29,12 @@ in {
       findutils
       killall
       lsof
+      ncdu
+      neofetch
+      restic
+      ripgrep
+      # TODO: Rust toolchain
+      #rust-bin.stable.latest.default
       pciutils
       sops
       tealdeer

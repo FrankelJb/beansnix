@@ -34,12 +34,12 @@ in
         sshKeyPaths = [ "${config.home.homeDirectory}/.ssh/id_ed25519" ] ++ cfg.sshKeyPaths;
       };
 
-      secrets = {
-        nix = {
-          sopsFile = ../../../../secrets/beans/default.json;
-          path = "${config.home.homeDirectory}/.config/nix/nix.conf";
-        };
-      };
+      # secrets = {
+      #   nix = {
+      #     sopsFile = ../../../../secrets/beans/default.yaml;
+      #     path = "${config.home.homeDirectory}/.config/nix/nix.conf";
+      #   };
+      # };
     };
   };
 }

@@ -41,10 +41,10 @@ in
               "float, class:^(nm-connection-editor)$"
 
               # floating terminal
-              "float, title:^(floating_kitty)$"
-              "size 1100 600, title:^(floating_kitty)$"
-              "move center, title:^(floating_kitty)$"
-              "animation slide, title:^(floating_kitty)$"
+              "float, title:^(floating_term)$"
+              "size 1100 600, title:^(floating_term)$"
+              "move center, title:^(floating_term)$"
+              "animation slide, title:^(floating_term)$"
 
               # calendar reminders
               "float, class:^(thunderbird)$,title:.*(Reminders)$"

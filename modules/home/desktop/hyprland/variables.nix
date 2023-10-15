@@ -4,7 +4,7 @@
 , ...
 }:
 let
-  inherit (lib) mkIf getExe;
+  inherit (lib) mkIf getExe getExe';
 
   cfg = config.beansnix.desktop.hyprland;
 in
@@ -110,7 +110,7 @@ in
             "$RHYPER" = "SUPER_RALT_RCTRL"; # TODO: fix
 
             # default applications
-            "$term" = "${getExe pkgs.foot}";
+            "$term" = "${getExe' pkgs.foot "foot"}";
             "$browser" = "${getExe pkgs.firefox}";
             "$mail" = "${getExe pkgs.thunderbird}";
             "$editor" = "${getExe pkgs.neovim}";
@@ -124,3 +124,5 @@ in
         };
       };
 }
+
+

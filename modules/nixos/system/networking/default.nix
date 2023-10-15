@@ -28,7 +28,7 @@ in
           "127.0.0.1" = [ "local.test" ] ++ (cfg.hosts."127.0.0.1" or [ ]);
         }
         // cfg.hosts;
-      # nameservers = cfg.nameServers;
+      nameservers = cfg.nameServers;
 
       networkmanager = {
         enable = true;
@@ -38,7 +38,7 @@ in
         # };
         #
         dhcp = "internal";
-        # insertNameservers = cfg.nameServers;
+        insertNameservers = cfg.nameServers;
 
         # plugins = with pkgs; [
         #   networkmanager-l2tp
