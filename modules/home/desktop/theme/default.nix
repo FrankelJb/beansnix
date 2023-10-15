@@ -8,7 +8,7 @@ let
   inherit (lib) mkIf mkEnableOption mkOption types;
   inherit (lib.internal) mkOpt;
 
-  cfg = config.khanelinix.desktop.theme;
+  cfg = config.beansnix.desktop.theme;
 
   catppuccinAccents = [ "rosewater" "flamingo" "pink" "mauve" "red" "maroon" "peach" "yellow" "green" "teal" "sky" "sapphire" "blue" "lavender" ];
   catppuccinVariants = [ "latte" "frappe" "macchiato" "mocha" ];
@@ -26,7 +26,7 @@ let
     builtins.elemAt (builtins.fromJSON (builtins.readFile jsonFile)) 0;
 in
 {
-  options.khanelinix.desktop.theme = {
+  options.beansnix.desktop.theme = {
     enable = mkEnableOption "Enable custom theme use for applications.";
     selectedTheme = mkOption {
       type = types.submodule {
@@ -83,7 +83,7 @@ in
 
       git.delta = {
         options = {
-          syntax-theme = mkIf config.khanelinix.tools.bat.enable "${cfg.selectedTheme.name}-${cfg.selectedTheme.variant}";
+          syntax-theme = mkIf config.beansnix.tools.bat.enable "${cfg.selectedTheme.name}-${cfg.selectedTheme.variant}";
         };
       };
 
