@@ -1,20 +1,18 @@
-{ config
-, pkgs
-, lib
-, ...
-}:
-let
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}: let
   inherit (lib) getExe;
   inherit (lib.internal) enabled;
-in
-{
-  imports = [ ./hardware.nix ];
+in {
+  imports = [./hardware.nix];
 
   beansnix = {
     nix = enabled;
 
     archetypes = {
-      gaming = enabled;
       personal = enabled;
       workstation = enabled;
     };
@@ -26,7 +24,6 @@ in
         wallpapers = enabled;
       };
     };
-
 
     display-managers = {
       # gdm = {
@@ -43,7 +40,6 @@ in
     };
 
     services = {
-
       openssh = {
         enable = true;
 
