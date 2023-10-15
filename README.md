@@ -18,11 +18,15 @@ Welcome to BeansNix, a personal Nix configuration repository. This repository co
 
 Here's an overview of what my Nix configuration offers:
 
-- **Astronvim Integration**: Easily integrate Astronvim and my personal astronvim config.
+- **External Dependency Integrations**:
+  - Easily integrate Astronvim and my personal Astronvim [config](https://github.com/khaneliman/khanelivim).
+  - Access the Nix User Repository (NUR) for additional packages and
+    enhancements.
+  - Incorporate Nixpkgs-Wayland to provide an up-to-date Wayland package
+    repository.
 
-- **NUR Integration**: Access the Nix User Repository (NUR) for additional packages and enhancements.
- 
-- **Nixpkgs-Wayland Integration**: Incorporate Nixpkgs-Wayland to provide a more up to date wayland package repository.
+- **macOS Support**: Seamlessly configure and manage Nix on macOS using the
+  power of Nix-darwin, also leveraging homebrew for GUI applications.
 
 - **Home Manager**: Manage your dotfiles, home environment, and user-specific
   configurations with Home Manager.

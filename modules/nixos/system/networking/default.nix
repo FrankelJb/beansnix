@@ -1,31 +1,30 @@
-{ config
-, lib
-, options
-, pkgs
-, ...
-}:
-let
+{
+  config,
+  lib,
+  options,
+  pkgs,
+  ...
+}: let
   inherit (lib) types mkIf;
   inherit (lib.internal) mkBoolOpt mkOpt;
 
   cfg = config.beansnix.system.networking;
-in
-{
+in {
   options.beansnix.system.networking = with types; {
     enable = mkBoolOpt false "Whether or not to enable networking support";
     hosts =
-      mkOpt attrs { }
-        "An attribute set to merge with <option>networking.hosts</option>";
-    nameServers = mkOpt (listOf str) [ "192.168.1.200" ] "The nameservers to add.";
+      mkOpt attrs {}
+      "An attribute set to merge with <option>networking.hosts</option>";
+    nameServers = mkOpt (listOf str) ["192.168.1.200"] "The nameservers to add.";
   };
 
   config = mkIf cfg.enable {
-    beansnix.user.extraGroups = [ "networkmanager" ];
+    beansnix.user.extraGroups = ["networkmanager"];
 
     networking = {
       hosts =
         {
-          "127.0.0.1" = [ "local.test" ] ++ (cfg.hosts."127.0.0.1" or [ ]);
+          "127.0.0.1" = ["local.test"] ++ (cfg.hosts."127.0.0.1" or []);
         }
         // cfg.hosts;
       nameservers = cfg.nameServers;
@@ -48,7 +47,7 @@ in
         # ];
       };
 
-      search = [ ];
+      search = [];
     };
 
     services.resolved.enable = true;

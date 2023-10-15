@@ -8,20 +8,9 @@
   inherit (lib) mkIf;
   inherit (lib.internal) mkBoolOpt;
 
-  cfg = config.beansnix.cli-apps.k9s;
-
-  fromYAML = f: let
-    jsonFile =
-      pkgs.runCommand "in.json"
-      {
-        nativeBuildInputs = [pkgs.jc];
-      } ''
-        jc --yaml < "${f}" > "$out"
-      '';
-  in
-    builtins.elemAt (builtins.fromJSON (builtins.readFile jsonFile)) 0;
+  cfg = config.khanelinix.cli-apps.k9s;
 in {
-  options.beansnix.cli-apps.k9s = {
+  options.khanelinix.cli-apps.k9s = {
     enable = mkBoolOpt false "Whether or not to enable k9s.";
   };
 
@@ -29,8 +18,6 @@ in {
     programs.k9s = {
       enable = true;
       package = pkgs.k9s;
-
-      skin = fromYAML (pkgs.catppuccin + "/k9s/themes/macchiato.yml");
     };
   };
 }

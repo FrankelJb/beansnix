@@ -148,15 +148,14 @@
     };
   };
 
-  outputs = inputs:
-    let
-      inherit (inputs) deploy-rs flake nh nix-ld nixpkgs-wayland nur rustup-overlay snowfall-lib snowfall-frost sops-nix;
+  outputs = inputs: let
+    inherit (inputs) deploy-rs flake nh nix-ld nixpkgs-wayland nur rustup-overlay snowfall-lib snowfall-frost sops-nix;
 
-      lib = snowfall-lib.mkLib {
-        inherit inputs;
-        src = ./.;
-      };
-    in
+    lib = snowfall-lib.mkLib {
+      inherit inputs;
+      src = ./.;
+    };
+  in
     lib.mkFlake {
       package-namespace = "beansnix";
 
@@ -199,12 +198,12 @@
         };
       };
 
-      deploy = lib.mkDeploy { inherit (inputs) self; };
+      deploy = lib.mkDeploy {inherit (inputs) self;};
 
       checks =
         builtins.mapAttrs
-          (_system: deploy-lib:
-            deploy-lib.deployChecks inputs.self.deploy)
-          deploy-rs.lib;
+        (_system: deploy-lib:
+          deploy-lib.deployChecks inputs.self.deploy)
+        deploy-rs.lib;
     };
 }

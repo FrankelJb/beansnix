@@ -1,16 +1,15 @@
-{ config
-, lib
-, options
-, pkgs
-, ...
-}:
-let
+{
+  config,
+  lib,
+  options,
+  pkgs,
+  ...
+}: let
   inherit (lib) mkIf;
   inherit (lib.internal) mkBoolOpt;
 
   cfg = config.beansnix.tools.bat;
-in
-{
+in {
   options.beansnix.tools.bat = {
     enable = mkBoolOpt false "Whether or not to enable bat.";
   };
@@ -20,7 +19,6 @@ in
       enable = true;
 
       config = {
-        theme = "catppuccin-macchiato";
         style = "auto,header-filesize";
       };
 
@@ -32,13 +30,6 @@ in
         batwatch
         prettybat
       ];
-
-      themes = {
-        catppuccin-macchiato = {
-          src = pkgs.catppuccin;
-          file = "/bat/Catppuccin-macchiato.tmTheme";
-        };
-      };
     };
 
     home.shellAliases = {
