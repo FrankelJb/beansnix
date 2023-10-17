@@ -4,7 +4,7 @@
 , ...
 }:
 let
-  inherit (lib) mkIf getExe getExe';
+  inherit (lib) mkIf getExe';
   inherit (lib.internal) mkBoolOpt;
 
   cfg = config.beansnix.desktop.addons.swayidle;

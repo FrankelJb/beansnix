@@ -1,11 +1,10 @@
 {
   config,
   lib,
-  pkgs,
   ...
 }: let
-  inherit (lib) types mkEnableOption mkIf getExe';
-  inherit (lib.internal) mkOpt mkBoolOpt enabled;
+  inherit (lib) types mkEnableOption mkIf;
+  inherit (lib.internal) mkOpt enabled;
   inherit (config.beansnix) user;
 
   cfg = config.beansnix.tools.git;

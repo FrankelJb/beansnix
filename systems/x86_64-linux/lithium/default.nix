@@ -1,10 +1,7 @@
 {
-  config,
-  pkgs,
   lib,
   ...
 }: let
-  inherit (lib) getExe;
   inherit (lib.internal) enabled;
 in {
   imports = [./hardware.nix];
