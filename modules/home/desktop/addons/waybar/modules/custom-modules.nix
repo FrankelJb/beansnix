@@ -90,13 +90,13 @@ in
     "tooltip" = false;
   };
 
-  "custom/weather" = {
-    "exec" = "${getExe pkgs.wttrbar} -l $(${getExe pkgs.jq} -r '.weathergov | (.location)' ~/weather_config.json) --fahrenheit --main-indicator temp_F";
-    "return-type" = "json";
-    "format" = "{}";
-    "tooltip" = true;
-    "interval" = 3600;
-  };
+  # "custom/weather" = {
+  #   "exec" = "${getExe pkgs.wttrbar} -l $(${getExe pkgs.jq} -r '.weathergov | (.location)' ~/weather_config.json) --fahrenheit --main-indicator temp_F";
+  #   "return-type" = "json";
+  #   "format" = "{}";
+  #   "tooltip" = true;
+  #   "interval" = 3600;
+  # };
 
   "custom/wlogout" = {
     "format" = "";

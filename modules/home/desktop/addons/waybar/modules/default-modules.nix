@@ -6,14 +6,40 @@ let
   inherit (lib) getExe getExe';
 in
 {
+  # "clock" = {
+  #   "tooltip-format" = "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>";
+  #   "format" = "{:%a %d %b \n  %H:%M }";
+  #   "format-alt" = "{:%Y-%m-%d}";
+  # };
   "clock" = {
-    "tooltip-format" = "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>";
-    "format" = "{:%a %d; %b \n %I:%M %p }";
+    "format" = "{:%a %d %b \n  %H:%M }";
     "format-alt" = "{:%Y-%m-%d}";
+    "tooltip-format" = "<tt><small>{calendar}</small></tt>";
+    "calendar" = {
+      "mode" = "year";
+      "mode-mon-col" = 3;
+      "weeks-pos" = "right";
+      "on-scroll" = 1;
+      "on-click-right" = "mode";
+      "format" = {
+        "months" = "<span color='#ffead3'><b>{}</b></span>";
+        "days" = "<span color='#ecc6d9'>{}</span>";
+        "weeks" = "<span color='#8aadf4'>{}</span>";
+        "weekdays" = "<span color='#ffcc66'><b>{}</b></span>";
+        "today" = "<span color='#ff6699'><b><u>{}</u></b></span>";
+      };
+    };
+    "actions" = {
+      "on-click-right" = "mode";
+      "on-click-forward" = "tz_up";
+      "on-click-backward" = "tz_down";
+      "on-scroll-up" = "shift_up";
+      "on-scroll-down" = "shift_down";
+    };
   };
 
   "cpu" = {
-    "format" = " {usage}%";
+    "format" = "󰍛 {usage}%";
     "tooltip" = true;
   };
 
@@ -40,7 +66,7 @@ in
   };
 
   "memory" = {
-    "format" = "󰍛 {}%";
+    "format" = " {}%";
   };
 
   "mpris" = {

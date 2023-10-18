@@ -89,7 +89,7 @@ box {
 }
 
 /* Primary monitor configuration */
-window.DP-1,
+window.DP-3,
 #notifications,
 #workspaces {
   margin: 0.5em;
@@ -99,12 +99,6 @@ window.DP-1,
   font-weight: bold;
   background-color: @surface0;
   border: 2px solid @surface1;
-}
-
-/* Secondary monitor configuration */
-window.DP-3 #workspaces {
-  margin: 0.5em;
-  padding: 0 1em;
 }
 
 /* Wlr/workspaces configuration  */
@@ -159,6 +153,7 @@ window.DP-3 #workspaces {
 #custom-weather,
 #idle_inhibitor,
 #wireplumber,
+#pulseaudio,
 #battery,
 #cpu,
 #memory,

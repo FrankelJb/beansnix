@@ -28,10 +28,10 @@ let
   mainBar = {
     "layer" = "top";
     "position" = "top";
-    "output" = "DP-1";
+    "output" = "DP-3";
     "margin-top" = 10;
-    "margin-left" = 20;
-    "margin-right" = 20;
+    "margin-left" = 10;
+    "margin-right" = 10;
     # "modules-center" = [ "mpris" ];
     "modules-left" = [
       "group/power"
@@ -40,13 +40,13 @@ let
       "hyprland/window"
     ];
     "modules-right" = [
-      "group/tray"
-      "custom/separator-right"
       "group/stats"
+      "custom/separator-right"
+      "group/tray"
       "custom/separator-right"
       "group/notifications"
       "hyprland/submap"
-      "custom/weather"
+      # "custom/weather"
       "clock"
     ];
   };
