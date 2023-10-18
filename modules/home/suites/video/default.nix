@@ -1,12 +1,11 @@
 { config
 , lib
 , options
-, pkgs
 , ...
 }:
 let
   inherit (lib) mkIf;
-  inherit (lib.internal) mkBoolOpt;
+  inherit (lib.internal) mkBoolOpt enabled;
 
   cfg = config.beansnix.suites.video;
 in
@@ -16,11 +15,10 @@ in
   };
 
   config = mkIf cfg.enable {
-    environment.systemPackages = with pkgs; [
-      mediainfo-gui
-      pitivi
-      mpv
-      vlc
-    ];
+    beansnix = {
+      apps = {
+        obs = enabled;
+      };
+    };
   };
 }

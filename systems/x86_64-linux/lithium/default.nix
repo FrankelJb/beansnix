@@ -10,6 +10,7 @@ in {
   imports = [./hardware.nix];
 
   beansnix = {
+    user.extraOptions.shell = pkgs.fish;
     nix = enabled;
 
     archetypes = {
