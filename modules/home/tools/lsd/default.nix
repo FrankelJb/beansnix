@@ -1,10 +1,10 @@
-{
-  config,
-  lib,
-  options,
-  pkgs,
-  ...
-}: let
+{ config
+, lib
+, options
+, pkgs
+, ...
+}:
+let
   inherit (lib) mkIf;
   inherit (lib.internal) mkBoolOpt;
 
@@ -15,7 +15,8 @@
     lt = "${pkgs.lsd}/bin/lsd --tree";
     llt = "${pkgs.lsd}/bin/lsd -l --tree";
   };
-in {
+in
+{
   options.beansnix.tools.lsd = {
     enable = mkBoolOpt false "Whether or not to enable lsd.";
   };
@@ -25,7 +26,7 @@ in {
       enable = true;
 
       settings = {
-        blocks = ["permission" "user" "group" "size" "date" "name"];
+        blocks = [ "permission" "user" "group" "size" "date" "name" ];
         classic = false;
         date = "date";
         dereference = false;
@@ -36,7 +37,7 @@ in {
           theme = "fancy";
           separator = " ";
         };
-        ignore-globs = [".git"];
+        ignore-globs = [ ".git" ];
         indicators = true;
         layout = "grid";
         # permission = "octal";

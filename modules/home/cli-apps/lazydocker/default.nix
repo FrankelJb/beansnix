@@ -1,22 +1,23 @@
-{
-  config,
-  lib,
-  options,
-  pkgs,
-  ...
-}: let
+{ config
+, lib
+, options
+, pkgs
+, ...
+}:
+let
   inherit (lib) mkIf;
   inherit (lib.internal) mkBoolOpt;
 
   cfg = config.beansnix.cli-apps.lazydocker;
-in {
+in
+{
   options.beansnix.cli-apps.lazydocker = {
     enable = mkBoolOpt false "Whether or not to enable lazydocker.";
   };
 
   config = mkIf cfg.enable {
     home = {
-      packages = with pkgs; [lazydocker];
+      packages = with pkgs; [ lazydocker ];
 
       shellAliases = {
         # #

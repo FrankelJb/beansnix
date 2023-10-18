@@ -1,13 +1,14 @@
-{
-  config,
-  pkgs,
-  lib,
-  ...
-}: let
+{ config
+, pkgs
+, lib
+, ...
+}:
+let
   inherit (lib) getExe;
   inherit (lib.internal) enabled;
-in {
-  imports = [./hardware.nix];
+in
+{
+  imports = [ ./hardware.nix ];
 
   beansnix = {
     user.extraOptions.shell = pkgs.fish;

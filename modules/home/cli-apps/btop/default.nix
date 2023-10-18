@@ -1,15 +1,16 @@
-{
-  config,
-  lib,
-  options,
-  pkgs,
-  ...
-}: let
+{ config
+, lib
+, options
+, pkgs
+, ...
+}:
+let
   inherit (lib) mkIf;
   inherit (lib.internal) mkBoolOpt;
 
   cfg = config.beansnix.cli-apps.btop;
-in {
+in
+{
   options.beansnix.cli-apps.btop = {
     enable = mkBoolOpt false "Whether or not to enable btop.";
   };

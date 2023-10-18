@@ -1,9 +1,9 @@
-{
-  config,
-  lib,
-  pkgs,
-  ...
-}: let
+{ config
+, lib
+, pkgs
+, ...
+}:
+let
   inherit (lib) mkEnableOption mkIf getExe;
   inherit (lib.internal) mkBoolOpt;
   # inherit (inputs) neovim-config;
@@ -26,7 +26,8 @@
     shfmt
     xmlformat
   ];
-in {
+in
+{
   options.beansnix.cli-apps.neovim = {
     enable = mkEnableOption "neovim";
     default = mkBoolOpt true "Whether to set Neovim as the session EDITOR";
@@ -72,7 +73,7 @@ in {
         ++ lsp
         ++ lib.optional stdenv.isLinux webkitgtk;
 
-      extraPython3Packages = ps: [ps.pip];
+      extraPython3Packages = ps: [ ps.pip ];
     };
 
     # TODO: Convert to custom nixos neovim config

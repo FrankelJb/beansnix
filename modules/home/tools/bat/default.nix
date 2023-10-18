@@ -1,15 +1,16 @@
-{
-  config,
-  lib,
-  options,
-  pkgs,
-  ...
-}: let
+{ config
+, lib
+, options
+, pkgs
+, ...
+}:
+let
   inherit (lib) mkIf;
   inherit (lib.internal) mkBoolOpt;
 
   cfg = config.beansnix.tools.bat;
-in {
+in
+{
   options.beansnix.tools.bat = {
     enable = mkBoolOpt false "Whether or not to enable bat.";
   };

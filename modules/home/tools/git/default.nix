@@ -1,9 +1,9 @@
-{
-  config,
-  lib,
-  pkgs,
-  ...
-}: let
+{ config
+, lib
+, pkgs
+, ...
+}:
+let
   inherit (lib) types mkEnableOption mkIf getExe';
   inherit (lib.internal) mkOpt mkBoolOpt enabled;
   inherit (config.beansnix) user;
@@ -11,10 +11,11 @@
   cfg = config.beansnix.tools.git;
 
   aliases = import ./aliases.nix;
-in {
+in
+{
   options.beansnix.tools.git = {
     enable = mkEnableOption "Git";
-    includes = mkOpt (types.listOf types.attrs) [] "Git includeIf paths and conditions.";
+    includes = mkOpt (types.listOf types.attrs) [ ] "Git includeIf paths and conditions.";
     signByDefault = mkOpt types.bool true "Whether to sign commits by default.";
     signingKey =
       mkOpt types.str "${config.home.homeDirectory}/.ssh/id_ed25519" "The key ID to sign commits with.";
