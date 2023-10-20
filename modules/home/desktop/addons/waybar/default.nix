@@ -13,6 +13,9 @@ let
 
   cfg = config.beansnix.desktop.addons.waybar;
 
+  theme = builtins.readFile ./styles/catppuccin.css;
+  style = builtins.readFile ./styles/style.css;
+
   custom-modules = import ./modules/custom-modules.nix { inherit config lib pkgs; };
   default-modules = import ./modules/default-modules.nix { inherit lib pkgs; };
   group-modules = import ./modules/group-modules.nix;
@@ -25,7 +28,7 @@ let
     (lib.mkIf config.beansnix.desktop.hyprland.enable hyprland-modules)
   ];
 
-  mainBar = {
+  bar = {
     "layer" = "top";
     "position" = "top";
     "output" = "DP-3";
@@ -72,7 +75,7 @@ in
         mainBar = mkMerge [ mainBar all-modules ];
       };
 
-      style = ./style.css;
+      style = "${theme}${style}";
     };
   };
 }
