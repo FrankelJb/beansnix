@@ -34,7 +34,7 @@ let
     "margin-right" = 10;
     # "modules-center" = [ "mpris" ];
     "modules-left" = [
-      "group/power"
+      "custom/wlogout"
       "hyprland/workspaces"
       "custom/separator-left"
       "hyprland/window"

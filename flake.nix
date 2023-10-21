@@ -2,6 +2,21 @@
   description = "beansnix";
 
   inputs = {
+    anyrun = {
+      url = "github:Kirottu/anyrun";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    anyrun-cliphist = {
+      url = "github:benoitlouy/anyrun-cliphist";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    anyrun-nixos-options = {
+      url = "github:n3oney/anyrun-nixos-options";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     # Comma
     comma = {
       url = "github:nix-community/comma";

@@ -42,6 +42,8 @@ in
 
         beansnix = {
           desktop.addons = {
+            # TODO: enable anyrun when https://github.com/Kirottu/anyrun/issues/92 is fixed
+            # anyrun = enabled;
             rofi = enabled;
             hyprpaper = enabled;
           };

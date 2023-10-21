@@ -38,7 +38,7 @@ in
         # };
         #
         dhcp = "internal";
-        insertNameservers = cfg.nameServers;
+        # insertNameservers = cfg.nameServers;
 
         # plugins = with pkgs; [
         #   networkmanager-l2tp
@@ -47,8 +47,6 @@ in
         #   networkmanager-vpnc
         # ];
       };
-
-      search = [ ];
     };
 
     services.resolved.enable = true;
