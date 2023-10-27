@@ -85,7 +85,7 @@ in
             nautilus = enabled;
             qt = enabled;
             thunar = enabled;
-            # xdg-portal = enabled;
+            xdg-portal = enabled;
           };
 
           # display-managers.regreet = {
