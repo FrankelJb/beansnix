@@ -35,21 +35,27 @@ let
   bar = {
     "layer" = "top";
     "position" = "top";
-    "output" = "DP-3";
+
     "margin-top" = 10;
     "margin-left" = 10;
     "margin-right" = 10;
-    # "modules-center" = [ "mpris" ];
+
     "modules-left" = [
       "custom/wlogout"
       "hyprland/workspaces"
       "custom/separator-left"
       "hyprland/window"
     ];
+  };
+
+  mainBar = {
+    "output" = "DP-3";
+    # "modules-center" = [ "mpris" ];
+
     "modules-right" = [
-      "group/stats"
-      "custom/separator-right"
       "group/tray"
+      "custom/separator-right"
+      "group/stats"
       "custom/separator-right"
       "group/notifications"
       "hyprland/submap"
@@ -75,7 +81,7 @@ in
 
       # TODO: make dynamic / support different number of bars etc
       settings = {
-        mainBar = mkMerge [ mainBar all-modules ];
+        mainBar = mkMerge [ bar mainBar all-modules ];
       };
 
       style = "${theme}${style}${notificationsStyle}${powerStyle}${statsStyle}${workspacesStyle}";

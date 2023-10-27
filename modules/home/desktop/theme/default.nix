@@ -107,7 +107,7 @@ in
       }];
     };
 
-    khanelinix.desktop.hyprland.prependConfig = ''
+    beansnix.desktop.hyprland.prependConfig = ''
       source=${cfg.package}/hyprland/${cfg.selectedTheme.variant}.conf
     '';
 

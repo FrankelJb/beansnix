@@ -80,10 +80,10 @@ in
             hide_when_typing = true;
           };
 
-          imports = [
+          import = [
             (pkgs.fetchurl {
-              url = "https://raw.githubusercontent.com/catppuccin/alacritty/3c808cbb4f9c87be43ba5241bc57373c793d2f17/catppuccin-mocha.yml";
-              hash = "sha256-28Tvtf8A/rx40J9PKXH6NL3h/OKfn3TQT1K9G8iWCkM=";
+              url = "https://github.com/alacritty/alacritty-theme/raw/master/themes/dracula.yaml";
+              hash = "sha256-GtWmYeT7+fhJ90yz0EnxeNnN3Uq/y5Pi8CTWiSIqfDg=";
             })
           ];
         }

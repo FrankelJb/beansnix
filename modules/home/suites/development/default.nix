@@ -46,6 +46,7 @@ in
       };
 
       cli-apps = {
+        helix = enabled;
         lazydocker.enable = cfg.dockerEnable;
         lazygit = enabled;
         neovim = {

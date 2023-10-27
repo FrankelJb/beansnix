@@ -21,10 +21,8 @@ in
       libreoffice
     ];
 
-    khanelinix = {
-      apps = {
-        thunderbird = enabled;
-      };
+    beansnix = {
+      apps = { };
     };
   };
 }

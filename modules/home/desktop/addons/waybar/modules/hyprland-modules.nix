@@ -78,6 +78,7 @@ in
       "class<mediainfo-gui>" = "󱂷";
       "class<org.kde.digikam>" = "󰄄";
       "class<org.telegram.desktop>" = "";
+      "class<Signal>" = "";
       "class<.pitivi-wrapped>" = "󱄢";
       "class<steam>" = "";
       "class<thunderbird>" = "";

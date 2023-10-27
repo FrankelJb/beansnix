@@ -110,7 +110,7 @@ in
             "$RHYPER" = "SUPER_RALT_RCTRL"; # TODO: fix
 
             # default applications
-            "$term" = "${getExe' pkgs.foot "foot"}";
+            "$term" = "${getExe pkgs.alacritty}";
             "$browser" = "${getExe pkgs.firefox}";
             "$mail" = "${getExe pkgs.thunderbird}";
             "$editor" = "${getExe pkgs.neovim}";

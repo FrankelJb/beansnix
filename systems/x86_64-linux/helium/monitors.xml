@@ -13,9 +13,9 @@
           <serial>HNTR900911</serial>
         </monitorspec>
         <mode>
-          <width>5120</width>
+          <width>2560</width>
           <height>1440</height>
-          <rate>119.999001</rate>
+          <rate>239.998001</rate>
         </mode>
       </monitor>
     </logicalmonitor>
